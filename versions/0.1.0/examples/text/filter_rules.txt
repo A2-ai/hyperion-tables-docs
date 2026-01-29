@@ -1,0 +1,17 @@
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^!fixed
+env:  global
+
+[[2]]
+<quosure>
+expr: ^diagonal
+env:  global
+
+[[3]]
+<quosure>
+expr: ^kind != "SIGMA"
+env:  global
+ 

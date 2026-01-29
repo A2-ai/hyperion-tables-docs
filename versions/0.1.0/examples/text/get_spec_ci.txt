@@ -1,0 +1,5 @@
+<hyperion.tables::CIOptions>
+ @ level       : num 0.95
+ @ merge       : logi TRUE
+ @ pattern     : chr "[%s, %s]"
+ @ missing_text: chr "-" 
