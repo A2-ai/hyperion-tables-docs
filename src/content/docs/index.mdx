@@ -1,0 +1,36 @@
+---
+title: "hyperion.tables"
+description: "Publication-ready parameter tables, model comparison tables, and run summary tables for NONMEM models"
+template: splash
+pagefind: true
+hero:
+  tagline: "Publication-ready parameter tables, model comparison tables, and run summary tables for NONMEM models"
+  actions:
+    - text: "Get Started"
+      link: "./articles/readme/"
+      icon: right-arrow
+      variant: primary
+    - text: "View on GitHub"
+      link: "https://github.com/A2-ai/hyperion.tables"
+      icon: external
+      variant: minimal
+---
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Quick links
+
+<CardGrid stagger>
+  <Card title="Parameter Tables" icon="document">
+    Build publication-ready parameter tables from NONMEM models
+    [Learn more >](./articles/parameter-tables/)
+  </Card>
+  <Card title="Model Comparison" icon="document">
+    Create side-by-side model comparison tables
+    [Learn more >](./articles/comparison-tables/)
+  </Card>
+  <Card title="Run Summaries" icon="document">
+    Generate run summary tables across model lineages
+    [Learn more >](./articles/summary-tables/)
+  </Card>
+</CardGrid>
+

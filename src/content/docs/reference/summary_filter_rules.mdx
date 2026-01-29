@@ -1,0 +1,94 @@
+---
+title: "Create filter rules for summary table filtering"
+description: "Creates rules for filtering which models appear in the summary table."
+pagefind: true
+---
+
+## Description
+
+Creates rules for filtering which models appear in the summary table. Rules are evaluated against the summary data frame.
+
+## Usage
+
+```r
+summary_filter_rules(...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>...</code></td>
+<td>Filter expressions like <code>"final" %in% tags</code>, <code>!is.null(description)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+List of quosures for use in SummarySpec
+
+## Available columns
+
+The following columns are available for use in filter rules. Filters are evaluated against the summary data frame, so columns must be included in `SummarySpec@columns` to be available. 
+- `model` - Model name (e.g., "run001")
+- `based_on` - Reference model name(s)
+- `description` - Model description
+- `n_parameters` - Number of non-fixed parameters
+- `problem` - Problem description from run details
+- `number_data_records` - Number of data records
+- `number_subjects` - Number of subjects
+- `number_obs` - Number of observations
+- `estimation_method` - Estimation method
+- `estimation_time` - Estimation time
+- `covariance_time` - Covariance time
+- `postprocess_time` - Postprocess time
+- `function_evaluations` - Function evaluations
+- `significant_digits` - Significant digits
+- `ofv` - Objective function value
+- `dofv` - Change in OFV
+- `condition_number` - Condition number
+- `termination_status` - Termination status
+- `pvalue` - LRT p-value
+- `df` - Degrees of freedom
+
+## Examples
+
+```r
+summary_filter_rules(
+  ofv < 0,
+  estimation_method == "FOCE",
+  model %in% c("run001", "run003")
+)
+```
+
+### Output
+
+```
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^ofv < 0
+env:  global
+
+[[2]]
+<quosure>
+expr: ^estimation_method == "FOCE"
+env:  global
+
+[[3]]
+<quosure>
+expr: ^model %in% c("run001", "run003")
+env:  global
+ 
+```

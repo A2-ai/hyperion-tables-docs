@@ -1,0 +1,53 @@
+---
+title: "Set row filter rules for a TableSpec"
+description: "Controls which parameters appear in the output table."
+pagefind: true
+---
+
+## Description
+
+Controls which parameters appear in the output table. Pass filter expressions like `!fixed`, `diagonal`.
+
+## Usage
+
+```r
+set_spec_filter(spec, ..., overwrite = FALSE)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Filter rule expressions</td>
+</tr>
+<tr>
+<td><code>overwrite</code></td>
+<td>If FALSE (default), append to existing rules. If TRUE, replace all existing rules.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_filter(!fixed, diagonal)
+```

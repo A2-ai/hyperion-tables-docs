@@ -1,0 +1,65 @@
+---
+title: "Add model summary information for table footnote"
+description: "Attaches estimation method, OFV, condition number, and number of observations to parameter data for display as the first footnote in the parameter table."
+pagefind: true
+---
+
+## Description
+
+Attaches estimation method, OFV, condition number, and number of observations to parameter data for display as the first footnote in the parameter table.
+
+## Usage
+
+```r
+add_summary_info(
+  params,
+  model_sum,
+  show_method = TRUE,
+  show_ofv = TRUE,
+  show_cond_num = TRUE,
+  show_number_obs = TRUE
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>params</code></td>
+<td>Enriched parameter data frame from <code>apply_table_spec()</code></td>
+</tr>
+<tr>
+<td><code>model_sum</code></td>
+<td>Summary object from <code>summary()</code>, or NULL to skip</td>
+</tr>
+<tr>
+<td><code>show_method</code></td>
+<td>logical, if TRUE adds estimation method attribute for table footnote</td>
+</tr>
+<tr>
+<td><code>show_ofv</code></td>
+<td>logical, if TRUE adds final objective function value attribute for table footnote</td>
+</tr>
+<tr>
+<td><code>show_cond_num</code></td>
+<td>logical, if TRUE adds final condition number attribute for table footnote</td>
+</tr>
+<tr>
+<td><code>show_number_obs</code></td>
+<td>logical, if TRUE adds number of observations attribute for table footnote</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Data frame with model_summary attribute attached

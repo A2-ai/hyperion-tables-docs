@@ -1,0 +1,22 @@
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^grepl("~", user_name) ~ "Covariate Effects"
+env:  global
+
+[[2]]
+<quosure>
+expr: ^kind == "THETA" ~ "Structural Parameters"
+env:  global
+
+[[3]]
+<quosure>
+expr: ^kind == "OMEGA" & diagonal ~ "Between-Subject Variability"
+env:  global
+
+[[4]]
+<quosure>
+expr: ^kind == "SIGMA" ~ "Residual Variability"
+env:  global
+ 

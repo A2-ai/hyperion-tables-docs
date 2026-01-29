@@ -1,0 +1,52 @@
+---
+title: "Get columns from a spec"
+description: "Returns the current columns list from the spec."
+pagefind: true
+---
+
+## Description
+
+Returns the current columns list from the spec. For TableSpec, this includes the base columns plus any add_columns. For SummarySpec, columns are already merged with add_columns in construction.
+
+## Usage
+
+```r
+get_spec_columns(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Character vector of column names
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_columns(spec)
+```
+
+### Output
+
+```
+[1] "name"        "symbol"      "unit"        "estimate"    "variability"
+[6] "ci_low"      "ci_high"     "rse"         "shrinkage"   
+```

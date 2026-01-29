@@ -1,0 +1,55 @@
+---
+title: "Get CI options from a TableSpec"
+description: "Returns the CIOptions object."
+pagefind: true
+---
+
+## Description
+
+Returns the CIOptions object.
+
+## Usage
+
+```r
+get_spec_ci(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+CIOptions object
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_ci(spec)
+```
+
+### Output
+
+```
+<hyperion.tables::CIOptions>
+ @ level       : num 0.95
+ @ merge       : logi TRUE
+ @ pattern     : chr "[%s, %s]"
+ @ missing_text: chr "-" 
+```

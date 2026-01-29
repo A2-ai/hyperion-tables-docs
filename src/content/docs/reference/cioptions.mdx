@@ -1,0 +1,59 @@
+---
+title: "Confidence interval render options"
+description: "Controls CI merge behavior and missing-value display."
+pagefind: true
+---
+
+## Description
+
+Controls CI merge behavior and missing-value display.
+
+## Usage
+
+```r
+CIOptions(
+  level = 0.95,
+  merge = TRUE,
+  pattern = "[%s, %s]",
+  missing_text = "-"
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>level</code></td>
+<td>Confidence interval level, between 0 and 1.</td>
+</tr>
+<tr>
+<td><code>merge</code></td>
+<td>Logical. If TRUE, merge CI low/high into a single column when present.</td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>sprintf pattern used when merging CI values. Must include exactly two <code>⁠%s⁠</code>.</td>
+</tr>
+<tr>
+<td><code>missing_text</code></td>
+<td>Text to display when CI values are missing in rows where CI is expected.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Properties
+
+The following properties are available on a `CIOptions` object: 
+- `level` - Confidence interval level (0-1).
+- `merge` - Whether to merge CI bounds into a single column.
+- `pattern` - sprintf pattern for merged CI display (two %s).
+- `missing_text` - Text to show for missing CI values.

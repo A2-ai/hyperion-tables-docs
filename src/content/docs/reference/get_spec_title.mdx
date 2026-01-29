@@ -1,0 +1,51 @@
+---
+title: "Get title from a spec"
+description: "Returns the table header title."
+pagefind: true
+---
+
+## Description
+
+Returns the table header title.
+
+## Usage
+
+```r
+get_spec_title(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Character string
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_title(spec)
+```
+
+### Output
+
+```
+[1] "Model Parameters" 
+```

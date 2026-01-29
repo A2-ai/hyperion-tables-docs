@@ -1,0 +1,57 @@
+---
+title: "Set display transforms for a TableSpec"
+description: "Controls which transforms are applied for display by parameter kind."
+pagefind: true
+---
+
+## Description
+
+Controls which transforms are applied for display by parameter kind.
+
+## Usage
+
+```r
+set_spec_transforms(spec, theta = NULL, omega = NULL, sigma = NULL)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>theta</code></td>
+<td>Columns to transform for theta parameters</td>
+</tr>
+<tr>
+<td><code>omega</code></td>
+<td>Columns to transform for omega parameters</td>
+</tr>
+<tr>
+<td><code>sigma</code></td>
+<td>Columns to transform for sigma parameters</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_transforms(theta = "all", omega = c("estimate", "cv"))
+```

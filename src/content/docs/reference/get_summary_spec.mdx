@@ -1,0 +1,38 @@
+---
+title: "Extract SummarySpec from a summary data frame"
+description: "Retrieves the SummarySpec attached to a data frame (e.g., from apply_summary_spec() )."
+pagefind: true
+---
+
+## Description
+
+Retrieves the `SummarySpec` attached to a data frame (e.g., from `apply_summary_spec()`). Returns NULL if none is found.
+
+## Usage
+
+```r
+get_summary_spec(data)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>Data frame carrying a <code>summary_spec</code> attribute</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+A SummarySpec object or NULL

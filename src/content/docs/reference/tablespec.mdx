@@ -1,0 +1,123 @@
+---
+title: "Table specification for parameter tables"
+description: "Table specification for parameter tables"
+pagefind: true
+---
+
+## Description
+
+Table specification for parameter tables
+
+## Usage
+
+```r
+TableSpec(
+  title = "Model Parameters",
+  parameter_names = ParameterNameOptions(),
+  columns = NULL,
+  add_columns = NULL,
+  drop_columns = NULL,
+  hide_empty_columns = TRUE,
+  sections = section_rules(),
+  row_filter = filter_rules(),
+  display_transforms = list(),
+  variability_rules = default_variability_rules(),
+  n_sigfig = 3,
+  ci = CIOptions(),
+  n_decimals_ofv = 3,
+  pvalue_scientific = FALSE,
+  pvalue_threshold = NULL,
+  missing_text = "",
+  missing_apply_to = "all",
+  footnote_order = c("summary_info", "equations", "abbreviations")
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>Character. Title for the parameter table header. Default is "Model Parameters".</td>
+</tr>
+<tr>
+<td><code>parameter_names</code></td>
+<td>ParameterNameOptions object controlling how parameter names are displayed. Controls which name field to use ("name", "display", or "nonmem") and whether to append theta info to omega names. Defaults to <code>ParameterNameOptions()</code>.</td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td>Character vector of columns to include in output.</td>
+</tr>
+<tr>
+<td><code>add_columns</code></td>
+<td>Character vector of columns to append to the column list. Useful for comparisons when you want to add columns like "pct_change" without overriding <code>columns</code>.</td>
+</tr>
+<tr>
+<td><code>drop_columns</code></td>
+<td>Character vector of columns to exclude from output, or NULL (default) to include all columns.</td>
+</tr>
+<tr>
+<td><code>hide_empty_columns</code></td>
+<td>Logical. If TRUE, columns that are all NA/empty are automatically hidden unless explicitly requested via <code>columns</code> or <code>add_columns</code>. Default is TRUE.</td>
+</tr>
+<tr>
+<td><code>sections</code></td>
+<td>Section rules created with <code>section_rules()</code>.</td>
+</tr>
+<tr>
+<td><code>row_filter</code></td>
+<td>Filter rules created with <code>filter_rules()</code>.</td>
+</tr>
+<tr>
+<td><code>display_transforms</code></td>
+<td>Named list specifying which transforms to apply for display. Names are parameter kinds (theta, omega, sigma), values are which columns to transform ("all", "estimate", "cv", "rse", "ci", "symbol").</td>
+</tr>
+<tr>
+<td><code>variability_rules</code></td>
+<td>Rules created with <code>variability_rules()</code> to define the variability display column. Default uses built-in formatting.</td>
+</tr>
+<tr>
+<td><code>n_sigfig</code></td>
+<td>Number of significant figures for numeric formatting in the output table. Must be a positive integer. Default is 3.</td>
+</tr>
+<tr>
+<td><code>ci</code></td>
+<td>CIOptions object controlling CI merge behavior and missing-value display. Defaults to <code>CIOptions()</code>.</td>
+</tr>
+<tr>
+<td><code>n_decimals_ofv</code></td>
+<td>Number of decimal places for OFV values in summary footnotes. Use NA to keep significant-figure formatting. Default is 3</td>
+</tr>
+<tr>
+<td><code>pvalue_scientific</code></td>
+<td>Logical. If TRUE, p-values are formatted in scientific notation. If FALSE (default), uses significant figures from n_sigfig.</td>
+</tr>
+<tr>
+<td><code>pvalue_threshold</code></td>
+<td>Numeric or NULL. If set, p-values below this threshold are displayed as "< threshold" (e.g., "< 0.05"). Default is NULL (no threshold).</td>
+</tr>
+<tr>
+<td><code>missing_text</code></td>
+<td>Text to substitute for NA values after formatting. Default is "".</td>
+</tr>
+<tr>
+<td><code>missing_apply_to</code></td>
+<td>Which columns to apply missing text to: "all", "numeric", or "character". Default is "all".</td>
+</tr>
+<tr>
+<td><code>footnote_order</code></td>
+<td>Character vector controlling the order of footnote sections, or NULL to disable footnotes. Valid values: "summary_info", "equations", "abbreviations". Default is c("summary_info", "equations", "abbreviations").</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+| `footnote_order` | Character vector controlling the order of footnote sections, or NULL to disable footnotes. Valid values: "summary_info", "equations", "abbreviations". Default is c("summary_info", "equations", "abbreviations"). |

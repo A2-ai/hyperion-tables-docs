@@ -1,0 +1,53 @@
+---
+title: "Set summary filter rules for a SummarySpec"
+description: "Controls which models appear in the summary table based on filter expressions evaluated against summary columns."
+pagefind: true
+---
+
+## Description
+
+Controls which models appear in the summary table based on filter expressions evaluated against summary columns.
+
+## Usage
+
+```r
+set_spec_summary_filter(spec, ..., overwrite = FALSE)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Filter rule expressions</td>
+</tr>
+<tr>
+<td><code>overwrite</code></td>
+<td>If FALSE (default), append to existing rules. If TRUE, replace all existing rules.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- SummarySpec() |>
+  set_spec_summary_filter(ofv < 1000)
+```

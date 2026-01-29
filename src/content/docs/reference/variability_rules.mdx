@@ -1,0 +1,82 @@
+---
+title: "Create variability display rules"
+description: "Creates rules for constructing the variability display column."
+pagefind: true
+---
+
+## Description
+
+Creates rules for constructing the `variability` display column. Rules are evaluated with `case_when()`.
+
+## Usage
+
+```r
+variability_rules(...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>...</code></td>
+<td>Formula expressions like <code>fixed ~ "(Fixed)"</code> or <code>!is.na(cv) ~ sprintf("(CV = %s%%)", cv)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+List of quosures for use in TableSpec
+
+## Examples
+
+```r
+variability_rules(
+  fixed ~ "(Fixed)",
+  !is.na(corr) ~ sprintf("(Corr = %s)", corr),
+  !is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv),
+  !is.na(sd) ~ sprintf("(SD = %s)", sd),
+  TRUE ~ NA_character_
+)
+```
+
+### Output
+
+```
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^fixed ~ "(Fixed)"
+env:  global
+
+[[2]]
+<quosure>
+expr: ^!is.na(corr) ~ sprintf("(Corr = %s)", corr)
+env:  global
+
+[[3]]
+<quosure>
+expr: ^!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv)
+env:  global
+
+[[4]]
+<quosure>
+expr: ^!is.na(sd) ~ sprintf("(SD = %s)", sd)
+env:  global
+
+[[5]]
+<quosure>
+expr: ^TRUE ~ NA_character_
+env:  global
+ 
+```

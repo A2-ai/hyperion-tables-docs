@@ -1,0 +1,49 @@
+---
+title: "Set models to include for a SummarySpec"
+description: "Filters which models appear in the summary table by name."
+pagefind: true
+---
+
+## Description
+
+Filters which models appear in the summary table by name.
+
+## Usage
+
+```r
+set_spec_models(spec, models)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object</td>
+</tr>
+<tr>
+<td><code>models</code></td>
+<td>Character vector of model names, or NULL for all models</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- SummarySpec() |>
+  set_spec_models(c("run001", "run002", "run003"))
+```

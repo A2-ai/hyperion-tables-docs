@@ -1,0 +1,108 @@
+---
+title: "Summary specification for run summary tables"
+description: "Summary specification for run summary tables"
+pagefind: true
+---
+
+## Description
+
+Summary specification for run summary tables
+
+## Usage
+
+```r
+SummarySpec(
+  title = "Run Summary",
+  models_to_include = NULL,
+  tag_filter = NULL,
+  summary_filter = summary_filter_rules(),
+  remove_unrun_models = TRUE,
+  columns = NULL,
+  add_columns = NULL,
+  drop_columns = NULL,
+  hide_empty_columns = TRUE,
+  n_sigfig = 3,
+  n_decimals_ofv = 3,
+  time_format = "seconds",
+  pvalue_scientific = FALSE,
+  pvalue_threshold = NULL,
+  footnote_order = "abbreviations"
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>Character. Title for the table header. Default is "Run Summary".</td>
+</tr>
+<tr>
+<td><code>models_to_include</code></td>
+<td>Character vector of model names to include in the table (with or without .mod/.ctl extensions), or NULL (default).</td>
+</tr>
+<tr>
+<td><code>tag_filter</code></td>
+<td>Character vector of tags, or NULL (default). Only models with at least one matching tag are included.</td>
+</tr>
+<tr>
+<td><code>summary_filter</code></td>
+<td>Filter rules created with <code>summary_filter_rules()</code>.</td>
+</tr>
+<tr>
+<td><code>remove_unrun_models</code></td>
+<td>Logical. If TRUE (default), models without completed runs are excluded from the table.</td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td>Character vector of columns to include. Valid columns: "based_on", "description", "n_parameters", "problem", "number_data_records", "number_subjects", "number_obs", "estimation_method", "estimation_time", "covariance_time", "postprocess_time", "function_evaluations", "significant_digits", "ofv", "dofv", "condition_number", "termination_status", "pvalue", "df". Note: "pvalue" and "df" require "dofv" to be calculated; pvalue uses the Likelihood Ratio Test (LRT) assuming nested models.</td>
+</tr>
+<tr>
+<td><code>add_columns</code></td>
+<td>Character vector of columns to append to the default <code>columns</code> list, or NULL (default).</td>
+</tr>
+<tr>
+<td><code>drop_columns</code></td>
+<td>Character vector of columns to exclude from output, or NULL (default).</td>
+</tr>
+<tr>
+<td><code>hide_empty_columns</code></td>
+<td>Logical. If TRUE, columns with all NA values are hidden. Default is TRUE.</td>
+</tr>
+<tr>
+<td><code>n_sigfig</code></td>
+<td>Number of significant figures for numeric formatting. Default is 3.</td>
+</tr>
+<tr>
+<td><code>n_decimals_ofv</code></td>
+<td>Number of decimal places for OFV and dOFV values. Default is 3.</td>
+</tr>
+<tr>
+<td><code>time_format</code></td>
+<td>Format for time columns. Options: "seconds" (default), "minutes", "hours", "auto" (auto-scale based on magnitude).</td>
+</tr>
+<tr>
+<td><code>pvalue_scientific</code></td>
+<td>Logical. If TRUE, p-values are formatted in scientific notation (e.g., 1.23e-04). If FALSE (default), uses significant figures from n_sigfig.</td>
+</tr>
+<tr>
+<td><code>pvalue_threshold</code></td>
+<td>Numeric or NULL. If set, p-values below this threshold are displayed as "< threshold" (e.g., "< 0.05"). Default is NULL (no threshold).</td>
+</tr>
+<tr>
+<td><code>footnote_order</code></td>
+<td>Character vector controlling the order of footnote sections, or NULL to disable footnotes. Valid value for SummarySpec: "abbreviations". Default is c("abbreviations").</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+| `footnote_order` | Character vector controlling the order of footnote sections, or NULL to disable footnotes. Valid value for SummarySpec: "abbreviations". Default is c("abbreviations"). |

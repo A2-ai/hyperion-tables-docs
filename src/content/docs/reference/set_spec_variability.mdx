@@ -1,0 +1,57 @@
+---
+title: "Set variability rules for a TableSpec"
+description: "Controls how the variability display column is constructed."
+pagefind: true
+---
+
+## Description
+
+Controls how the variability display column is constructed.
+
+## Usage
+
+```r
+set_spec_variability(spec, ..., overwrite = FALSE)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Variability rule formulas</td>
+</tr>
+<tr>
+<td><code>overwrite</code></td>
+<td>If FALSE (default), append to existing rules. If TRUE, replace all existing rules.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_variability(
+    fixed ~ "(Fixed)",
+    !is.na(cv) ~ sprintf("CV = %s%%", cv),
+    TRUE ~ NA_character_
+  )
+```

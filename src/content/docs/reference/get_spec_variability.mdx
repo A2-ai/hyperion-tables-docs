@@ -1,0 +1,77 @@
+---
+title: "Get variability rules from a TableSpec"
+description: "Returns the list of variability display rules."
+pagefind: true
+---
+
+## Description
+
+Returns the list of variability display rules.
+
+## Usage
+
+```r
+get_spec_variability(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+List of quosures
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_variability(spec)
+```
+
+### Output
+
+```
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^fixed ~ "(Fixed)"
+env:  0x108c2ba68
+
+[[2]]
+<quosure>
+expr: ^!is.na(corr) ~ sprintf("(Corr = %s)", corr)
+env:  0x108c2ba68
+
+[[3]]
+<quosure>
+expr: ^!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv)
+env:  0x108c2ba68
+
+[[4]]
+<quosure>
+expr: ^!is.na(sd) ~ sprintf("(SD = %s)", sd)
+env:  0x108c2ba68
+
+[[5]]
+<quosure>
+expr: ^TRUE ~ NA_character_
+env:  0x108c2ba68
+ 
+```

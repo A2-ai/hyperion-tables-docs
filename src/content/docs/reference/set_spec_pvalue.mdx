@@ -1,0 +1,53 @@
+---
+title: "Set p-value formatting for a spec"
+description: "Controls how p-values are displayed in the table."
+pagefind: true
+---
+
+## Description
+
+Controls how p-values are displayed in the table.
+
+## Usage
+
+```r
+set_spec_pvalue(spec, threshold, scientific)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td>Numeric threshold below which p-values display as "< threshold", or NULL to disable threshold display</td>
+</tr>
+<tr>
+<td><code>scientific</code></td>
+<td>Logical. If TRUE, use scientific notation for p-values</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_pvalue(threshold = 0.001, scientific = TRUE)
+```

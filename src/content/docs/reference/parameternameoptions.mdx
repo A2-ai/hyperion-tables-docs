@@ -1,0 +1,44 @@
+---
+title: "Parameter name display options"
+description: "Controls how parameter names are displayed in tables."
+pagefind: true
+---
+
+## Description
+
+Controls how parameter names are displayed in tables.
+
+## Usage
+
+```r
+ParameterNameOptions(source = "name", append_omega_with_theta = TRUE)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>Which name field to use: "name" (default), "display", or "nonmem"</td>
+</tr>
+<tr>
+<td><code>append_omega_with_theta</code></td>
+<td>Logical. If TRUE (default), append associated theta names to omega parameters (e.g., "OM1 TVCL" or "OMEGA(1,1)-THETA1")</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Properties
+
+The following properties are available on a `ParameterNameOptions` object: 
+- `source` - Which name field to use ("name", "display", or "nonmem").
+- `append_omega_with_theta` - Whether to append theta info to omega names.

@@ -1,0 +1,49 @@
+---
+title: "Set tag filter for a SummarySpec"
+description: "Filters which models appear in the summary table by tags."
+pagefind: true
+---
+
+## Description
+
+Filters which models appear in the summary table by tags.
+
+## Usage
+
+```r
+set_spec_tag_filter(spec, tags)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Character vector of tags to filter by, or NULL for no filtering</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- SummarySpec() |>
+  set_spec_tag_filter(c("final", "approved"))
+```

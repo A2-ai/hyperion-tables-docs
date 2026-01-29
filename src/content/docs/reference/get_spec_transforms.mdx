@@ -1,0 +1,59 @@
+---
+title: "Get display transforms from a TableSpec"
+description: "Returns the display transforms configuration."
+pagefind: true
+---
+
+## Description
+
+Returns the display transforms configuration.
+
+## Usage
+
+```r
+get_spec_transforms(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Named list with theta, omega, sigma entries
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_transforms(spec)
+```
+
+### Output
+
+```
+$theta
+[1] "all"
+
+$omega
+[1] "all"
+
+$sigma
+[1] "all"
+ 
+```

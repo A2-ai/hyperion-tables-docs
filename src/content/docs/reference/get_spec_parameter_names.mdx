@@ -1,0 +1,53 @@
+---
+title: "Get parameter name options from a TableSpec"
+description: "Returns the ParameterNameOptions object controlling how parameter names are displayed."
+pagefind: true
+---
+
+## Description
+
+Returns the ParameterNameOptions object controlling how parameter names are displayed.
+
+## Usage
+
+```r
+get_spec_parameter_names(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+ParameterNameOptions object
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_parameter_names(spec)
+```
+
+### Output
+
+```
+<hyperion.tables::ParameterNameOptions>
+ @ source                 : chr "name"
+ @ append_omega_with_theta: logi TRUE 
+```

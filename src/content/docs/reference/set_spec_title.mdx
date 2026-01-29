@@ -1,0 +1,49 @@
+---
+title: "Set the title for a spec"
+description: "Sets the table header title."
+pagefind: true
+---
+
+## Description
+
+Sets the table header title.
+
+## Usage
+
+```r
+set_spec_title(spec, title)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>Character string for the table title</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_title("Parameter Estimates")
+```

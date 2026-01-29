@@ -1,0 +1,49 @@
+---
+title: "Set significant figures for a spec"
+description: "Sets the number of significant figures for numeric formatting."
+pagefind: true
+---
+
+## Description
+
+Sets the number of significant figures for numeric formatting.
+
+## Usage
+
+```r
+set_spec_sigfig(spec, n)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>Positive integer for significant figures</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_sigfig(4)
+```

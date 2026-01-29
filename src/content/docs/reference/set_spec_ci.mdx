@@ -1,0 +1,67 @@
+---
+title: "Set CI options for a TableSpec"
+description: "Controls confidence interval rendering options."
+pagefind: true
+---
+
+## Description
+
+Controls confidence interval rendering options.
+
+## Usage
+
+```r
+set_spec_ci(
+  spec,
+  level = NULL,
+  merge = NULL,
+  pattern = NULL,
+  missing_text = NULL
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>Confidence interval level (0-1, exclusive)</td>
+</tr>
+<tr>
+<td><code>merge</code></td>
+<td>Logical. If TRUE, merge CI bounds into a single column</td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>sprintf pattern for merged CI display (must contain two %%s)</td>
+</tr>
+<tr>
+<td><code>missing_text</code></td>
+<td>Text to show for missing CI values</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_ci(level = 0.90, merge = TRUE, pattern = "(%s, %s)")
+```

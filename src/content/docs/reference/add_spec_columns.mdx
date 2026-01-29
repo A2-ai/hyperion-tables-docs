@@ -1,0 +1,52 @@
+---
+title: "Add columns to a spec"
+description: "Appends columns to the spec's add_columns list."
+pagefind: true
+---
+
+## Description
+
+Appends columns to the spec's add_columns list. These columns will be added to the default column set.
+
+## Usage
+
+```r
+add_spec_columns(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Column names to add (character strings)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  add_spec_columns("shrinkage", "cv")
+
+sum_spec <- SummarySpec() |>
+  add_spec_columns("estimation_time")
+```

@@ -1,0 +1,49 @@
+---
+title: "Set hide_empty_columns for a spec"
+description: "Controls whether empty columns are automatically hidden."
+pagefind: true
+---
+
+## Description
+
+Controls whether empty columns are automatically hidden.
+
+## Usage
+
+```r
+set_spec_hide_empty(spec, hide)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>hide</code></td>
+<td>Logical value</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_hide_empty(FALSE)
+```

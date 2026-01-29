@@ -1,0 +1,52 @@
+---
+title: "Drop columns from a spec"
+description: "Adds columns to the spec's drop_columns list."
+pagefind: true
+---
+
+## Description
+
+Adds columns to the spec's drop_columns list. These columns will be excluded from the output table.
+
+## Usage
+
+```r
+drop_spec_columns(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Column names to drop (character strings)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  drop_spec_columns("unit", "symbol")
+
+sum_spec <- SummarySpec() |>
+  drop_spec_columns("description")
+```

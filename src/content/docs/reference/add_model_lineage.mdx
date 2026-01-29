@@ -1,0 +1,42 @@
+---
+title: "Add model lineage to a comparison object"
+description: "Attaches lineage information to a comparison object to enable lineage-aware features like conditional LRT display."
+pagefind: true
+---
+
+## Description
+
+Attaches lineage information to a comparison object to enable lineage-aware features like conditional LRT display. When lineage is attached, the LRT footnote will only be shown for model pairs that are in a direct ancestor-descendant relationship.
+
+## Usage
+
+```r
+add_model_lineage(comparison, lineage)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>comparison</code></td>
+<td>A hyperion_comparison object from <code>compare_with()</code></td>
+</tr>
+<tr>
+<td><code>lineage</code></td>
+<td>A hyperion_nonmem_tree object from <code>get_model_lineage()</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+The comparison object with lineage attribute attached

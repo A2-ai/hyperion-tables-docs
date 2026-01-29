@@ -1,0 +1,80 @@
+---
+title: "Create row filter rules"
+description: "Creates rules for filtering which parameters appear in the output table."
+pagefind: true
+---
+
+## Description
+
+Creates rules for filtering which parameters appear in the output table. Rules are evaluated after name transformation.
+
+## Usage
+
+```r
+filter_rules(...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>...</code></td>
+<td>Filter expressions like <code>!fixed</code>, <code>diagonal</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+List of quosures for use in TableSpec
+
+## Available columns
+
+The following columns are available for use in filter rules: 
+- `nonmem_name` - NONMEM identifier ("THETA1", "OMEGA(1,1)")
+- `user_name` - User name from control file comments ("CL", "OM1")
+- `name` - Display name (depends on `parameter_names` setting)
+- `kind` - Parameter type: "THETA", "OMEGA", or "SIGMA"
+- `diagonal` - TRUE for diagonal matrix elements (variance), FALSE for off-diagonal (covariance)
+- `fixed` - TRUE if parameter is fixed
+
+## Examples
+
+```r
+filter_rules(
+  !fixed,
+  diagonal,
+  kind != "SIGMA"
+)
+```
+
+### Output
+
+```
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^!fixed
+env:  global
+
+[[2]]
+<quosure>
+expr: ^diagonal
+env:  global
+
+[[3]]
+<quosure>
+expr: ^kind != "SIGMA"
+env:  global
+ 
+```

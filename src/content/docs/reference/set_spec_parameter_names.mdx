@@ -1,0 +1,53 @@
+---
+title: "Set parameter name options for a TableSpec"
+description: "Controls how parameter names are displayed in the table."
+pagefind: true
+---
+
+## Description
+
+Controls how parameter names are displayed in the table.
+
+## Usage
+
+```r
+set_spec_parameter_names(spec, source = NULL, append_omega_with_theta = NULL)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>One of "name", "display", or "nonmem". If NULL, keeps current value.</td>
+</tr>
+<tr>
+<td><code>append_omega_with_theta</code></td>
+<td>Logical. If TRUE, append associated theta names to omega parameters. If NULL, keeps current value.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_parameter_names(source = "nonmem", append_omega_with_theta = FALSE)
+```

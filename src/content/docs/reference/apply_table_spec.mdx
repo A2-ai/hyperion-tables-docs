@@ -1,0 +1,46 @@
+---
+title: "Apply table specification to parameter data"
+description: "Enriches parameter data with transforms, CIs, sections, and display names."
+pagefind: true
+---
+
+## Description
+
+Enriches parameter data with transforms, CIs, sections, and display names.
+
+## Usage
+
+```r
+apply_table_spec(params, spec, info = NULL)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>params</code></td>
+<td>Data frame from get_parameters()</td>
+</tr>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td>ModelComments object from get_model_parameter_info(), or NULL. If NULL, features that require ModelComments (transforms, units, descriptions, custom name sources) will not be available and warnings will be issued if requested.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Enriched data frame ready for table building

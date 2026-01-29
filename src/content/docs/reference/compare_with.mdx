@@ -1,0 +1,55 @@
+---
+title: "Compare two enriched parameter data frames"
+description: "Joins two enriched parameter data frames for side-by-side comparison."
+pagefind: true
+---
+
+## Description
+
+Joins two enriched parameter data frames for side-by-side comparison. Both inputs should be prepared using the standard pipeline: `get_parameters() |> apply_table_spec() |> add_summary_info()`. Can also be chained by passing an existing `hyperion_comparison` object as `params1` to add another model comparison.
+
+## Usage
+
+```r
+compare_with(
+  params1,
+  params2,
+  labels = c("Model 1", "Model 2"),
+  reference_model = NULL
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>params1</code></td>
+<td>Enriched parameter data frame from model 1</td>
+</tr>
+<tr>
+<td><code>params2</code></td>
+<td>Enriched parameter data frame from model 2</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>Character vector of length 2 for model labels in table headers. Default: c("Model 1", "Model 2")</td>
+</tr>
+<tr>
+<td><code>reference_model</code></td>
+<td>Character string specifying which model to use as reference for percent change calculations. Should match the <code>run_name</code> of one of the models already in the comparison. When NULL (default), percent change is calculated relative to the previous model in the chain.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Data frame with class `hyperion_comparison` containing joined parameter data with suffixed columns and comparison attributes.

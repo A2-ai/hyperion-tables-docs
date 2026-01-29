@@ -1,0 +1,53 @@
+---
+title: "Get section rules from a TableSpec"
+description: "Returns the list of section assignment rules."
+pagefind: true
+---
+
+## Description
+
+Returns the list of section assignment rules.
+
+## Usage
+
+```r
+get_spec_sections(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+List of quosures
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_sections(spec)
+```
+
+### Output
+
+```
+<list_of<quosure>>
+
+named list() 
+```

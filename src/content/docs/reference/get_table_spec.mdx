@@ -1,0 +1,38 @@
+---
+title: "Extract TableSpec from a parameter data frame"
+description: "Retrieves the TableSpec attached to a parameter data frame (e.g., from apply_table_spec() )."
+pagefind: true
+---
+
+## Description
+
+Retrieves the `TableSpec` attached to a parameter data frame (e.g., from `apply_table_spec()`). Returns NULL if none is found.
+
+## Usage
+
+```r
+get_table_spec(params)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>params</code></td>
+<td>Data frame carrying a <code>table_spec</code> attribute</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+A TableSpec object or NULL

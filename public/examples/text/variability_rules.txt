@@ -1,0 +1,27 @@
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^fixed ~ "(Fixed)"
+env:  global
+
+[[2]]
+<quosure>
+expr: ^!is.na(corr) ~ sprintf("(Corr = %s)", corr)
+env:  global
+
+[[3]]
+<quosure>
+expr: ^!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv)
+env:  global
+
+[[4]]
+<quosure>
+expr: ^!is.na(sd) ~ sprintf("(SD = %s)", sd)
+env:  global
+
+[[5]]
+<quosure>
+expr: ^TRUE ~ NA_character_
+env:  global
+ 

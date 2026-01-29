@@ -1,0 +1,53 @@
+---
+title: "Get row filter rules from a TableSpec"
+description: "Returns the list of row filter rules."
+pagefind: true
+---
+
+## Description
+
+Returns the list of row filter rules.
+
+## Usage
+
+```r
+get_spec_filter(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+List of quosures
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_filter(spec)
+```
+
+### Output
+
+```
+<list_of<quosure>>
+
+named list() 
+```

@@ -1,0 +1,51 @@
+---
+title: "Get significant figures from a spec"
+description: "Returns the number of significant figures for numeric formatting."
+pagefind: true
+---
+
+## Description
+
+Returns the number of significant figures for numeric formatting.
+
+## Usage
+
+```r
+get_spec_sigfig(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Numeric value
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_sigfig(spec)
+```
+
+### Output
+
+```
+[1] 3 
+```

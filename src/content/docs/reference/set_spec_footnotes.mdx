@@ -1,0 +1,53 @@
+---
+title: "Set footnote order for a spec"
+description: "Controls the order of footnote sections, or disables footnotes entirely."
+pagefind: true
+---
+
+## Description
+
+Controls the order of footnote sections, or disables footnotes entirely.
+
+## Usage
+
+```r
+set_spec_footnotes(spec, order)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>Character vector of footnote sections in desired order, or NULL to disable footnotes. For TableSpec: "summary_info", "equations", "abbreviations". For SummarySpec: only "abbreviations" is valid.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_footnotes(c("abbreviations", "equations"))
+
+# Disable footnotes
+spec <- TableSpec() |>
+  set_spec_footnotes(NULL)
+```

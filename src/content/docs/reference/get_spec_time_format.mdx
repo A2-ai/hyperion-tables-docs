@@ -1,0 +1,51 @@
+---
+title: "Get time format from a SummarySpec"
+description: "Returns the time format setting."
+pagefind: true
+---
+
+## Description
+
+Returns the time format setting.
+
+## Usage
+
+```r
+get_spec_time_format(spec)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Character string: "seconds", "minutes", "hours", or "auto"
+
+## Examples
+
+```r
+spec <- SummarySpec()
+get_spec_time_format(spec)
+```
+
+### Output
+
+```
+[1] "seconds" 
+```

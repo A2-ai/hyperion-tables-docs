@@ -1,0 +1,53 @@
+---
+title: "Set missing value handling for a TableSpec"
+description: "Controls how NA values are displayed in the table."
+pagefind: true
+---
+
+## Description
+
+Controls how NA values are displayed in the table.
+
+## Usage
+
+```r
+set_spec_missing(spec, text = NULL, apply_to = NULL)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>Text to substitute for NA values</td>
+</tr>
+<tr>
+<td><code>apply_to</code></td>
+<td>Which columns to apply missing text to: "all", "numeric", or "character"</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_missing("-", apply_to = "numeric")
+```

@@ -1,0 +1,49 @@
+---
+title: "Set columns for a spec"
+description: "Replaces the spec's columns list entirely."
+pagefind: true
+---
+
+## Description
+
+Replaces the spec's columns list entirely. This overrides the default column set.
+
+## Usage
+
+```r
+set_spec_columns(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Column names to include (character strings)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- TableSpec() |>
+  set_spec_columns("name", "estimate", "rse")
+```

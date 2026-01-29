@@ -1,0 +1,3 @@
+<hyperion.tables::ParameterNameOptions>
+ @ source                 : chr "name"
+ @ append_omega_with_theta: logi TRUE 
