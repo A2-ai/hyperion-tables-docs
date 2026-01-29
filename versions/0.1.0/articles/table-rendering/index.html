@@ -143,23 +143,23 @@ keeping the underlying data pipeline clean and composable.</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="r"><code><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">TableSpec</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">  </span></span><span style="--0:#D7DBE0;--1:#403F53">sections</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">section_rules</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">kind</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">==</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"THETA"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">~</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"Structural model parameters"</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">kind</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">==</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"OMEGA"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x26;</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">diagonal</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">~</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"Interindividual variance parameters"</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">kind</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">==</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"OMEGA"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x26;</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">!</span><span style="--0:#C5E478;--1:#3B61B0">diagonal</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">~</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"Interindividual covariance parameters"</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">kind</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">==</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"SIGMA"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">~</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"Residual error"</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">TRUE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">~</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"Other"</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">  </span></span><span style="--0:#D7DBE0;--1:#403F53">title</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">paste</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_run</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"Parameters"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">run003</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">paste0</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_run</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">".mod"</span><span style="--0:#D6DEEB;--1:#403F53">)))</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">run003</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">run003</span><span style="--0:#D6DEEB;--1:#403F53">)) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_parameter_table</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">output</span><span style="--0:#D6DEEB"> </span></span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"data"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> &#x3C;hyperion.tables::HyperionTable></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ data            :'data.frame':    9 obs. of  19 variables:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ name         : chr  "TVCL" "TVV" "TVKA" "OM1 TVCL" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ symbol       : chr  "$\\theta_{1}$" "$\\theta_{2}$" "$\\theta_{3}$" "$\\exp(\\Omega_{(1,1)})$" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ unit         : chr  "L/hr" "L" "1/hr" NA ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ estimate     : num  1.33 40.16 1.21 1.13 1.13 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ variability  : chr  NA NA NA NA ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_low       : num  1.107 34.598 0.997 1.024 1.053 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_high      : num  1.54 45.73 1.43 1.25 1.22 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ rse          : num  8.41 7.07 9.06 41.16 29.66 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ shrinkage    : num  NA NA NA 13.14 4.63 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ fixed        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ section      : Factor w/ 5 levels "Structural model parameters",..: 1 1 1 2 2 2 3 4 4</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ kind         : chr  "THETA" "THETA" "THETA" "OMEGA" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ random_effect: chr  NA NA NA "ETA1" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ diagonal     : logi  NA NA NA TRUE TRUE TRUE ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ transforms   : chr  "Identity" "Identity" "Identity" "LogNormal" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ cv           : num  NA NA NA 36.1 36.3 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ corr         : num  NA NA NA NA NA ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ sd           : num  NA NA NA 0.35 0.352 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ dt_all       : chr  "Identity" "Identity" "Identity" "LogNormal" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. - attr(*, "table_spec")= &#x3C;hyperion.tables::TableSpec></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ title             : chr "run003 Parameters"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ parameter_names   : &#x3C;hyperion.tables::ParameterNameOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ source                 : chr "name"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ append_omega_with_theta: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ columns           : chr [1:9] "name" "symbol" "unit" "estimate" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ add_columns       : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ drop_columns      : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ hide_empty_columns: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ sections          :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "OMEGA" &#x26; diagonal ~ "Interindividual variance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "OMEGA" &#x26; !diagonal ~ "Interindividual covariance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(TRUE ~ "Other")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ row_filter        : Named list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ display_transforms:List of 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ theta: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ omega: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ sigma: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ variability_rules :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(fixed ~ "(Fixed)")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf("(CV = %s%%)", cv))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(TRUE ~ NA_character_)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ n_sigfig          : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ n_decimals_ofv    : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ pvalue_scientific : logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ pvalue_threshold  : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ ci                : &#x3C;hyperion.tables::CIOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ level       : num 0.95</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ merge       : logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ pattern     : chr "[%s, %s]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ missing_text: chr "-"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ missing_text      : chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ missing_apply_to  : chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ .columns_provided : logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ table_type      : chr "parameter"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ groupname_col   : chr "section"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ hide_cols       : chr [1:9] "kind" "random_effect" "diagonal" "transforms" "cv" "corr" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ col_labels      :List of 9</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ name       : chr "Parameter"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ symbol     : chr "Symbol"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ unit       : chr "Unit"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ estimate   : chr "Estimate"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_low     : chr "95% CI"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_high    : chr "95% CI"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ variability: chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ rse        : chr "RSE (%)"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ shrinkage  : chr "Shrinkage (%)"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ title           : chr "run003 Parameters"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ spanners        : list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ numeric_cols    : chr [1:5] "estimate" "ci_low" "ci_high" "rse" "shrinkage"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ n_sigfig        : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ ci              : &#x3C;hyperion.tables::CIOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ level       : num 0.95</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ merge       : logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ pattern     : chr "[%s, %s]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ missing_text: chr "-"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ ci_merges       :List of 1</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ ci_low : chr "ci_low"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ ci_high: chr "ci_high"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ pattern: chr "[{1}, {2}]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ ci_missing_rows : int [1:9] 1 2 3 4 5 6 7 8 9</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ missing_text    : chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ missing_apply_to: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ bold_locations  : chr [1:3] "column_labels" "title" "row_groups"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ borders         : list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ footnotes       :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : 'from_markdown' chr "95% CI: $\\mathrm{Estimate} \\pm z_{0.025} \\cdot \\mathrm{SE}$"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : 'from_markdown' chr "CV% for log-normal $\\Omega$: $\\sqrt{\\exp(\\mathrm{Estimate}) - 1} \\times 100$"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : chr "Abbreviations:"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : chr "CI = confidence intervals; RSE = relative standard error; SE = standard error;"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : chr "CV = coefficient of variation; SD = standard deviation; Corr = correlation"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ source_spec     : &#x3C;hyperion.tables::TableSpec></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ title             : chr "run003 Parameters"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ parameter_names   : &#x3C;hyperion.tables::ParameterNameOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ source                 : chr "name"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ append_omega_with_theta: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ columns           : chr [1:9] "name" "symbol" "unit" "estimate" "variability" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ add_columns       : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ drop_columns      : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ hide_empty_columns: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ sections          :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "OMEGA" &#x26; diagonal ~ "Interindividual variance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "OMEGA" &#x26; !diagonal ~ "Interindividual covariance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(TRUE ~ "Other")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x1147c60c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ row_filter        : Named list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ display_transforms:List of 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ theta: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ omega: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ sigma: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ variability_rules :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(fixed ~ "(Fixed)")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf("(CV = %s%%)", cv))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(TRUE ~ NA_character_)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x114db1ef0></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ n_sigfig          : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ n_decimals_ofv    : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ pvalue_scientific : logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ pvalue_threshold  : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ ci                : &#x3C;hyperion.tables::CIOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ level       : num 0.95</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ merge       : logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ pattern     : chr "[%s, %s]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ missing_text: chr "-"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ missing_text      : chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ missing_apply_to  : chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ .columns_provided : logi FALSE</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec(  sections = section_rules(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ),  title = paste(model_run, &#x22;Parameters&#x22;))run003 <- read_model(file.path(model_dir, paste0(model_run, &#x22;.mod&#x22;)))hyperion_table <- get_parameters(run003) |>  apply_table_spec(spec, get_model_parameter_info(run003)) |>  make_parameter_table(output = &#x22;data&#x22;)hyperion_table#> <hyperion.tables::HyperionTable>#>  @ data            :&#x27;data.frame&#x27;:    9 obs. of  19 variables:#>  .. $ name         : chr  &#x22;TVCL&#x22; &#x22;TVV&#x22; &#x22;TVKA&#x22; &#x22;OM1 TVCL&#x22; ...#>  .. $ symbol       : chr  &#x22;$\\theta_{1}$&#x22; &#x22;$\\theta_{2}$&#x22; &#x22;$\\theta_{3}$&#x22; &#x22;$\\exp(\\Omega_{(1,1)})$&#x22; ...#>  .. $ unit         : chr  &#x22;L/hr&#x22; &#x22;L&#x22; &#x22;1/hr&#x22; NA ...#>  .. $ estimate     : num  1.33 40.16 1.21 1.13 1.13 ...#>  .. $ variability  : chr  NA NA NA NA ...#>  .. $ ci_low       : num  1.107 34.598 0.997 1.024 1.053 ...#>  .. $ ci_high      : num  1.54 45.73 1.43 1.25 1.22 ...#>  .. $ rse          : num  8.41 7.07 9.06 41.16 29.66 ...#>  .. $ shrinkage    : num  NA NA NA 13.14 4.63 ...#>  .. $ fixed        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...#>  .. $ section      : Factor w/ 5 levels &#x22;Structural model parameters&#x22;,..: 1 1 1 2 2 2 3 4 4#>  .. $ kind         : chr  &#x22;THETA&#x22; &#x22;THETA&#x22; &#x22;THETA&#x22; &#x22;OMEGA&#x22; ...#>  .. $ random_effect: chr  NA NA NA &#x22;ETA1&#x22; ...#>  .. $ diagonal     : logi  NA NA NA TRUE TRUE TRUE ...#>  .. $ transforms   : chr  &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;LogNormal&#x22; ...#>  .. $ cv           : num  NA NA NA 36.1 36.3 ...#>  .. $ corr         : num  NA NA NA NA NA ...#>  .. $ sd           : num  NA NA NA 0.35 0.352 ...#>  .. $ dt_all       : chr  &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;LogNormal&#x22; ...#>  .. - attr(*, &#x22;table_spec&#x22;)= <hyperion.tables::TableSpec>#>  ..  ..@ title             : chr &#x22;run003 Parameters&#x22;#>  ..  ..@ parameter_names   : <hyperion.tables::ParameterNameOptions>#>  .. .. .. @ source                 : chr &#x22;name&#x22;#>  .. .. .. @ append_omega_with_theta: logi TRUE#>  ..  ..@ columns           : chr [1:9] &#x22;name&#x22; &#x22;symbol&#x22; &#x22;unit&#x22; &#x22;estimate&#x22; ...#>  ..  ..@ add_columns       : NULL#>  ..  ..@ drop_columns      : NULL#>  ..  ..@ hide_empty_columns: logi TRUE#>  ..  ..@ sections          :List of 5#>  .. .. .. $ : language ~(kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. .. $ : language ~(kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. .. $ : language ~(TRUE ~ &#x22;Other&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  ..  ..@ row_filter        : Named list()#>  .. .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  ..  ..@ display_transforms:List of 3#>  .. .. .. $ theta: chr &#x22;all&#x22;#>  .. .. .. $ omega: chr &#x22;all&#x22;#>  .. .. .. $ sigma: chr &#x22;all&#x22;#>  ..  ..@ variability_rules :List of 5#>  .. .. .. $ : language ~(fixed ~ &#x22;(Fixed)&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf(&#x22;(Corr = %s)&#x22;, corr))#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf(&#x22;(CV = %s%%)&#x22;, cv))#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf(&#x22;(SD = %s)&#x22;, sd))#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. .. $ : language ~(TRUE ~ NA_character_)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  ..  ..@ n_sigfig          : num 3#>  ..  ..@ n_decimals_ofv    : num 3#>  ..  ..@ pvalue_scientific : logi FALSE#>  ..  ..@ pvalue_threshold  : NULL#>  ..  ..@ ci                : <hyperion.tables::CIOptions>#>  .. .. .. @ level       : num 0.95#>  .. .. .. @ merge       : logi TRUE#>  .. .. .. @ pattern     : chr &#x22;[%s, %s]&#x22;#>  .. .. .. @ missing_text: chr &#x22;-&#x22;#>  ..  ..@ missing_text      : chr &#x22;&#x22;#>  ..  ..@ missing_apply_to  : chr &#x22;all&#x22;#>  ..  ..@ footnote_order    : chr [1:3] &#x22;summary_info&#x22; &#x22;equations&#x22; &#x22;abbreviations&#x22;#>  ..  ..@ .columns_provided : logi FALSE#>  @ table_type      : chr &#x22;parameter&#x22;#>  @ groupname_col   : chr &#x22;section&#x22;#>  @ hide_cols       : chr [1:9] &#x22;kind&#x22; &#x22;random_effect&#x22; &#x22;diagonal&#x22; &#x22;transforms&#x22; &#x22;cv&#x22; &#x22;corr&#x22; ...#>  @ col_labels      :List of 9#>  .. $ name       : chr &#x22;Parameter&#x22;#>  .. $ symbol     : chr &#x22;Symbol&#x22;#>  .. $ unit       : chr &#x22;Unit&#x22;#>  .. $ estimate   : chr &#x22;Estimate&#x22;#>  .. $ ci_low     : chr &#x22;95% CI&#x22;#>  .. $ ci_high    : chr &#x22;95% CI&#x22;#>  .. $ variability: chr &#x22;&#x22;#>  .. $ rse        : chr &#x22;RSE (%)&#x22;#>  .. $ shrinkage  : chr &#x22;Shrinkage (%)&#x22;#>  @ title           : chr &#x22;run003 Parameters&#x22;#>  @ spanners        : list()#>  @ numeric_cols    : chr [1:5] &#x22;estimate&#x22; &#x22;ci_low&#x22; &#x22;ci_high&#x22; &#x22;rse&#x22; &#x22;shrinkage&#x22;#>  @ n_sigfig        : num 3#>  @ ci              : <hyperion.tables::CIOptions>#>  .. @ level       : num 0.95#>  .. @ merge       : logi TRUE#>  .. @ pattern     : chr &#x22;[%s, %s]&#x22;#>  .. @ missing_text: chr &#x22;-&#x22;#>  @ ci_merges       :List of 1#>  .. $ :List of 3#>  ..  ..$ ci_low : chr &#x22;ci_low&#x22;#>  ..  ..$ ci_high: chr &#x22;ci_high&#x22;#>  ..  ..$ pattern: chr &#x22;[{1}, {2}]&#x22;#>  @ ci_missing_rows : int [1:9] 1 2 3 4 5 6 7 8 9#>  @ missing_text    : chr &#x22;&#x22;#>  @ missing_apply_to: chr &#x22;all&#x22;#>  @ bold_locations  : chr [1:3] &#x22;column_labels&#x22; &#x22;title&#x22; &#x22;row_groups&#x22;#>  @ borders         : list()#>  @ footnotes       :List of 5#>  .. $ :List of 2#>  ..  ..$ content    : &#x27;from_markdown&#x27; chr &#x22;95% CI: $\\mathrm{Estimate} \\pm z_{0.025} \\cdot \\mathrm{SE}$&#x22;#>  ..  ..$ is_markdown: logi TRUE#>  .. $ :List of 2#>  ..  ..$ content    : &#x27;from_markdown&#x27; chr &#x22;CV% for log-normal $\\Omega$: $\\sqrt{\\exp(\\mathrm{Estimate}) - 1} \\times 100$&#x22;#>  ..  ..$ is_markdown: logi TRUE#>  .. $ :List of 2#>  ..  ..$ content    : chr &#x22;Abbreviations:&#x22;#>  ..  ..$ is_markdown: logi FALSE#>  .. $ :List of 2#>  ..  ..$ content    : chr &#x22;CI = confidence intervals; RSE = relative standard error; SE = standard error;&#x22;#>  ..  ..$ is_markdown: logi FALSE#>  .. $ :List of 2#>  ..  ..$ content    : chr &#x22;CV = coefficient of variation; SD = standard deviation; Corr = correlation&#x22;#>  ..  ..$ is_markdown: logi FALSE#>  @ source_spec     : <hyperion.tables::TableSpec>#>  .. @ title             : chr &#x22;run003 Parameters&#x22;#>  .. @ parameter_names   : <hyperion.tables::ParameterNameOptions>#>  .. .. @ source                 : chr &#x22;name&#x22;#>  .. .. @ append_omega_with_theta: logi TRUE#>  .. @ columns           : chr [1:9] &#x22;name&#x22; &#x22;symbol&#x22; &#x22;unit&#x22; &#x22;estimate&#x22; &#x22;variability&#x22; ...#>  .. @ add_columns       : NULL#>  .. @ drop_columns      : NULL#>  .. @ hide_empty_columns: logi TRUE#>  .. @ sections          :List of 5#>  .. .. $ : language ~(kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. $ : language ~(kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. $ : language ~(TRUE ~ &#x22;Other&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x1147c60c8>#>  .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  .. @ row_filter        : Named list()#>  .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  .. @ display_transforms:List of 3#>  .. .. $ theta: chr &#x22;all&#x22;#>  .. .. $ omega: chr &#x22;all&#x22;#>  .. .. $ sigma: chr &#x22;all&#x22;#>  .. @ variability_rules :List of 5#>  .. .. $ : language ~(fixed ~ &#x22;(Fixed)&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. $ : language ~(!is.na(corr) ~ sprintf(&#x22;(Corr = %s)&#x22;, corr))#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf(&#x22;(CV = %s%%)&#x22;, cv))#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. $ : language ~(!is.na(sd) ~ sprintf(&#x22;(SD = %s)&#x22;, sd))#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. $ : language ~(TRUE ~ NA_character_)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x114db1ef0>#>  .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  .. @ n_sigfig          : num 3#>  .. @ n_decimals_ofv    : num 3#>  .. @ pvalue_scientific : logi FALSE#>  .. @ pvalue_threshold  : NULL#>  .. @ ci                : <hyperion.tables::CIOptions>#>  .. .. @ level       : num 0.95#>  .. .. @ merge       : logi TRUE#>  .. .. @ pattern     : chr &#x22;[%s, %s]&#x22;#>  .. .. @ missing_text: chr &#x22;-&#x22;#>  .. @ missing_text      : chr &#x22;&#x22;#>  .. @ missing_apply_to  : chr &#x22;all&#x22;#>  .. @ footnote_order    : chr [1:3] &#x22;summary_info&#x22; &#x22;equations&#x22; &#x22;abbreviations&#x22;#>  .. @ .columns_provided : logi FALSE"><div></div></button></div></figure></div>
+</div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> &#x3C;hyperion.tables::HyperionTable></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ data            :'data.frame':    9 obs. of  19 variables:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ name         : chr  "TVCL" "TVV" "TVKA" "OM1 TVCL" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ symbol       : chr  "$\\theta_{1}$" "$\\theta_{2}$" "$\\theta_{3}$" "$\\exp(\\Omega_{(1,1)})$" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ unit         : chr  "L/hr" "L" "1/hr" NA ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ estimate     : num  1.33 40.16 1.21 1.13 1.13 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ variability  : chr  NA NA NA NA ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_low       : num  1.107 34.598 0.997 1.024 1.053 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_high      : num  1.54 45.73 1.43 1.25 1.22 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ rse          : num  8.41 7.07 9.06 41.16 29.66 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ shrinkage    : num  NA NA NA 13.14 4.63 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ fixed        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ section      : Factor w/ 5 levels "Structural model parameters",..: 1 1 1 2 2 2 3 4 4</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ kind         : chr  "THETA" "THETA" "THETA" "OMEGA" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ random_effect: chr  NA NA NA "ETA1" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ diagonal     : logi  NA NA NA TRUE TRUE TRUE ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ transforms   : chr  "Identity" "Identity" "Identity" "LogNormal" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ cv           : num  NA NA NA 36.1 36.3 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ corr         : num  NA NA NA NA NA ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ sd           : num  NA NA NA 0.35 0.352 ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ dt_all       : chr  "Identity" "Identity" "Identity" "LogNormal" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. - attr(*, "table_spec")= &#x3C;hyperion.tables::TableSpec></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ title             : chr "run003 Parameters"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ parameter_names   : &#x3C;hyperion.tables::ParameterNameOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ source                 : chr "name"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ append_omega_with_theta: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ columns           : chr [1:9] "name" "symbol" "unit" "estimate" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ add_columns       : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ drop_columns      : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ hide_empty_columns: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ sections          :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "OMEGA" &#x26; diagonal ~ "Interindividual variance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "OMEGA" &#x26; !diagonal ~ "Interindividual covariance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(TRUE ~ "Other")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ row_filter        : Named list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ display_transforms:List of 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ theta: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ omega: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ sigma: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ variability_rules :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(fixed ~ "(Fixed)")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf("(CV = %s%%)", cv))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. $ : language ~(TRUE ~ NA_character_)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ n_sigfig          : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ n_decimals_ofv    : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ pvalue_scientific : logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ pvalue_threshold  : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ ci                : &#x3C;hyperion.tables::CIOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ level       : num 0.95</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ merge       : logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ pattern     : chr "[%s, %s]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. .. @ missing_text: chr "-"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ missing_text      : chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ missing_apply_to  : chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..@ .columns_provided : logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ table_type      : chr "parameter"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ groupname_col   : chr "section"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ hide_cols       : chr [1:9] "kind" "random_effect" "diagonal" "transforms" "cv" "corr" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ col_labels      :List of 9</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ name       : chr "Parameter"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ symbol     : chr "Symbol"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ unit       : chr "Unit"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ estimate   : chr "Estimate"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_low     : chr "95% CI"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ ci_high    : chr "95% CI"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ variability: chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ rse        : chr "RSE (%)"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ shrinkage  : chr "Shrinkage (%)"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ title           : chr "run003 Parameters"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ spanners        : list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ numeric_cols    : chr [1:5] "estimate" "ci_low" "ci_high" "rse" "shrinkage"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ n_sigfig        : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ ci              : &#x3C;hyperion.tables::CIOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ level       : num 0.95</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ merge       : logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ pattern     : chr "[%s, %s]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ missing_text: chr "-"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ ci_merges       :List of 1</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ ci_low : chr "ci_low"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ ci_high: chr "ci_high"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ pattern: chr "[{1}, {2}]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ ci_missing_rows : int [1:9] 1 2 3 4 5 6 7 8 9</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ missing_text    : chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ missing_apply_to: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ bold_locations  : chr [1:3] "column_labels" "title" "row_groups"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ borders         : list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ footnotes       :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : 'from_markdown' chr "95% CI: $\\mathrm{Estimate} \\pm z_{0.025} \\cdot \\mathrm{SE}$"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : 'from_markdown' chr "CV% for log-normal $\\Omega$: $\\sqrt{\\exp(\\mathrm{Estimate}) - 1} \\times 100$"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : chr "Abbreviations:"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : chr "CI = confidence intervals; RSE = relative standard error; SE = standard error;"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. $ :List of 2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ content    : chr "CV = coefficient of variation; SD = standard deviation; Corr = correlation"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  ..  ..$ is_markdown: logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  @ source_spec     : &#x3C;hyperion.tables::TableSpec></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ title             : chr "run003 Parameters"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ parameter_names   : &#x3C;hyperion.tables::ParameterNameOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ source                 : chr "name"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ append_omega_with_theta: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ columns           : chr [1:9] "name" "symbol" "unit" "estimate" "variability" ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ add_columns       : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ drop_columns      : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ hide_empty_columns: logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ sections          :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "OMEGA" &#x26; diagonal ~ "Interindividual variance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "OMEGA" &#x26; !diagonal ~ "Interindividual covariance parameters")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(TRUE ~ "Other")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10d48b4c8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ row_filter        : Named list()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ display_transforms:List of 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ theta: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ omega: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ sigma: chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ variability_rules :List of 5</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(fixed ~ "(Fixed)")</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf("(CV = %s%%)", cv))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. $ : language ~(TRUE ~ NA_character_)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. ..  ..- attr(*, ".Environment")=&#x3C;environment: 0x10da772b8></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ n_sigfig          : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ n_decimals_ofv    : num 3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ pvalue_scientific : logi FALSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ pvalue_threshold  : NULL</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ ci                : &#x3C;hyperion.tables::CIOptions></span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ level       : num 0.95</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ merge       : logi TRUE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ pattern     : chr "[%s, %s]"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. .. @ missing_text: chr "-"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ missing_text      : chr ""</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ missing_apply_to  : chr "all"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  .. @ .columns_provided : logi FALSE</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec(  sections = section_rules(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ),  title = paste(model_run, &#x22;Parameters&#x22;))run003 <- read_model(file.path(model_dir, paste0(model_run, &#x22;.mod&#x22;)))hyperion_table <- get_parameters(run003) |>  apply_table_spec(spec, get_model_parameter_info(run003)) |>  make_parameter_table(output = &#x22;data&#x22;)hyperion_table#> <hyperion.tables::HyperionTable>#>  @ data            :&#x27;data.frame&#x27;:    9 obs. of  19 variables:#>  .. $ name         : chr  &#x22;TVCL&#x22; &#x22;TVV&#x22; &#x22;TVKA&#x22; &#x22;OM1 TVCL&#x22; ...#>  .. $ symbol       : chr  &#x22;$\\theta_{1}$&#x22; &#x22;$\\theta_{2}$&#x22; &#x22;$\\theta_{3}$&#x22; &#x22;$\\exp(\\Omega_{(1,1)})$&#x22; ...#>  .. $ unit         : chr  &#x22;L/hr&#x22; &#x22;L&#x22; &#x22;1/hr&#x22; NA ...#>  .. $ estimate     : num  1.33 40.16 1.21 1.13 1.13 ...#>  .. $ variability  : chr  NA NA NA NA ...#>  .. $ ci_low       : num  1.107 34.598 0.997 1.024 1.053 ...#>  .. $ ci_high      : num  1.54 45.73 1.43 1.25 1.22 ...#>  .. $ rse          : num  8.41 7.07 9.06 41.16 29.66 ...#>  .. $ shrinkage    : num  NA NA NA 13.14 4.63 ...#>  .. $ fixed        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...#>  .. $ section      : Factor w/ 5 levels &#x22;Structural model parameters&#x22;,..: 1 1 1 2 2 2 3 4 4#>  .. $ kind         : chr  &#x22;THETA&#x22; &#x22;THETA&#x22; &#x22;THETA&#x22; &#x22;OMEGA&#x22; ...#>  .. $ random_effect: chr  NA NA NA &#x22;ETA1&#x22; ...#>  .. $ diagonal     : logi  NA NA NA TRUE TRUE TRUE ...#>  .. $ transforms   : chr  &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;LogNormal&#x22; ...#>  .. $ cv           : num  NA NA NA 36.1 36.3 ...#>  .. $ corr         : num  NA NA NA NA NA ...#>  .. $ sd           : num  NA NA NA 0.35 0.352 ...#>  .. $ dt_all       : chr  &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;Identity&#x22; &#x22;LogNormal&#x22; ...#>  .. - attr(*, &#x22;table_spec&#x22;)= <hyperion.tables::TableSpec>#>  ..  ..@ title             : chr &#x22;run003 Parameters&#x22;#>  ..  ..@ parameter_names   : <hyperion.tables::ParameterNameOptions>#>  .. .. .. @ source                 : chr &#x22;name&#x22;#>  .. .. .. @ append_omega_with_theta: logi TRUE#>  ..  ..@ columns           : chr [1:9] &#x22;name&#x22; &#x22;symbol&#x22; &#x22;unit&#x22; &#x22;estimate&#x22; ...#>  ..  ..@ add_columns       : NULL#>  ..  ..@ drop_columns      : NULL#>  ..  ..@ hide_empty_columns: logi TRUE#>  ..  ..@ sections          :List of 5#>  .. .. .. $ : language ~(kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. .. $ : language ~(kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. .. $ : language ~(TRUE ~ &#x22;Other&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  ..  ..@ row_filter        : Named list()#>  .. .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  ..  ..@ display_transforms:List of 3#>  .. .. .. $ theta: chr &#x22;all&#x22;#>  .. .. .. $ omega: chr &#x22;all&#x22;#>  .. .. .. $ sigma: chr &#x22;all&#x22;#>  ..  ..@ variability_rules :List of 5#>  .. .. .. $ : language ~(fixed ~ &#x22;(Fixed)&#x22;)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf(&#x22;(Corr = %s)&#x22;, corr))#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf(&#x22;(CV = %s%%)&#x22;, cv))#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf(&#x22;(SD = %s)&#x22;, sd))#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. .. $ : language ~(TRUE ~ NA_character_)#>  .. .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  ..  ..@ n_sigfig          : num 3#>  ..  ..@ n_decimals_ofv    : num 3#>  ..  ..@ pvalue_scientific : logi FALSE#>  ..  ..@ pvalue_threshold  : NULL#>  ..  ..@ ci                : <hyperion.tables::CIOptions>#>  .. .. .. @ level       : num 0.95#>  .. .. .. @ merge       : logi TRUE#>  .. .. .. @ pattern     : chr &#x22;[%s, %s]&#x22;#>  .. .. .. @ missing_text: chr &#x22;-&#x22;#>  ..  ..@ missing_text      : chr &#x22;&#x22;#>  ..  ..@ missing_apply_to  : chr &#x22;all&#x22;#>  ..  ..@ footnote_order    : chr [1:3] &#x22;summary_info&#x22; &#x22;equations&#x22; &#x22;abbreviations&#x22;#>  ..  ..@ .columns_provided : logi FALSE#>  @ table_type      : chr &#x22;parameter&#x22;#>  @ groupname_col   : chr &#x22;section&#x22;#>  @ hide_cols       : chr [1:9] &#x22;kind&#x22; &#x22;random_effect&#x22; &#x22;diagonal&#x22; &#x22;transforms&#x22; &#x22;cv&#x22; &#x22;corr&#x22; ...#>  @ col_labels      :List of 9#>  .. $ name       : chr &#x22;Parameter&#x22;#>  .. $ symbol     : chr &#x22;Symbol&#x22;#>  .. $ unit       : chr &#x22;Unit&#x22;#>  .. $ estimate   : chr &#x22;Estimate&#x22;#>  .. $ ci_low     : chr &#x22;95% CI&#x22;#>  .. $ ci_high    : chr &#x22;95% CI&#x22;#>  .. $ variability: chr &#x22;&#x22;#>  .. $ rse        : chr &#x22;RSE (%)&#x22;#>  .. $ shrinkage  : chr &#x22;Shrinkage (%)&#x22;#>  @ title           : chr &#x22;run003 Parameters&#x22;#>  @ spanners        : list()#>  @ numeric_cols    : chr [1:5] &#x22;estimate&#x22; &#x22;ci_low&#x22; &#x22;ci_high&#x22; &#x22;rse&#x22; &#x22;shrinkage&#x22;#>  @ n_sigfig        : num 3#>  @ ci              : <hyperion.tables::CIOptions>#>  .. @ level       : num 0.95#>  .. @ merge       : logi TRUE#>  .. @ pattern     : chr &#x22;[%s, %s]&#x22;#>  .. @ missing_text: chr &#x22;-&#x22;#>  @ ci_merges       :List of 1#>  .. $ :List of 3#>  ..  ..$ ci_low : chr &#x22;ci_low&#x22;#>  ..  ..$ ci_high: chr &#x22;ci_high&#x22;#>  ..  ..$ pattern: chr &#x22;[{1}, {2}]&#x22;#>  @ ci_missing_rows : int [1:9] 1 2 3 4 5 6 7 8 9#>  @ missing_text    : chr &#x22;&#x22;#>  @ missing_apply_to: chr &#x22;all&#x22;#>  @ bold_locations  : chr [1:3] &#x22;column_labels&#x22; &#x22;title&#x22; &#x22;row_groups&#x22;#>  @ borders         : list()#>  @ footnotes       :List of 5#>  .. $ :List of 2#>  ..  ..$ content    : &#x27;from_markdown&#x27; chr &#x22;95% CI: $\\mathrm{Estimate} \\pm z_{0.025} \\cdot \\mathrm{SE}$&#x22;#>  ..  ..$ is_markdown: logi TRUE#>  .. $ :List of 2#>  ..  ..$ content    : &#x27;from_markdown&#x27; chr &#x22;CV% for log-normal $\\Omega$: $\\sqrt{\\exp(\\mathrm{Estimate}) - 1} \\times 100$&#x22;#>  ..  ..$ is_markdown: logi TRUE#>  .. $ :List of 2#>  ..  ..$ content    : chr &#x22;Abbreviations:&#x22;#>  ..  ..$ is_markdown: logi FALSE#>  .. $ :List of 2#>  ..  ..$ content    : chr &#x22;CI = confidence intervals; RSE = relative standard error; SE = standard error;&#x22;#>  ..  ..$ is_markdown: logi FALSE#>  .. $ :List of 2#>  ..  ..$ content    : chr &#x22;CV = coefficient of variation; SD = standard deviation; Corr = correlation&#x22;#>  ..  ..$ is_markdown: logi FALSE#>  @ source_spec     : <hyperion.tables::TableSpec>#>  .. @ title             : chr &#x22;run003 Parameters&#x22;#>  .. @ parameter_names   : <hyperion.tables::ParameterNameOptions>#>  .. .. @ source                 : chr &#x22;name&#x22;#>  .. .. @ append_omega_with_theta: logi TRUE#>  .. @ columns           : chr [1:9] &#x22;name&#x22; &#x22;symbol&#x22; &#x22;unit&#x22; &#x22;estimate&#x22; &#x22;variability&#x22; ...#>  .. @ add_columns       : NULL#>  .. @ drop_columns      : NULL#>  .. @ hide_empty_columns: logi TRUE#>  .. @ sections          :List of 5#>  .. .. $ : language ~(kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. $ : language ~(kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. $ : language ~(kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. $ : language ~(TRUE ~ &#x22;Other&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10d48b4c8>#>  .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  .. @ row_filter        : Named list()#>  .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  .. @ display_transforms:List of 3#>  .. .. $ theta: chr &#x22;all&#x22;#>  .. .. $ omega: chr &#x22;all&#x22;#>  .. .. $ sigma: chr &#x22;all&#x22;#>  .. @ variability_rules :List of 5#>  .. .. $ : language ~(fixed ~ &#x22;(Fixed)&#x22;)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. $ : language ~(!is.na(corr) ~ sprintf(&#x22;(Corr = %s)&#x22;, corr))#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. $ : language ~(!is.na(cv) &#x26; cv != 0 ~ sprintf(&#x22;(CV = %s%%)&#x22;, cv))#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. $ : language ~(!is.na(sd) ~ sprintf(&#x22;(SD = %s)&#x22;, sd))#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. $ : language ~(TRUE ~ NA_character_)#>  .. ..  ..- attr(*, &#x22;.Environment&#x22;)=<environment: 0x10da772b8>#>  .. .. - attr(*, &#x22;class&#x22;)= chr [1:2] &#x22;quosures&#x22; &#x22;list&#x22;#>  .. @ n_sigfig          : num 3#>  .. @ n_decimals_ofv    : num 3#>  .. @ pvalue_scientific : logi FALSE#>  .. @ pvalue_threshold  : NULL#>  .. @ ci                : <hyperion.tables::CIOptions>#>  .. .. @ level       : num 0.95#>  .. .. @ merge       : logi TRUE#>  .. .. @ pattern     : chr &#x22;[%s, %s]&#x22;#>  .. .. @ missing_text: chr &#x22;-&#x22;#>  .. @ missing_text      : chr &#x22;&#x22;#>  .. @ missing_apply_to  : chr &#x22;all&#x22;#>  .. @ footnote_order    : chr [1:3] &#x22;summary_info&#x22; &#x22;equations&#x22; &#x22;abbreviations&#x22;#>  .. @ .columns_provided : logi FALSE"><div></div></button></div></figure></div>
 <p><code dir="auto">hyperion.tables</code> includes two built-in renderers:</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="r"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">render_to_gt</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="render_to_gt(hyperion_table)"><div></div></button></div></figure></div>
-<div id="cyuisvkxoh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cyuisvkxoh table {
+<div id="gfmoystwkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gfmoystwkr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#cyuisvkxoh thead, #cyuisvkxoh tbody, #cyuisvkxoh tfoot, #cyuisvkxoh tr, #cyuisvkxoh td, #cyuisvkxoh th {
+&#10;#gfmoystwkr thead, #gfmoystwkr tbody, #gfmoystwkr tfoot, #gfmoystwkr tr, #gfmoystwkr td, #gfmoystwkr th {
   border-style: none;
 }
-&#10;#cyuisvkxoh p {
+&#10;#gfmoystwkr p {
   margin: 0;
   padding: 0;
 }
-&#10;#cyuisvkxoh .gt_table {
+&#10;#gfmoystwkr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -184,11 +184,11 @@ keeping the underlying data pipeline clean and composable.</p>
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_caption {
+&#10;#gfmoystwkr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#cyuisvkxoh .gt_title {
+&#10;#gfmoystwkr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -199,7 +199,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#cyuisvkxoh .gt_subtitle {
+&#10;#gfmoystwkr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -210,7 +210,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#cyuisvkxoh .gt_heading {
+&#10;#gfmoystwkr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -221,12 +221,12 @@ keeping the underlying data pipeline clean and composable.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_bottom_border {
+&#10;#gfmoystwkr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_col_headings {
+&#10;#gfmoystwkr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -240,7 +240,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_col_heading {
+&#10;#gfmoystwkr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -259,7 +259,7 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#cyuisvkxoh .gt_column_spanner_outer {
+&#10;#gfmoystwkr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -270,13 +270,13 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#cyuisvkxoh .gt_column_spanner_outer:first-child {
+&#10;#gfmoystwkr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#cyuisvkxoh .gt_column_spanner_outer:last-child {
+&#10;#gfmoystwkr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#cyuisvkxoh .gt_column_spanner {
+&#10;#gfmoystwkr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -287,10 +287,10 @@ keeping the underlying data pipeline clean and composable.</p>
   display: inline-block;
   width: 100%;
 }
-&#10;#cyuisvkxoh .gt_spanner_row {
+&#10;#gfmoystwkr .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#cyuisvkxoh .gt_group_heading {
+&#10;#gfmoystwkr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -315,7 +315,7 @@ keeping the underlying data pipeline clean and composable.</p>
   vertical-align: middle;
   text-align: left;
 }
-&#10;#cyuisvkxoh .gt_empty_group_heading {
+&#10;#gfmoystwkr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -329,13 +329,13 @@ keeping the underlying data pipeline clean and composable.</p>
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#cyuisvkxoh .gt_from_md > :first-child {
+&#10;#gfmoystwkr .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#cyuisvkxoh .gt_from_md > :last-child {
+&#10;#gfmoystwkr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#cyuisvkxoh .gt_row {
+&#10;#gfmoystwkr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -353,7 +353,7 @@ keeping the underlying data pipeline clean and composable.</p>
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#cyuisvkxoh .gt_stub {
+&#10;#gfmoystwkr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -365,7 +365,7 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#cyuisvkxoh .gt_stub_row_group {
+&#10;#gfmoystwkr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -378,13 +378,13 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#cyuisvkxoh .gt_row_group_first td {
+&#10;#gfmoystwkr .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#cyuisvkxoh .gt_row_group_first th {
+&#10;#gfmoystwkr .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#cyuisvkxoh .gt_summary_row {
+&#10;#gfmoystwkr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -393,14 +393,14 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#cyuisvkxoh .gt_first_summary_row {
+&#10;#gfmoystwkr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_first_summary_row.thick {
+&#10;#gfmoystwkr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#cyuisvkxoh .gt_last_summary_row {
+&#10;#gfmoystwkr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -409,7 +409,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_grand_summary_row {
+&#10;#gfmoystwkr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -418,7 +418,7 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#cyuisvkxoh .gt_first_grand_summary_row {
+&#10;#gfmoystwkr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -427,7 +427,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_last_grand_summary_row_top {
+&#10;#gfmoystwkr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -436,10 +436,10 @@ keeping the underlying data pipeline clean and composable.</p>
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_striped {
+&#10;#gfmoystwkr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#cyuisvkxoh .gt_table_body {
+&#10;#gfmoystwkr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -447,7 +447,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_footnotes {
+&#10;#gfmoystwkr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -460,7 +460,7 @@ keeping the underlying data pipeline clean and composable.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_footnote {
+&#10;#gfmoystwkr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -468,7 +468,7 @@ keeping the underlying data pipeline clean and composable.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#cyuisvkxoh .gt_sourcenotes {
+&#10;#gfmoystwkr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -481,64 +481,64 @@ keeping the underlying data pipeline clean and composable.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#cyuisvkxoh .gt_sourcenote {
+&#10;#gfmoystwkr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#cyuisvkxoh .gt_left {
+&#10;#gfmoystwkr .gt_left {
   text-align: left;
 }
-&#10;#cyuisvkxoh .gt_center {
+&#10;#gfmoystwkr .gt_center {
   text-align: center;
 }
-&#10;#cyuisvkxoh .gt_right {
+&#10;#gfmoystwkr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#cyuisvkxoh .gt_font_normal {
+&#10;#gfmoystwkr .gt_font_normal {
   font-weight: normal;
 }
-&#10;#cyuisvkxoh .gt_font_bold {
+&#10;#gfmoystwkr .gt_font_bold {
   font-weight: bold;
 }
-&#10;#cyuisvkxoh .gt_font_italic {
+&#10;#gfmoystwkr .gt_font_italic {
   font-style: italic;
 }
-&#10;#cyuisvkxoh .gt_super {
+&#10;#gfmoystwkr .gt_super {
   font-size: 65%;
 }
-&#10;#cyuisvkxoh .gt_footnote_marks {
+&#10;#gfmoystwkr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#cyuisvkxoh .gt_asterisk {
+&#10;#gfmoystwkr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#cyuisvkxoh .gt_indent_1 {
+&#10;#gfmoystwkr .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#cyuisvkxoh .gt_indent_2 {
+&#10;#gfmoystwkr .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#cyuisvkxoh .gt_indent_3 {
+&#10;#gfmoystwkr .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#cyuisvkxoh .gt_indent_4 {
+&#10;#gfmoystwkr .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#cyuisvkxoh .gt_indent_5 {
+&#10;#gfmoystwkr .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#cyuisvkxoh .katex-display {
+&#10;#gfmoystwkr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#cyuisvkxoh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#gfmoystwkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -698,20 +698,20 @@ and re-render it. You can also inspect the formatted data directly.</p>
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">run003</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">run003</span><span style="--0:#D6DEEB;--1:#403F53">)) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_parameter_table</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">output</span><span style="--0:#D6DEEB"> </span></span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"data"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">formatted</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">apply_formatting</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">names</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">formatted</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> [1] "section"     "name"        "symbol"      "unit"        "estimate"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> [6] "variability" "ci_low"      "rse"         "shrinkage"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec(  sections = section_rules(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ),  title = paste(model_run, &#x22;Parameters&#x22;),  n_sigfig = 4,  ci = CIOptions(    merge = TRUE,    pattern = &#x22;(%s; %s)&#x22;,    missing_text = &#x22;NA&#x22;  ),  missing_text = &#x22;NA&#x22;,  missing_apply_to = &#x22;numeric&#x22;)hyperion_table <- get_parameters(run003) |>  apply_table_spec(spec, get_model_parameter_info(run003)) |>  make_parameter_table(output = &#x22;data&#x22;)formatted <- apply_formatting(hyperion_table)names(formatted)#> [1] &#x22;section&#x22;     &#x22;name&#x22;        &#x22;symbol&#x22;      &#x22;unit&#x22;        &#x22;estimate&#x22;#> [6] &#x22;variability&#x22; &#x22;ci_low&#x22;      &#x22;rse&#x22;         &#x22;shrinkage&#x22;"><div></div></button></div></figure></div>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="r"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">render_to_gt</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="render_to_gt(hyperion_table)"><div></div></button></div></figure></div>
-<div id="gcewdevvrg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gcewdevvrg table {
+<div id="vrnotjeblp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vrnotjeblp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#gcewdevvrg thead, #gcewdevvrg tbody, #gcewdevvrg tfoot, #gcewdevvrg tr, #gcewdevvrg td, #gcewdevvrg th {
+&#10;#vrnotjeblp thead, #vrnotjeblp tbody, #vrnotjeblp tfoot, #vrnotjeblp tr, #vrnotjeblp td, #vrnotjeblp th {
   border-style: none;
 }
-&#10;#gcewdevvrg p {
+&#10;#vrnotjeblp p {
   margin: 0;
   padding: 0;
 }
-&#10;#gcewdevvrg .gt_table {
+&#10;#vrnotjeblp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -736,11 +736,11 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_caption {
+&#10;#vrnotjeblp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#gcewdevvrg .gt_title {
+&#10;#vrnotjeblp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -751,7 +751,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#gcewdevvrg .gt_subtitle {
+&#10;#vrnotjeblp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -762,7 +762,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#gcewdevvrg .gt_heading {
+&#10;#vrnotjeblp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -773,12 +773,12 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_bottom_border {
+&#10;#vrnotjeblp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_col_headings {
+&#10;#vrnotjeblp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -792,7 +792,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_col_heading {
+&#10;#vrnotjeblp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -811,7 +811,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#gcewdevvrg .gt_column_spanner_outer {
+&#10;#vrnotjeblp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -822,13 +822,13 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#gcewdevvrg .gt_column_spanner_outer:first-child {
+&#10;#vrnotjeblp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#gcewdevvrg .gt_column_spanner_outer:last-child {
+&#10;#vrnotjeblp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#gcewdevvrg .gt_column_spanner {
+&#10;#vrnotjeblp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -839,10 +839,10 @@ and re-render it. You can also inspect the formatted data directly.</p>
   display: inline-block;
   width: 100%;
 }
-&#10;#gcewdevvrg .gt_spanner_row {
+&#10;#vrnotjeblp .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#gcewdevvrg .gt_group_heading {
+&#10;#vrnotjeblp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -867,7 +867,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   vertical-align: middle;
   text-align: left;
 }
-&#10;#gcewdevvrg .gt_empty_group_heading {
+&#10;#vrnotjeblp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -881,13 +881,13 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#gcewdevvrg .gt_from_md > :first-child {
+&#10;#vrnotjeblp .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#gcewdevvrg .gt_from_md > :last-child {
+&#10;#vrnotjeblp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#gcewdevvrg .gt_row {
+&#10;#vrnotjeblp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -905,7 +905,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#gcewdevvrg .gt_stub {
+&#10;#vrnotjeblp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -917,7 +917,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gcewdevvrg .gt_stub_row_group {
+&#10;#vrnotjeblp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -930,13 +930,13 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#gcewdevvrg .gt_row_group_first td {
+&#10;#vrnotjeblp .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#gcewdevvrg .gt_row_group_first th {
+&#10;#vrnotjeblp .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#gcewdevvrg .gt_summary_row {
+&#10;#vrnotjeblp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -945,14 +945,14 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gcewdevvrg .gt_first_summary_row {
+&#10;#vrnotjeblp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_first_summary_row.thick {
+&#10;#vrnotjeblp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#gcewdevvrg .gt_last_summary_row {
+&#10;#vrnotjeblp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -961,7 +961,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_grand_summary_row {
+&#10;#vrnotjeblp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -970,7 +970,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gcewdevvrg .gt_first_grand_summary_row {
+&#10;#vrnotjeblp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -979,7 +979,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_last_grand_summary_row_top {
+&#10;#vrnotjeblp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -988,10 +988,10 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_striped {
+&#10;#vrnotjeblp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#gcewdevvrg .gt_table_body {
+&#10;#vrnotjeblp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -999,7 +999,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_footnotes {
+&#10;#vrnotjeblp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1012,7 +1012,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_footnote {
+&#10;#vrnotjeblp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1020,7 +1020,7 @@ and re-render it. You can also inspect the formatted data directly.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gcewdevvrg .gt_sourcenotes {
+&#10;#vrnotjeblp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1033,64 +1033,64 @@ and re-render it. You can also inspect the formatted data directly.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#gcewdevvrg .gt_sourcenote {
+&#10;#vrnotjeblp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gcewdevvrg .gt_left {
+&#10;#vrnotjeblp .gt_left {
   text-align: left;
 }
-&#10;#gcewdevvrg .gt_center {
+&#10;#vrnotjeblp .gt_center {
   text-align: center;
 }
-&#10;#gcewdevvrg .gt_right {
+&#10;#vrnotjeblp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#gcewdevvrg .gt_font_normal {
+&#10;#vrnotjeblp .gt_font_normal {
   font-weight: normal;
 }
-&#10;#gcewdevvrg .gt_font_bold {
+&#10;#vrnotjeblp .gt_font_bold {
   font-weight: bold;
 }
-&#10;#gcewdevvrg .gt_font_italic {
+&#10;#vrnotjeblp .gt_font_italic {
   font-style: italic;
 }
-&#10;#gcewdevvrg .gt_super {
+&#10;#vrnotjeblp .gt_super {
   font-size: 65%;
 }
-&#10;#gcewdevvrg .gt_footnote_marks {
+&#10;#vrnotjeblp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#gcewdevvrg .gt_asterisk {
+&#10;#vrnotjeblp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#gcewdevvrg .gt_indent_1 {
+&#10;#vrnotjeblp .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#gcewdevvrg .gt_indent_2 {
+&#10;#vrnotjeblp .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#gcewdevvrg .gt_indent_3 {
+&#10;#vrnotjeblp .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#gcewdevvrg .gt_indent_4 {
+&#10;#vrnotjeblp .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#gcewdevvrg .gt_indent_5 {
+&#10;#vrnotjeblp .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#gcewdevvrg .katex-display {
+&#10;#vrnotjeblp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#gcewdevvrg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#vrnotjeblp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -1248,20 +1248,20 @@ M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlis
 package.</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="r"><code><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">render_custom</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">function</span><span style="--1:#403F53"><span style="--0:#D6DEEB">(</span><span style="--0:#D7DBE0">table</span><span style="--0:#D6DEEB">) {</span></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#C5E478;--1:#3B61B0">data</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">apply_formatting</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">table</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#919F9F;--1:#5F636F"># Replace with your rendering package of choice</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">gt</span><span style="--0:#7FDBCA;--1:#096E72">::</span><span style="--0:#82AAFF;--1:#3B61B0">gt</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">data</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--1:#403F53"><span style="--0:#D6DEEB"> </span><span style="--0:#D7DBE0">groupname_col</span><span style="--0:#D6DEEB"> </span></span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">table</span><span style="--0:#7FDBCA;--1:#096E72">@</span><span style="--0:#C5E478;--1:#3B61B0">groupname_col</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">render_custom</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="render_custom <- function(table) {  data <- apply_formatting(table)  # Replace with your rendering package of choice    gt::gt(data, groupname_col = table@groupname_col)}render_custom(hyperion_table)"><div></div></button></div></figure></div>
-<div id="hgleqwxqwr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hgleqwxqwr table {
+<div id="oqbnrskujy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oqbnrskujy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#hgleqwxqwr thead, #hgleqwxqwr tbody, #hgleqwxqwr tfoot, #hgleqwxqwr tr, #hgleqwxqwr td, #hgleqwxqwr th {
+&#10;#oqbnrskujy thead, #oqbnrskujy tbody, #oqbnrskujy tfoot, #oqbnrskujy tr, #oqbnrskujy td, #oqbnrskujy th {
   border-style: none;
 }
-&#10;#hgleqwxqwr p {
+&#10;#oqbnrskujy p {
   margin: 0;
   padding: 0;
 }
-&#10;#hgleqwxqwr .gt_table {
+&#10;#oqbnrskujy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1286,11 +1286,11 @@ package.</p>
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_caption {
+&#10;#oqbnrskujy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#hgleqwxqwr .gt_title {
+&#10;#oqbnrskujy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1301,7 +1301,7 @@ package.</p>
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#hgleqwxqwr .gt_subtitle {
+&#10;#oqbnrskujy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1312,7 +1312,7 @@ package.</p>
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#hgleqwxqwr .gt_heading {
+&#10;#oqbnrskujy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1323,12 +1323,12 @@ package.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_bottom_border {
+&#10;#oqbnrskujy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_col_headings {
+&#10;#oqbnrskujy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1342,7 +1342,7 @@ package.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_col_heading {
+&#10;#oqbnrskujy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1361,7 +1361,7 @@ package.</p>
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#hgleqwxqwr .gt_column_spanner_outer {
+&#10;#oqbnrskujy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1372,13 +1372,13 @@ package.</p>
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#hgleqwxqwr .gt_column_spanner_outer:first-child {
+&#10;#oqbnrskujy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#hgleqwxqwr .gt_column_spanner_outer:last-child {
+&#10;#oqbnrskujy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#hgleqwxqwr .gt_column_spanner {
+&#10;#oqbnrskujy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1389,10 +1389,10 @@ package.</p>
   display: inline-block;
   width: 100%;
 }
-&#10;#hgleqwxqwr .gt_spanner_row {
+&#10;#oqbnrskujy .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#hgleqwxqwr .gt_group_heading {
+&#10;#oqbnrskujy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1417,7 +1417,7 @@ package.</p>
   vertical-align: middle;
   text-align: left;
 }
-&#10;#hgleqwxqwr .gt_empty_group_heading {
+&#10;#oqbnrskujy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1431,13 +1431,13 @@ package.</p>
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#hgleqwxqwr .gt_from_md > :first-child {
+&#10;#oqbnrskujy .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#hgleqwxqwr .gt_from_md > :last-child {
+&#10;#oqbnrskujy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#hgleqwxqwr .gt_row {
+&#10;#oqbnrskujy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1455,7 +1455,7 @@ package.</p>
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#hgleqwxqwr .gt_stub {
+&#10;#oqbnrskujy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1467,7 +1467,7 @@ package.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hgleqwxqwr .gt_stub_row_group {
+&#10;#oqbnrskujy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1480,13 +1480,13 @@ package.</p>
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#hgleqwxqwr .gt_row_group_first td {
+&#10;#oqbnrskujy .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#hgleqwxqwr .gt_row_group_first th {
+&#10;#oqbnrskujy .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#hgleqwxqwr .gt_summary_row {
+&#10;#oqbnrskujy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1495,14 +1495,14 @@ package.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hgleqwxqwr .gt_first_summary_row {
+&#10;#oqbnrskujy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_first_summary_row.thick {
+&#10;#oqbnrskujy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#hgleqwxqwr .gt_last_summary_row {
+&#10;#oqbnrskujy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1511,7 +1511,7 @@ package.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_grand_summary_row {
+&#10;#oqbnrskujy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1520,7 +1520,7 @@ package.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hgleqwxqwr .gt_first_grand_summary_row {
+&#10;#oqbnrskujy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1529,7 +1529,7 @@ package.</p>
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_last_grand_summary_row_top {
+&#10;#oqbnrskujy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1538,10 +1538,10 @@ package.</p>
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_striped {
+&#10;#oqbnrskujy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#hgleqwxqwr .gt_table_body {
+&#10;#oqbnrskujy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1549,7 +1549,7 @@ package.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_footnotes {
+&#10;#oqbnrskujy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1562,7 +1562,7 @@ package.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_footnote {
+&#10;#oqbnrskujy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1570,7 +1570,7 @@ package.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hgleqwxqwr .gt_sourcenotes {
+&#10;#oqbnrskujy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1583,64 +1583,64 @@ package.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hgleqwxqwr .gt_sourcenote {
+&#10;#oqbnrskujy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hgleqwxqwr .gt_left {
+&#10;#oqbnrskujy .gt_left {
   text-align: left;
 }
-&#10;#hgleqwxqwr .gt_center {
+&#10;#oqbnrskujy .gt_center {
   text-align: center;
 }
-&#10;#hgleqwxqwr .gt_right {
+&#10;#oqbnrskujy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#hgleqwxqwr .gt_font_normal {
+&#10;#oqbnrskujy .gt_font_normal {
   font-weight: normal;
 }
-&#10;#hgleqwxqwr .gt_font_bold {
+&#10;#oqbnrskujy .gt_font_bold {
   font-weight: bold;
 }
-&#10;#hgleqwxqwr .gt_font_italic {
+&#10;#oqbnrskujy .gt_font_italic {
   font-style: italic;
 }
-&#10;#hgleqwxqwr .gt_super {
+&#10;#oqbnrskujy .gt_super {
   font-size: 65%;
 }
-&#10;#hgleqwxqwr .gt_footnote_marks {
+&#10;#oqbnrskujy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#hgleqwxqwr .gt_asterisk {
+&#10;#oqbnrskujy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#hgleqwxqwr .gt_indent_1 {
+&#10;#oqbnrskujy .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#hgleqwxqwr .gt_indent_2 {
+&#10;#oqbnrskujy .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#hgleqwxqwr .gt_indent_3 {
+&#10;#oqbnrskujy .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#hgleqwxqwr .gt_indent_4 {
+&#10;#oqbnrskujy .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#hgleqwxqwr .gt_indent_5 {
+&#10;#oqbnrskujy .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#hgleqwxqwr .katex-display {
+&#10;#oqbnrskujy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#hgleqwxqwr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#oqbnrskujy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1751,20 +1751,20 @@ package.</p>
 unformatted numeric values and separate CI columns (if present). This is
 useful for debugging, but not recommended for final output.</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="r"><code><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">raw_data</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#7FDBCA;--1:#096E72">@</span><span style="--0:#C5E478;--1:#3B61B0">data</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">gt</span><span style="--0:#7FDBCA;--1:#096E72">::</span><span style="--0:#82AAFF;--1:#3B61B0">gt</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">raw_data</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--1:#403F53"><span style="--0:#D6DEEB"> </span><span style="--0:#D7DBE0">groupname_col</span><span style="--0:#D6DEEB"> </span></span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">hyperion_table</span><span style="--0:#7FDBCA;--1:#096E72">@</span><span style="--0:#C5E478;--1:#3B61B0">groupname_col</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="raw_data <- hyperion_table@datagt::gt(raw_data, groupname_col = hyperion_table@groupname_col)"><div></div></button></div></figure></div>
-<div id="datfxbkqkg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#datfxbkqkg table {
+<div id="vcpzccoaun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vcpzccoaun table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#datfxbkqkg thead, #datfxbkqkg tbody, #datfxbkqkg tfoot, #datfxbkqkg tr, #datfxbkqkg td, #datfxbkqkg th {
+&#10;#vcpzccoaun thead, #vcpzccoaun tbody, #vcpzccoaun tfoot, #vcpzccoaun tr, #vcpzccoaun td, #vcpzccoaun th {
   border-style: none;
 }
-&#10;#datfxbkqkg p {
+&#10;#vcpzccoaun p {
   margin: 0;
   padding: 0;
 }
-&#10;#datfxbkqkg .gt_table {
+&#10;#vcpzccoaun .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1789,11 +1789,11 @@ useful for debugging, but not recommended for final output.</p>
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_caption {
+&#10;#vcpzccoaun .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#datfxbkqkg .gt_title {
+&#10;#vcpzccoaun .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1804,7 +1804,7 @@ useful for debugging, but not recommended for final output.</p>
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#datfxbkqkg .gt_subtitle {
+&#10;#vcpzccoaun .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1815,7 +1815,7 @@ useful for debugging, but not recommended for final output.</p>
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#datfxbkqkg .gt_heading {
+&#10;#vcpzccoaun .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1826,12 +1826,12 @@ useful for debugging, but not recommended for final output.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_bottom_border {
+&#10;#vcpzccoaun .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_col_headings {
+&#10;#vcpzccoaun .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1845,7 +1845,7 @@ useful for debugging, but not recommended for final output.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_col_heading {
+&#10;#vcpzccoaun .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1864,7 +1864,7 @@ useful for debugging, but not recommended for final output.</p>
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#datfxbkqkg .gt_column_spanner_outer {
+&#10;#vcpzccoaun .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1875,13 +1875,13 @@ useful for debugging, but not recommended for final output.</p>
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#datfxbkqkg .gt_column_spanner_outer:first-child {
+&#10;#vcpzccoaun .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#datfxbkqkg .gt_column_spanner_outer:last-child {
+&#10;#vcpzccoaun .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#datfxbkqkg .gt_column_spanner {
+&#10;#vcpzccoaun .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1892,10 +1892,10 @@ useful for debugging, but not recommended for final output.</p>
   display: inline-block;
   width: 100%;
 }
-&#10;#datfxbkqkg .gt_spanner_row {
+&#10;#vcpzccoaun .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#datfxbkqkg .gt_group_heading {
+&#10;#vcpzccoaun .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1920,7 +1920,7 @@ useful for debugging, but not recommended for final output.</p>
   vertical-align: middle;
   text-align: left;
 }
-&#10;#datfxbkqkg .gt_empty_group_heading {
+&#10;#vcpzccoaun .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1934,13 +1934,13 @@ useful for debugging, but not recommended for final output.</p>
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#datfxbkqkg .gt_from_md > :first-child {
+&#10;#vcpzccoaun .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#datfxbkqkg .gt_from_md > :last-child {
+&#10;#vcpzccoaun .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#datfxbkqkg .gt_row {
+&#10;#vcpzccoaun .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1958,7 +1958,7 @@ useful for debugging, but not recommended for final output.</p>
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#datfxbkqkg .gt_stub {
+&#10;#vcpzccoaun .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1970,7 +1970,7 @@ useful for debugging, but not recommended for final output.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#datfxbkqkg .gt_stub_row_group {
+&#10;#vcpzccoaun .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1983,13 +1983,13 @@ useful for debugging, but not recommended for final output.</p>
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#datfxbkqkg .gt_row_group_first td {
+&#10;#vcpzccoaun .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#datfxbkqkg .gt_row_group_first th {
+&#10;#vcpzccoaun .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#datfxbkqkg .gt_summary_row {
+&#10;#vcpzccoaun .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1998,14 +1998,14 @@ useful for debugging, but not recommended for final output.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#datfxbkqkg .gt_first_summary_row {
+&#10;#vcpzccoaun .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_first_summary_row.thick {
+&#10;#vcpzccoaun .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#datfxbkqkg .gt_last_summary_row {
+&#10;#vcpzccoaun .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2014,7 +2014,7 @@ useful for debugging, but not recommended for final output.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_grand_summary_row {
+&#10;#vcpzccoaun .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2023,7 +2023,7 @@ useful for debugging, but not recommended for final output.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#datfxbkqkg .gt_first_grand_summary_row {
+&#10;#vcpzccoaun .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2032,7 +2032,7 @@ useful for debugging, but not recommended for final output.</p>
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_last_grand_summary_row_top {
+&#10;#vcpzccoaun .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2041,10 +2041,10 @@ useful for debugging, but not recommended for final output.</p>
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_striped {
+&#10;#vcpzccoaun .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#datfxbkqkg .gt_table_body {
+&#10;#vcpzccoaun .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2052,7 +2052,7 @@ useful for debugging, but not recommended for final output.</p>
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_footnotes {
+&#10;#vcpzccoaun .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2065,7 +2065,7 @@ useful for debugging, but not recommended for final output.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_footnote {
+&#10;#vcpzccoaun .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2073,7 +2073,7 @@ useful for debugging, but not recommended for final output.</p>
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#datfxbkqkg .gt_sourcenotes {
+&#10;#vcpzccoaun .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2086,64 +2086,64 @@ useful for debugging, but not recommended for final output.</p>
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#datfxbkqkg .gt_sourcenote {
+&#10;#vcpzccoaun .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#datfxbkqkg .gt_left {
+&#10;#vcpzccoaun .gt_left {
   text-align: left;
 }
-&#10;#datfxbkqkg .gt_center {
+&#10;#vcpzccoaun .gt_center {
   text-align: center;
 }
-&#10;#datfxbkqkg .gt_right {
+&#10;#vcpzccoaun .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#datfxbkqkg .gt_font_normal {
+&#10;#vcpzccoaun .gt_font_normal {
   font-weight: normal;
 }
-&#10;#datfxbkqkg .gt_font_bold {
+&#10;#vcpzccoaun .gt_font_bold {
   font-weight: bold;
 }
-&#10;#datfxbkqkg .gt_font_italic {
+&#10;#vcpzccoaun .gt_font_italic {
   font-style: italic;
 }
-&#10;#datfxbkqkg .gt_super {
+&#10;#vcpzccoaun .gt_super {
   font-size: 65%;
 }
-&#10;#datfxbkqkg .gt_footnote_marks {
+&#10;#vcpzccoaun .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#datfxbkqkg .gt_asterisk {
+&#10;#vcpzccoaun .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#datfxbkqkg .gt_indent_1 {
+&#10;#vcpzccoaun .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#datfxbkqkg .gt_indent_2 {
+&#10;#vcpzccoaun .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#datfxbkqkg .gt_indent_3 {
+&#10;#vcpzccoaun .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#datfxbkqkg .gt_indent_4 {
+&#10;#vcpzccoaun .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#datfxbkqkg .gt_indent_5 {
+&#10;#vcpzccoaun .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#datfxbkqkg .katex-display {
+&#10;#vcpzccoaun .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#datfxbkqkg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#vcpzccoaun div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
