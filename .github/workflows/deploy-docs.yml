@@ -13,7 +13,7 @@ permissions:
 env:
   # For private repos: leave empty
   # For public repos: set to "/${{ github.event.repository.name }}"
-  BASE_PREFIX: "/hyperion-tables-docs"
+  BASE_PREFIX: ""
 
 jobs:
   deploy:

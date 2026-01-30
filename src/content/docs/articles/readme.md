@@ -9,6 +9,7 @@ pagefind: true
 
 
 
+[![R-CMD-check](https://github.com/A2-ai/hyperion.tables/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/A2-ai/hyperion.tables/actions/workflows/R-CMD-check.yaml)
 
 
 Flexible tables for hyperion models.
