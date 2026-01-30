@@ -17,6 +17,10 @@ library(hyperion)
 #> ✔ hyperion.nonmem_summary.shrinkage_threshold : 30
 library(hyperion.tables)
 
+library(gt)
+library(flextable)
+library(officer)
+
 data_dir <- system.file("extdata", package = "hyperion.tables")
 model_dir <- file.path(data_dir, "models", "onecmt")
 model_run <- "run003"
@@ -77,7 +81,8 @@ spec <- TableSpec(
     TRUE ~ "Other"
   ),
   title = paste(model_run, "Parameters")
-)
+) |>
+    set_spec_transforms(omega = "cv")
 
 run003 <- read_model(file.path(model_dir, paste0(model_run, ".mod")))
 
@@ -87,14 +92,14 @@ hyperion_table <- get_parameters(run003) |>
 
 hyperion_table
 #> <hyperion.tables::HyperionTable>
-#>  @ data            :'data.frame':    9 obs. of  19 variables:
+#>  @ data            :'data.frame':    9 obs. of  20 variables:
 #>  .. $ name         : chr  "TVCL" "TVV" "TVKA" "OM1 TVCL" ...
-#>  .. $ symbol       : chr  "$\\theta_{1}$" "$\\theta_{2}$" "$\\theta_{3}$" "$\\exp(\\Omega_{(1,1)})$" ...
+#>  .. $ symbol       : chr  "$\\theta_{1}$" "$\\theta_{2}$" "$\\theta_{3}$" "$\\Omega_{(1,1)}$" ...
 #>  .. $ unit         : chr  "L/hr" "L" "1/hr" NA ...
-#>  .. $ estimate     : num  1.33 40.16 1.21 1.13 1.13 ...
+#>  .. $ estimate     : num  1.325 40.163 1.212 0.122 0.124 ...
 #>  .. $ variability  : chr  NA NA NA NA ...
-#>  .. $ ci_low       : num  1.107 34.598 0.997 1.024 1.053 ...
-#>  .. $ ci_high      : num  1.54 45.73 1.43 1.25 1.22 ...
+#>  .. $ ci_low       : num  1.1069 34.5982 0.9966 0.0236 0.0519 ...
+#>  .. $ ci_high      : num  1.544 45.727 1.427 0.221 0.196 ...
 #>  .. $ rse          : num  8.41 7.07 9.06 41.16 29.66 ...
 #>  .. $ shrinkage    : num  NA NA NA 13.14 4.63 ...
 #>  .. $ fixed        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
@@ -106,7 +111,8 @@ hyperion_table
 #>  .. $ cv           : num  NA NA NA 36.1 36.3 ...
 #>  .. $ corr         : num  NA NA NA NA NA ...
 #>  .. $ sd           : num  NA NA NA 0.35 0.352 ...
-#>  .. $ dt_all       : chr  "Identity" "Identity" "Identity" "LogNormal" ...
+#>  .. $ dt_all       : chr  "Identity" "Identity" "Identity" "identity" ...
+#>  .. $ dt_cv        : chr  "Identity" "Identity" "Identity" "LogNormal" ...
 #>  .. - attr(*, "table_spec")= <hyperion.tables::TableSpec>
 #>  ..  ..@ title             : chr "run003 Parameters"
 #>  ..  ..@ parameter_names   : <hyperion.tables::ParameterNameOptions>
@@ -118,33 +124,33 @@ hyperion_table
 #>  ..  ..@ hide_empty_columns: logi TRUE
 #>  ..  ..@ sections          :List of 5
 #>  .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. .. $ : language ~(TRUE ~ "Other")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  ..  ..@ row_filter        : Named list()
 #>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  ..  ..@ display_transforms:List of 3
 #>  .. .. .. $ theta: chr "all"
-#>  .. .. .. $ omega: chr "all"
+#>  .. .. .. $ omega: chr "cv"
 #>  .. .. .. $ sigma: chr "all"
 #>  ..  ..@ variability_rules :List of 5
 #>  .. .. .. $ : language ~(fixed ~ "(Fixed)")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. .. $ : language ~(!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. .. $ : language ~(TRUE ~ NA_character_)
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  ..  ..@ n_sigfig          : num 3
 #>  ..  ..@ n_decimals_ofv    : num 3
@@ -161,7 +167,7 @@ hyperion_table
 #>  ..  ..@ .columns_provided : logi FALSE
 #>  @ table_type      : chr "parameter"
 #>  @ groupname_col   : chr "section"
-#>  @ hide_cols       : chr [1:9] "kind" "random_effect" "diagonal" "transforms" "cv" "corr" ...
+#>  @ hide_cols       : chr [1:10] "kind" "random_effect" "diagonal" "transforms" "cv" "corr" ...
 #>  @ col_labels      :List of 9
 #>  .. $ name       : chr "Parameter"
 #>  .. $ symbol     : chr "Symbol"
@@ -218,33 +224,33 @@ hyperion_table
 #>  .. @ hide_empty_columns: logi TRUE
 #>  .. @ sections          :List of 5
 #>  .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. $ : language ~(TRUE ~ "Other")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10d48b4c8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1359976c8> 
 #>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  .. @ row_filter        : Named list()
 #>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  .. @ display_transforms:List of 3
 #>  .. .. $ theta: chr "all"
-#>  .. .. $ omega: chr "all"
+#>  .. .. $ omega: chr "cv"
 #>  .. .. $ sigma: chr "all"
 #>  .. @ variability_rules :List of 5
 #>  .. .. $ : language ~(fixed ~ "(Fixed)")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. $ : language ~(!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. $ : language ~(TRUE ~ NA_character_)
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x10da772b8> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x11146d6c0> 
 #>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  .. @ n_sigfig          : num 3
 #>  .. @ n_decimals_ofv    : num 3
@@ -267,20 +273,20 @@ hyperion_table
 render_to_gt(hyperion_table)
 ```
 
-<div id="gfmoystwkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gfmoystwkr table {
+<div id="ejsjvvxfqp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ejsjvvxfqp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#gfmoystwkr thead, #gfmoystwkr tbody, #gfmoystwkr tfoot, #gfmoystwkr tr, #gfmoystwkr td, #gfmoystwkr th {
+&#10;#ejsjvvxfqp thead, #ejsjvvxfqp tbody, #ejsjvvxfqp tfoot, #ejsjvvxfqp tr, #ejsjvvxfqp td, #ejsjvvxfqp th {
   border-style: none;
 }
-&#10;#gfmoystwkr p {
+&#10;#ejsjvvxfqp p {
   margin: 0;
   padding: 0;
 }
-&#10;#gfmoystwkr .gt_table {
+&#10;#ejsjvvxfqp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -305,11 +311,11 @@ render_to_gt(hyperion_table)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_caption {
+&#10;#ejsjvvxfqp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#gfmoystwkr .gt_title {
+&#10;#ejsjvvxfqp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -320,7 +326,7 @@ render_to_gt(hyperion_table)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#gfmoystwkr .gt_subtitle {
+&#10;#ejsjvvxfqp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -331,7 +337,7 @@ render_to_gt(hyperion_table)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#gfmoystwkr .gt_heading {
+&#10;#ejsjvvxfqp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -342,12 +348,12 @@ render_to_gt(hyperion_table)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_bottom_border {
+&#10;#ejsjvvxfqp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_col_headings {
+&#10;#ejsjvvxfqp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -361,7 +367,7 @@ render_to_gt(hyperion_table)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_col_heading {
+&#10;#ejsjvvxfqp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -380,7 +386,7 @@ render_to_gt(hyperion_table)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#gfmoystwkr .gt_column_spanner_outer {
+&#10;#ejsjvvxfqp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -391,13 +397,13 @@ render_to_gt(hyperion_table)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#gfmoystwkr .gt_column_spanner_outer:first-child {
+&#10;#ejsjvvxfqp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#gfmoystwkr .gt_column_spanner_outer:last-child {
+&#10;#ejsjvvxfqp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#gfmoystwkr .gt_column_spanner {
+&#10;#ejsjvvxfqp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -408,10 +414,10 @@ render_to_gt(hyperion_table)
   display: inline-block;
   width: 100%;
 }
-&#10;#gfmoystwkr .gt_spanner_row {
+&#10;#ejsjvvxfqp .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#gfmoystwkr .gt_group_heading {
+&#10;#ejsjvvxfqp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -436,7 +442,7 @@ render_to_gt(hyperion_table)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#gfmoystwkr .gt_empty_group_heading {
+&#10;#ejsjvvxfqp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -450,13 +456,13 @@ render_to_gt(hyperion_table)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#gfmoystwkr .gt_from_md > :first-child {
+&#10;#ejsjvvxfqp .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#gfmoystwkr .gt_from_md > :last-child {
+&#10;#ejsjvvxfqp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#gfmoystwkr .gt_row {
+&#10;#ejsjvvxfqp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -474,7 +480,7 @@ render_to_gt(hyperion_table)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#gfmoystwkr .gt_stub {
+&#10;#ejsjvvxfqp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -486,7 +492,7 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gfmoystwkr .gt_stub_row_group {
+&#10;#ejsjvvxfqp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -499,13 +505,13 @@ render_to_gt(hyperion_table)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#gfmoystwkr .gt_row_group_first td {
+&#10;#ejsjvvxfqp .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#gfmoystwkr .gt_row_group_first th {
+&#10;#ejsjvvxfqp .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#gfmoystwkr .gt_summary_row {
+&#10;#ejsjvvxfqp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -514,14 +520,14 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gfmoystwkr .gt_first_summary_row {
+&#10;#ejsjvvxfqp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_first_summary_row.thick {
+&#10;#ejsjvvxfqp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#gfmoystwkr .gt_last_summary_row {
+&#10;#ejsjvvxfqp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,7 +536,7 @@ render_to_gt(hyperion_table)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_grand_summary_row {
+&#10;#ejsjvvxfqp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -539,7 +545,7 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gfmoystwkr .gt_first_grand_summary_row {
+&#10;#ejsjvvxfqp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -548,7 +554,7 @@ render_to_gt(hyperion_table)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_last_grand_summary_row_top {
+&#10;#ejsjvvxfqp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -557,10 +563,10 @@ render_to_gt(hyperion_table)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_striped {
+&#10;#ejsjvvxfqp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#gfmoystwkr .gt_table_body {
+&#10;#ejsjvvxfqp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -568,7 +574,7 @@ render_to_gt(hyperion_table)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_footnotes {
+&#10;#ejsjvvxfqp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -581,7 +587,7 @@ render_to_gt(hyperion_table)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_footnote {
+&#10;#ejsjvvxfqp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -589,7 +595,7 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gfmoystwkr .gt_sourcenotes {
+&#10;#ejsjvvxfqp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -602,64 +608,64 @@ render_to_gt(hyperion_table)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#gfmoystwkr .gt_sourcenote {
+&#10;#ejsjvvxfqp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gfmoystwkr .gt_left {
+&#10;#ejsjvvxfqp .gt_left {
   text-align: left;
 }
-&#10;#gfmoystwkr .gt_center {
+&#10;#ejsjvvxfqp .gt_center {
   text-align: center;
 }
-&#10;#gfmoystwkr .gt_right {
+&#10;#ejsjvvxfqp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#gfmoystwkr .gt_font_normal {
+&#10;#ejsjvvxfqp .gt_font_normal {
   font-weight: normal;
 }
-&#10;#gfmoystwkr .gt_font_bold {
+&#10;#ejsjvvxfqp .gt_font_bold {
   font-weight: bold;
 }
-&#10;#gfmoystwkr .gt_font_italic {
+&#10;#ejsjvvxfqp .gt_font_italic {
   font-style: italic;
 }
-&#10;#gfmoystwkr .gt_super {
+&#10;#ejsjvvxfqp .gt_super {
   font-size: 65%;
 }
-&#10;#gfmoystwkr .gt_footnote_marks {
+&#10;#ejsjvvxfqp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#gfmoystwkr .gt_asterisk {
+&#10;#ejsjvvxfqp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#gfmoystwkr .gt_indent_1 {
+&#10;#ejsjvvxfqp .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#gfmoystwkr .gt_indent_2 {
+&#10;#ejsjvvxfqp .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#gfmoystwkr .gt_indent_3 {
+&#10;#ejsjvvxfqp .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#gfmoystwkr .gt_indent_4 {
+&#10;#ejsjvvxfqp .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#gfmoystwkr .gt_indent_5 {
+&#10;#ejsjvvxfqp .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#gfmoystwkr .katex-display {
+&#10;#ejsjvvxfqp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#gfmoystwkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#ejsjvvxfqp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -718,29 +724,29 @@ render_to_gt(hyperion_table)
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual variance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM1 TVCL</span></td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(1,1)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(1,1)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left"><span class='gt_from_md'></span></td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.13</span></td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.122</span></td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(CV = 36.1%)</span></td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[1.02, 1.25]</span></td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[0.0236, 0.221]</span></td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>41.2</span></td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'>13.1</span></td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM2 TVV</span></td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(2,2)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(2,2)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left"><span class='gt_from_md'></span></td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.13</span></td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.124</span></td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(CV = 36.3%)</span></td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[1.05, 1.22]</span></td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[0.0519, 0.196]</span></td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>29.7</span></td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'>4.63</span></td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM3 TVKA</span></td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>3</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(3,3)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mpunct mtight">,</span><span class="mord mtight">3</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>3</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(3,3)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mpunct mtight">,</span><span class="mord mtight">3</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left"><span class='gt_from_md'></span></td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.13</span></td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.122</span></td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(CV = 36.1%)</span></td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[1.01, 1.26]</span></td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[0.0121, 0.233]</span></td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>46.0</span></td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'>24.3</span></td></tr>
     <tr class="gt_group_heading_row">
@@ -748,11 +754,11 @@ render_to_gt(hyperion_table)
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual covariance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM1,2 TVCL, TVV</span></td>
 <td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(2,1)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(2,1)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual covariance parameters  unit" class="gt_row gt_left"><span class='gt_from_md'></span></td>
-<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.08</span></td>
+<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.0745</span></td>
 <td headers="Interindividual covariance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(Corr = 0.606)</span></td>
-<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[1.01, 1.15]</span></td>
+<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>[0.0131, 0.136]</span></td>
 <td headers="Interindividual covariance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>42.0</span></td>
 <td headers="Interindividual covariance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'></span></td></tr>
     <tr class="gt_group_heading_row">
@@ -811,10 +817,1190 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </div>
 
 ``` r
-render_to_flextable(hyperion_table)
+# saving flextable as images strips equations 
+render_to_flextable(hyperion_table) |> 
+    autofit() |> 
+    to_html(type = "table") |> 
+    cat()
 ```
 
-![](/figures/table-rendering/unnamed-chunk-4-1.png)
+<div class="tabwid">
+
+<style>.cl-92afbf2a{}.cl-92a820f8{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-92a8210c{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-92abe756{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-92abe760{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-92abfe8a{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe8b{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe8c{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe94{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe95{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe96{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe97{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe9e{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfe9f{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfea0{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfea1{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfea8{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfea9{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeaa{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeb2{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeb3{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeb4{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeb5{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfebc{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfebd{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfebe{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfebf{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfec6{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfec7{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfec8{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfed0{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfed1{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfed2{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfed3{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfed4{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeda{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfedb{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfedc{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfee4{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfee5{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfee6{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfee7{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeee{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfeef{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfef0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfef1{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfef2{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfef8{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfef9{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfefa{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abfefb{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff02{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff03{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff04{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff05{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff0c{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff0d{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff0e{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff16{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff17{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff18{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff19{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff20{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff21{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff22{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff23{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff2a{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff2b{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff2c{width:3.036in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff34{width:1.559in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff35{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff36{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff37{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff3e{width:1.241in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff3f{width:1.44in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff40{width:0.879in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92abff48{width:1.304in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.tabwid {
+  font-size: initial;
+  padding-bottom: 1em;
+}
+&#10;.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  border-color: transparent;
+  caption-side: top;
+}
+.tabwid-caption-bottom table{
+  caption-side: bottom;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td, .tabwid th {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+.katex-display {
+    margin: 0 0 !important;
+}</style>
+
+<table data-quarto-disable-processing="true" class="cl-92afbf2a">
+
+<thead>
+
+<tr style="overflow-wrap:break-word;">
+
+<th colspan="9" class="cl-92abfe8a">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">run003 Parameters</span>
+</p>
+
+</th>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<th class="cl-92abfea0">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</th>
+
+<th class="cl-92abfea1">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Parameter</span>
+</p>
+
+</th>
+
+<th class="cl-92abfea8">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Symbol</span>
+</p>
+
+</th>
+
+<th class="cl-92abfea9">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Unit</span>
+</p>
+
+</th>
+
+<th class="cl-92abfeaa">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Estimate</span>
+</p>
+
+</th>
+
+<th class="cl-92abfeb2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8"></span>
+</p>
+
+</th>
+
+<th class="cl-92abfeb3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">95% CI</span>
+</p>
+
+</th>
+
+<th class="cl-92abfeb4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">RSE (%)</span>
+</p>
+
+</th>
+
+<th class="cl-92abfeb5">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Shrinkage (%)</span>
+</p>
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfebc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Structural model parameters</span>
+</p>
+
+</td>
+
+<td colspan="8" class="cl-92abfebd">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">TVCL</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" data-external="1"><span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\_{1}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal"
+style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.15em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">L/hr</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">1.33</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[1.11, 1.54\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">8.41</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">TVV</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\_{2}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal"
+style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.15em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">L</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">40.2</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[34.6, 45.7\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">7.07</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">TVKA</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\_{3}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal"
+style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.15em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">1/hr</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">1.21</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[0.997, 1.43\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">9.06</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfee7">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Interindividual variance parameters</span>
+</p>
+
+</td>
+
+<td colspan="8" class="cl-92abfeee">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">OM1 TVCL</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\_{(1,1)}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.3552em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">0.122</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">(CV = 36.1%)</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[0.0236, 0.221\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">41.2</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">13.1</span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">OM2 TVV</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\_{(2,2)}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.3552em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">0.124</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">(CV = 36.3%)</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[0.0519, 0.196\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">29.7</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">4.63</span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">OM3 TVKA</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>3</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\_{(3,3)}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mpunct mtight">,</span><span class="mord mtight">3</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.3552em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">0.122</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">(CV = 36.1%)</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[0.0121, 0.233\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">46.0</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">24.3</span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfee7">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Interindividual covariance parameters</span>
+</p>
+
+</td>
+
+<td colspan="8" class="cl-92abfeee">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">OM1,2 TVCL, TVV</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\_{(2,1)}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.3552em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">0.0745</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">(Corr = 0.606)</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[0.0131, 0.136\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">42.0</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfefb">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8">Residual error</span>
+</p>
+
+</td>
+
+<td colspan="8" class="cl-92abff02">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a820f8"></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abfed2">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfed3">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">SIG1</span>
+</p>
+
+</td>
+
+<td class="cl-92abfed4">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Σ</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\_{(1,1)}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.3552em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abfeda">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abfedb">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">0.0375</span>
+</p>
+
+</td>
+
+<td class="cl-92abfedc">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">(SD = 0.194)</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee4">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[0.0257, 0.0494\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee5">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">16.1</span>
+</p>
+
+</td>
+
+<td class="cl-92abfee6">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">14.4</span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td class="cl-92abff17">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abff18">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">SIG2</span>
+</p>
+
+</td>
+
+<td class="cl-92abff19">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Σ</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\_{(2,2)}</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.3552em;"></span></span></span></span></span></span></span></span></span>
+</p>
+
+</td>
+
+<td class="cl-92abff20">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"></span>
+</p>
+
+</td>
+
+<td class="cl-92abff21">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">0.00527</span>
+</p>
+
+</td>
+
+<td class="cl-92abff22">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">(SD = 0.0726)</span>
+</p>
+
+</td>
+
+<td class="cl-92abff23">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">\[-0.0128, 0.0233\]</span>
+</p>
+
+</td>
+
+<td class="cl-92abff2a">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">175</span>
+</p>
+
+</td>
+
+<td class="cl-92abff2b">
+
+<p class="cl-92abe760">
+
+<span class="cl-92a8210c">14.4</span>
+</p>
+
+</td>
+
+</tr>
+
+</tbody>
+
+<tfoot>
+
+<tr style="overflow-wrap:break-word;">
+
+<td colspan="9" class="cl-92abff2c">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>95% CI: </mtext><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi></mrow><mo>±</mo><msub><mi>z</mi><mn>0.025</mn></msub><mo>⋅</mo><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow></mrow><annotation encoding="application/x-tex">
+z\_{0.025}
+</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:0.8333em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">95% CI: </span></span><span class="mord"><span class="mord mathrm">Estimate</span></span><span class="mspace"
+style="margin-right:0.2222em;"></span><span class="mbin">±</span><span class="mspace"
+style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+style="height:0.5945em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal"
+style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut"
+style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.025</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.15em;"></span></span></span></span></span><span class="mspace"
+style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">SE</span></span></span></span></span></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td colspan="9" class="cl-92abff2c">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>CV% for log-normal </mtext><mi mathvariant="normal">Ω</mi><mtext>: </mtext><msqrt><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi></mrow><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow></msqrt><mo>×</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">
+</annotation></semantics></math></span><span class="katex-html"
+aria-hidden="true"><span class="base"><span class="strut"
+style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord text"><span class="mord">CV% for log-normal </span></span><span class="mord">Ω</span><span class="mord text"><span class="mord">: </span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+style="height:0.935em;"><span class="svg-align"
+style="top:-3.2em;"><span class="pstrut"
+style="height:3.2em;"></span><span class="mord"
+style="padding-left:1em;"><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord mathrm">Estimate</span></span><span class="mclose">)</span><span class="mspace"
+style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span><span style="top:-2.895em;"><span class="pstrut"
+style="height:3.2em;"></span><span class="hide-tail"
+style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+style="height:0.305em;"></span></span></span></span><span class="mspace"
+style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace"
+style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+style="height:0.6444em;"></span><span class="mord">100</span></span></span></span></span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td colspan="9" class="cl-92abff2c">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">Abbreviations:</span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td colspan="9" class="cl-92abff2c">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">CI = confidence intervals; RSE = relative
+standard error; SE = standard error;</span>
+</p>
+
+</td>
+
+</tr>
+
+<tr style="overflow-wrap:break-word;">
+
+<td colspan="9" class="cl-92abff2c">
+
+<p class="cl-92abe756">
+
+<span class="cl-92a8210c">CV = coefficient of variation; SD = standard
+deviation; Corr = correlation</span>
+</p>
+
+</td>
+
+</tr>
+
+</tfoot>
+
+</table>
+
+</div>
 
 ## Update render rules and re-render
 
@@ -839,7 +2025,8 @@ spec <- TableSpec(
   ),
   missing_text = "NA",
   missing_apply_to = "numeric"
-)
+) |>
+  set_spec_transforms(omega = "cv")
 
 hyperion_table <- get_parameters(run003) |>
   apply_table_spec(spec, get_model_parameter_info(run003)) |>
@@ -855,20 +2042,20 @@ names(formatted)
 render_to_gt(hyperion_table)
 ```
 
-<div id="vrnotjeblp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vrnotjeblp table {
+<div id="boziftzzeh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#boziftzzeh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#vrnotjeblp thead, #vrnotjeblp tbody, #vrnotjeblp tfoot, #vrnotjeblp tr, #vrnotjeblp td, #vrnotjeblp th {
+&#10;#boziftzzeh thead, #boziftzzeh tbody, #boziftzzeh tfoot, #boziftzzeh tr, #boziftzzeh td, #boziftzzeh th {
   border-style: none;
 }
-&#10;#vrnotjeblp p {
+&#10;#boziftzzeh p {
   margin: 0;
   padding: 0;
 }
-&#10;#vrnotjeblp .gt_table {
+&#10;#boziftzzeh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -893,11 +2080,11 @@ render_to_gt(hyperion_table)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_caption {
+&#10;#boziftzzeh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#vrnotjeblp .gt_title {
+&#10;#boziftzzeh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -908,7 +2095,7 @@ render_to_gt(hyperion_table)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#vrnotjeblp .gt_subtitle {
+&#10;#boziftzzeh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -919,7 +2106,7 @@ render_to_gt(hyperion_table)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#vrnotjeblp .gt_heading {
+&#10;#boziftzzeh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -930,12 +2117,12 @@ render_to_gt(hyperion_table)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_bottom_border {
+&#10;#boziftzzeh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_col_headings {
+&#10;#boziftzzeh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -949,7 +2136,7 @@ render_to_gt(hyperion_table)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_col_heading {
+&#10;#boziftzzeh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -968,7 +2155,7 @@ render_to_gt(hyperion_table)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#vrnotjeblp .gt_column_spanner_outer {
+&#10;#boziftzzeh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -979,13 +2166,13 @@ render_to_gt(hyperion_table)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#vrnotjeblp .gt_column_spanner_outer:first-child {
+&#10;#boziftzzeh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#vrnotjeblp .gt_column_spanner_outer:last-child {
+&#10;#boziftzzeh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#vrnotjeblp .gt_column_spanner {
+&#10;#boziftzzeh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -996,10 +2183,10 @@ render_to_gt(hyperion_table)
   display: inline-block;
   width: 100%;
 }
-&#10;#vrnotjeblp .gt_spanner_row {
+&#10;#boziftzzeh .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#vrnotjeblp .gt_group_heading {
+&#10;#boziftzzeh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1024,7 +2211,7 @@ render_to_gt(hyperion_table)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#vrnotjeblp .gt_empty_group_heading {
+&#10;#boziftzzeh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1038,13 +2225,13 @@ render_to_gt(hyperion_table)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#vrnotjeblp .gt_from_md > :first-child {
+&#10;#boziftzzeh .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#vrnotjeblp .gt_from_md > :last-child {
+&#10;#boziftzzeh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#vrnotjeblp .gt_row {
+&#10;#boziftzzeh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1062,7 +2249,7 @@ render_to_gt(hyperion_table)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#vrnotjeblp .gt_stub {
+&#10;#boziftzzeh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1074,7 +2261,7 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vrnotjeblp .gt_stub_row_group {
+&#10;#boziftzzeh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1087,13 +2274,13 @@ render_to_gt(hyperion_table)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#vrnotjeblp .gt_row_group_first td {
+&#10;#boziftzzeh .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#vrnotjeblp .gt_row_group_first th {
+&#10;#boziftzzeh .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#vrnotjeblp .gt_summary_row {
+&#10;#boziftzzeh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1102,14 +2289,14 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vrnotjeblp .gt_first_summary_row {
+&#10;#boziftzzeh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_first_summary_row.thick {
+&#10;#boziftzzeh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#vrnotjeblp .gt_last_summary_row {
+&#10;#boziftzzeh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1118,7 +2305,7 @@ render_to_gt(hyperion_table)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_grand_summary_row {
+&#10;#boziftzzeh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1127,7 +2314,7 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vrnotjeblp .gt_first_grand_summary_row {
+&#10;#boziftzzeh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1136,7 +2323,7 @@ render_to_gt(hyperion_table)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_last_grand_summary_row_top {
+&#10;#boziftzzeh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1145,10 +2332,10 @@ render_to_gt(hyperion_table)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_striped {
+&#10;#boziftzzeh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#vrnotjeblp .gt_table_body {
+&#10;#boziftzzeh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1156,7 +2343,7 @@ render_to_gt(hyperion_table)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_footnotes {
+&#10;#boziftzzeh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1169,7 +2356,7 @@ render_to_gt(hyperion_table)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_footnote {
+&#10;#boziftzzeh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1177,7 +2364,7 @@ render_to_gt(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vrnotjeblp .gt_sourcenotes {
+&#10;#boziftzzeh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1190,64 +2377,64 @@ render_to_gt(hyperion_table)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#vrnotjeblp .gt_sourcenote {
+&#10;#boziftzzeh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vrnotjeblp .gt_left {
+&#10;#boziftzzeh .gt_left {
   text-align: left;
 }
-&#10;#vrnotjeblp .gt_center {
+&#10;#boziftzzeh .gt_center {
   text-align: center;
 }
-&#10;#vrnotjeblp .gt_right {
+&#10;#boziftzzeh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#vrnotjeblp .gt_font_normal {
+&#10;#boziftzzeh .gt_font_normal {
   font-weight: normal;
 }
-&#10;#vrnotjeblp .gt_font_bold {
+&#10;#boziftzzeh .gt_font_bold {
   font-weight: bold;
 }
-&#10;#vrnotjeblp .gt_font_italic {
+&#10;#boziftzzeh .gt_font_italic {
   font-style: italic;
 }
-&#10;#vrnotjeblp .gt_super {
+&#10;#boziftzzeh .gt_super {
   font-size: 65%;
 }
-&#10;#vrnotjeblp .gt_footnote_marks {
+&#10;#boziftzzeh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#vrnotjeblp .gt_asterisk {
+&#10;#boziftzzeh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#vrnotjeblp .gt_indent_1 {
+&#10;#boziftzzeh .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#vrnotjeblp .gt_indent_2 {
+&#10;#boziftzzeh .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#vrnotjeblp .gt_indent_3 {
+&#10;#boziftzzeh .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#vrnotjeblp .gt_indent_4 {
+&#10;#boziftzzeh .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#vrnotjeblp .gt_indent_5 {
+&#10;#boziftzzeh .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#vrnotjeblp .katex-display {
+&#10;#boziftzzeh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#vrnotjeblp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#boziftzzeh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -1306,29 +2493,29 @@ render_to_gt(hyperion_table)
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual variance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM1 TVCL</span></td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(1,1)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(1,1)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.130</span></td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.1223</span></td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(CV = 36.07%)</span></td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(1.024; 1.247)</span></td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(0.02365; 0.2210)</span></td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>41.16</span></td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'>13.14</span></td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM2 TVV</span></td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(2,2)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(2,2)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.132</span></td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.1239</span></td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(CV = 36.31%)</span></td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(1.053; 1.216)</span></td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(0.05186; 0.1959)</span></td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>29.66</span></td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'>4.631</span></td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM3 TVKA</span></td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>3</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(3,3)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mpunct mtight">,</span><span class="mord mtight">3</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>3</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(3,3)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mpunct mtight">,</span><span class="mord mtight">3</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.130</span></td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.1224</span></td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(CV = 36.09%)</span></td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(1.012; 1.262)</span></td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(0.01211; 0.2327)</span></td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>45.97</span></td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right"><span class='gt_from_md'>24.34</span></td></tr>
     <tr class="gt_group_heading_row">
@@ -1336,11 +2523,11 @@ render_to_gt(hyperion_table)
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual covariance parameters  name" class="gt_row gt_left"><span class='gt_from_md'>OM1,2 TVCL, TVV</span></td>
 <td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left"><span class='gt_from_md'><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1">
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\Omega_{(2,1)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></td>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{(2,1)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0385em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span></td>
 <td headers="Interindividual covariance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>1.077</span></td>
+<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right"><span class='gt_from_md'>0.07454</span></td>
 <td headers="Interindividual covariance parameters  variability" class="gt_row gt_left"><span class='gt_from_md'>(Corr = 0.6055)</span></td>
-<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(1.013; 1.146)</span></td>
+<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_right"><span class='gt_from_md'>(0.01313; 0.1360)</span></td>
 <td headers="Interindividual covariance parameters  rse" class="gt_row gt_right"><span class='gt_from_md'>42.04</span></td>
 <td headers="Interindividual covariance parameters  shrinkage" class="gt_row gt_right">NA</td></tr>
     <tr class="gt_group_heading_row">
@@ -1400,20 +2587,20 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 
 ``` r
 head(formatted)
-#>                               section     name                   symbol unit
-#> 1         Structural model parameters     TVCL            $\\theta_{1}$ L/hr
-#> 2         Structural model parameters      TVV            $\\theta_{2}$    L
-#> 3         Structural model parameters     TVKA            $\\theta_{3}$ 1/hr
-#> 4 Interindividual variance parameters OM1 TVCL $\\exp(\\Omega_{(1,1)})$ <NA>
-#> 5 Interindividual variance parameters  OM2 TVV $\\exp(\\Omega_{(2,2)})$ <NA>
-#> 6 Interindividual variance parameters OM3 TVKA $\\exp(\\Omega_{(3,3)})$ <NA>
-#>   estimate   variability          ci_low   rse shrinkage
-#> 1    1.325          <NA>  (1.107; 1.544) 8.411      <NA>
-#> 2    40.16          <NA>  (34.60; 45.73) 7.069      <NA>
-#> 3    1.212          <NA> (0.9966; 1.427) 9.057      <NA>
-#> 4    1.130 (CV = 36.07%)  (1.024; 1.247) 41.16     13.14
-#> 5    1.132 (CV = 36.31%)  (1.053; 1.216) 29.66     4.631
-#> 6    1.130 (CV = 36.09%)  (1.012; 1.262) 45.97     24.34
+#>                               section     name            symbol unit estimate
+#> 1         Structural model parameters     TVCL     $\\theta_{1}$ L/hr    1.325
+#> 2         Structural model parameters      TVV     $\\theta_{2}$    L    40.16
+#> 3         Structural model parameters     TVKA     $\\theta_{3}$ 1/hr    1.212
+#> 4 Interindividual variance parameters OM1 TVCL $\\Omega_{(1,1)}$ <NA>   0.1223
+#> 5 Interindividual variance parameters  OM2 TVV $\\Omega_{(2,2)}$ <NA>   0.1239
+#> 6 Interindividual variance parameters OM3 TVKA $\\Omega_{(3,3)}$ <NA>   0.1224
+#>     variability            ci_low   rse shrinkage
+#> 1          <NA>    (1.107; 1.544) 8.411      <NA>
+#> 2          <NA>    (34.60; 45.73) 7.069      <NA>
+#> 3          <NA>   (0.9966; 1.427) 9.057      <NA>
+#> 4 (CV = 36.07%) (0.02365; 0.2210) 41.16     13.14
+#> 5 (CV = 36.31%) (0.05186; 0.1959) 29.66     4.631
+#> 6 (CV = 36.09%) (0.01211; 0.2327) 45.97     24.34
 ```
 
 ## Extending with a custom renderer
@@ -1432,20 +2619,20 @@ render_custom <- function(table) {
 render_custom(hyperion_table)
 ```
 
-<div id="oqbnrskujy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oqbnrskujy table {
+<div id="vbwwhgmjpn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vbwwhgmjpn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#oqbnrskujy thead, #oqbnrskujy tbody, #oqbnrskujy tfoot, #oqbnrskujy tr, #oqbnrskujy td, #oqbnrskujy th {
+&#10;#vbwwhgmjpn thead, #vbwwhgmjpn tbody, #vbwwhgmjpn tfoot, #vbwwhgmjpn tr, #vbwwhgmjpn td, #vbwwhgmjpn th {
   border-style: none;
 }
-&#10;#oqbnrskujy p {
+&#10;#vbwwhgmjpn p {
   margin: 0;
   padding: 0;
 }
-&#10;#oqbnrskujy .gt_table {
+&#10;#vbwwhgmjpn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1470,11 +2657,11 @@ render_custom(hyperion_table)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_caption {
+&#10;#vbwwhgmjpn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#oqbnrskujy .gt_title {
+&#10;#vbwwhgmjpn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1485,7 +2672,7 @@ render_custom(hyperion_table)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#oqbnrskujy .gt_subtitle {
+&#10;#vbwwhgmjpn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1496,7 +2683,7 @@ render_custom(hyperion_table)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#oqbnrskujy .gt_heading {
+&#10;#vbwwhgmjpn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1507,12 +2694,12 @@ render_custom(hyperion_table)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_bottom_border {
+&#10;#vbwwhgmjpn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_col_headings {
+&#10;#vbwwhgmjpn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1526,7 +2713,7 @@ render_custom(hyperion_table)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_col_heading {
+&#10;#vbwwhgmjpn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1545,7 +2732,7 @@ render_custom(hyperion_table)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#oqbnrskujy .gt_column_spanner_outer {
+&#10;#vbwwhgmjpn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1556,13 +2743,13 @@ render_custom(hyperion_table)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#oqbnrskujy .gt_column_spanner_outer:first-child {
+&#10;#vbwwhgmjpn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#oqbnrskujy .gt_column_spanner_outer:last-child {
+&#10;#vbwwhgmjpn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#oqbnrskujy .gt_column_spanner {
+&#10;#vbwwhgmjpn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1573,10 +2760,10 @@ render_custom(hyperion_table)
   display: inline-block;
   width: 100%;
 }
-&#10;#oqbnrskujy .gt_spanner_row {
+&#10;#vbwwhgmjpn .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#oqbnrskujy .gt_group_heading {
+&#10;#vbwwhgmjpn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1601,7 +2788,7 @@ render_custom(hyperion_table)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#oqbnrskujy .gt_empty_group_heading {
+&#10;#vbwwhgmjpn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1615,13 +2802,13 @@ render_custom(hyperion_table)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#oqbnrskujy .gt_from_md > :first-child {
+&#10;#vbwwhgmjpn .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#oqbnrskujy .gt_from_md > :last-child {
+&#10;#vbwwhgmjpn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#oqbnrskujy .gt_row {
+&#10;#vbwwhgmjpn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1639,7 +2826,7 @@ render_custom(hyperion_table)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#oqbnrskujy .gt_stub {
+&#10;#vbwwhgmjpn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1651,7 +2838,7 @@ render_custom(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oqbnrskujy .gt_stub_row_group {
+&#10;#vbwwhgmjpn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1664,13 +2851,13 @@ render_custom(hyperion_table)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#oqbnrskujy .gt_row_group_first td {
+&#10;#vbwwhgmjpn .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#oqbnrskujy .gt_row_group_first th {
+&#10;#vbwwhgmjpn .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#oqbnrskujy .gt_summary_row {
+&#10;#vbwwhgmjpn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1679,14 +2866,14 @@ render_custom(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oqbnrskujy .gt_first_summary_row {
+&#10;#vbwwhgmjpn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_first_summary_row.thick {
+&#10;#vbwwhgmjpn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#oqbnrskujy .gt_last_summary_row {
+&#10;#vbwwhgmjpn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1695,7 +2882,7 @@ render_custom(hyperion_table)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_grand_summary_row {
+&#10;#vbwwhgmjpn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1704,7 +2891,7 @@ render_custom(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oqbnrskujy .gt_first_grand_summary_row {
+&#10;#vbwwhgmjpn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1713,7 +2900,7 @@ render_custom(hyperion_table)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_last_grand_summary_row_top {
+&#10;#vbwwhgmjpn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1722,10 +2909,10 @@ render_custom(hyperion_table)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_striped {
+&#10;#vbwwhgmjpn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#oqbnrskujy .gt_table_body {
+&#10;#vbwwhgmjpn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1733,7 +2920,7 @@ render_custom(hyperion_table)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_footnotes {
+&#10;#vbwwhgmjpn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1746,7 +2933,7 @@ render_custom(hyperion_table)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_footnote {
+&#10;#vbwwhgmjpn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1754,7 +2941,7 @@ render_custom(hyperion_table)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oqbnrskujy .gt_sourcenotes {
+&#10;#vbwwhgmjpn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1767,64 +2954,64 @@ render_custom(hyperion_table)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#oqbnrskujy .gt_sourcenote {
+&#10;#vbwwhgmjpn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oqbnrskujy .gt_left {
+&#10;#vbwwhgmjpn .gt_left {
   text-align: left;
 }
-&#10;#oqbnrskujy .gt_center {
+&#10;#vbwwhgmjpn .gt_center {
   text-align: center;
 }
-&#10;#oqbnrskujy .gt_right {
+&#10;#vbwwhgmjpn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#oqbnrskujy .gt_font_normal {
+&#10;#vbwwhgmjpn .gt_font_normal {
   font-weight: normal;
 }
-&#10;#oqbnrskujy .gt_font_bold {
+&#10;#vbwwhgmjpn .gt_font_bold {
   font-weight: bold;
 }
-&#10;#oqbnrskujy .gt_font_italic {
+&#10;#vbwwhgmjpn .gt_font_italic {
   font-style: italic;
 }
-&#10;#oqbnrskujy .gt_super {
+&#10;#vbwwhgmjpn .gt_super {
   font-size: 65%;
 }
-&#10;#oqbnrskujy .gt_footnote_marks {
+&#10;#vbwwhgmjpn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#oqbnrskujy .gt_asterisk {
+&#10;#vbwwhgmjpn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#oqbnrskujy .gt_indent_1 {
+&#10;#vbwwhgmjpn .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#oqbnrskujy .gt_indent_2 {
+&#10;#vbwwhgmjpn .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#oqbnrskujy .gt_indent_3 {
+&#10;#vbwwhgmjpn .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#oqbnrskujy .gt_indent_4 {
+&#10;#vbwwhgmjpn .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#oqbnrskujy .gt_indent_5 {
+&#10;#vbwwhgmjpn .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#oqbnrskujy .katex-display {
+&#10;#vbwwhgmjpn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#oqbnrskujy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#vbwwhgmjpn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1873,38 +3060,38 @@ render_custom(hyperion_table)
       <th colspan="8" class="gt_group_heading" scope="colgroup" id="Interindividual variance parameters">Interindividual variance parameters</th>
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM1 TVCL</td>
-<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(1,1)})$</td>
+<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(1,1)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">1.130</td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.1223</td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left">(CV = 36.07%)</td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_left">(1.024; 1.247)</td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_left">(0.02365; 0.2210)</td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right">41.16</td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right">13.14</td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM2 TVV</td>
-<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(2,2)})$</td>
+<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(2,2)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">1.132</td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.1239</td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left">(CV = 36.31%)</td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_left">(1.053; 1.216)</td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_left">(0.05186; 0.1959)</td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right">29.66</td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right">4.631</td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM3 TVKA</td>
-<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(3,3)})$</td>
+<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(3,3)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">1.130</td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.1224</td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left">(CV = 36.09%)</td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_left">(1.012; 1.262)</td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_left">(0.01211; 0.2327)</td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right">45.97</td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right">24.34</td></tr>
     <tr class="gt_group_heading_row">
       <th colspan="8" class="gt_group_heading" scope="colgroup" id="Interindividual covariance parameters">Interindividual covariance parameters</th>
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual covariance parameters  name" class="gt_row gt_left">OM1,2 TVCL, TVV</td>
-<td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(2,1)})$</td>
+<td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left">$\Omega_{(2,1)}$</td>
 <td headers="Interindividual covariance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right">1.077</td>
+<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right">0.07454</td>
 <td headers="Interindividual covariance parameters  variability" class="gt_row gt_left">(Corr = 0.6055)</td>
-<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_left">(1.013; 1.146)</td>
+<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_left">(0.01313; 0.1360)</td>
 <td headers="Interindividual covariance parameters  rse" class="gt_row gt_right">42.04</td>
 <td headers="Interindividual covariance parameters  shrinkage" class="gt_row gt_right">NA</td></tr>
     <tr class="gt_group_heading_row">
@@ -1941,20 +3128,20 @@ raw_data <- hyperion_table@data
 gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 ```
 
-<div id="vcpzccoaun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vcpzccoaun table {
+<div id="yfsnicksty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yfsnicksty table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#vcpzccoaun thead, #vcpzccoaun tbody, #vcpzccoaun tfoot, #vcpzccoaun tr, #vcpzccoaun td, #vcpzccoaun th {
+&#10;#yfsnicksty thead, #yfsnicksty tbody, #yfsnicksty tfoot, #yfsnicksty tr, #yfsnicksty td, #yfsnicksty th {
   border-style: none;
 }
-&#10;#vcpzccoaun p {
+&#10;#yfsnicksty p {
   margin: 0;
   padding: 0;
 }
-&#10;#vcpzccoaun .gt_table {
+&#10;#yfsnicksty .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1979,11 +3166,11 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_caption {
+&#10;#yfsnicksty .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#vcpzccoaun .gt_title {
+&#10;#yfsnicksty .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1994,7 +3181,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#vcpzccoaun .gt_subtitle {
+&#10;#yfsnicksty .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2005,7 +3192,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#vcpzccoaun .gt_heading {
+&#10;#yfsnicksty .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2016,12 +3203,12 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_bottom_border {
+&#10;#yfsnicksty .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_col_headings {
+&#10;#yfsnicksty .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2035,7 +3222,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_col_heading {
+&#10;#yfsnicksty .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2054,7 +3241,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#vcpzccoaun .gt_column_spanner_outer {
+&#10;#yfsnicksty .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2065,13 +3252,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#vcpzccoaun .gt_column_spanner_outer:first-child {
+&#10;#yfsnicksty .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#vcpzccoaun .gt_column_spanner_outer:last-child {
+&#10;#yfsnicksty .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#vcpzccoaun .gt_column_spanner {
+&#10;#yfsnicksty .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2082,10 +3269,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   display: inline-block;
   width: 100%;
 }
-&#10;#vcpzccoaun .gt_spanner_row {
+&#10;#yfsnicksty .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#vcpzccoaun .gt_group_heading {
+&#10;#yfsnicksty .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2110,7 +3297,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#vcpzccoaun .gt_empty_group_heading {
+&#10;#yfsnicksty .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2124,13 +3311,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#vcpzccoaun .gt_from_md > :first-child {
+&#10;#yfsnicksty .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#vcpzccoaun .gt_from_md > :last-child {
+&#10;#yfsnicksty .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#vcpzccoaun .gt_row {
+&#10;#yfsnicksty .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2148,7 +3335,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#vcpzccoaun .gt_stub {
+&#10;#yfsnicksty .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2160,7 +3347,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vcpzccoaun .gt_stub_row_group {
+&#10;#yfsnicksty .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2173,13 +3360,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#vcpzccoaun .gt_row_group_first td {
+&#10;#yfsnicksty .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#vcpzccoaun .gt_row_group_first th {
+&#10;#yfsnicksty .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#vcpzccoaun .gt_summary_row {
+&#10;#yfsnicksty .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2188,14 +3375,14 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vcpzccoaun .gt_first_summary_row {
+&#10;#yfsnicksty .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_first_summary_row.thick {
+&#10;#yfsnicksty .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#vcpzccoaun .gt_last_summary_row {
+&#10;#yfsnicksty .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2204,7 +3391,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_grand_summary_row {
+&#10;#yfsnicksty .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2213,7 +3400,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vcpzccoaun .gt_first_grand_summary_row {
+&#10;#yfsnicksty .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2222,7 +3409,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_last_grand_summary_row_top {
+&#10;#yfsnicksty .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2231,10 +3418,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_striped {
+&#10;#yfsnicksty .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#vcpzccoaun .gt_table_body {
+&#10;#yfsnicksty .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2242,7 +3429,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_footnotes {
+&#10;#yfsnicksty .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2255,7 +3442,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_footnote {
+&#10;#yfsnicksty .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2263,7 +3450,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vcpzccoaun .gt_sourcenotes {
+&#10;#yfsnicksty .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2276,64 +3463,64 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#vcpzccoaun .gt_sourcenote {
+&#10;#yfsnicksty .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vcpzccoaun .gt_left {
+&#10;#yfsnicksty .gt_left {
   text-align: left;
 }
-&#10;#vcpzccoaun .gt_center {
+&#10;#yfsnicksty .gt_center {
   text-align: center;
 }
-&#10;#vcpzccoaun .gt_right {
+&#10;#yfsnicksty .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#vcpzccoaun .gt_font_normal {
+&#10;#yfsnicksty .gt_font_normal {
   font-weight: normal;
 }
-&#10;#vcpzccoaun .gt_font_bold {
+&#10;#yfsnicksty .gt_font_bold {
   font-weight: bold;
 }
-&#10;#vcpzccoaun .gt_font_italic {
+&#10;#yfsnicksty .gt_font_italic {
   font-style: italic;
 }
-&#10;#vcpzccoaun .gt_super {
+&#10;#yfsnicksty .gt_super {
   font-size: 65%;
 }
-&#10;#vcpzccoaun .gt_footnote_marks {
+&#10;#yfsnicksty .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#vcpzccoaun .gt_asterisk {
+&#10;#yfsnicksty .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#vcpzccoaun .gt_indent_1 {
+&#10;#yfsnicksty .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#vcpzccoaun .gt_indent_2 {
+&#10;#yfsnicksty .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#vcpzccoaun .gt_indent_3 {
+&#10;#yfsnicksty .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#vcpzccoaun .gt_indent_4 {
+&#10;#yfsnicksty .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#vcpzccoaun .gt_indent_5 {
+&#10;#yfsnicksty .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#vcpzccoaun .katex-display {
+&#10;#yfsnicksty .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#vcpzccoaun div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#yfsnicksty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2358,11 +3545,12 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="corr">corr</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="sd">sd</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="dt_all">dt_all</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="dt_cv">dt_cv</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <th colspan="18" class="gt_group_heading" scope="colgroup" id="Structural model parameters">Structural model parameters</th>
+      <th colspan="19" class="gt_group_heading" scope="colgroup" id="Structural model parameters">Structural model parameters</th>
     </tr>
     <tr class="gt_row_group_first"><td headers="Structural model parameters  name" class="gt_row gt_left">TVCL</td>
 <td headers="Structural model parameters  symbol" class="gt_row gt_left">$\theta_{1}$</td>
@@ -2381,7 +3569,8 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Structural model parameters  cv" class="gt_row gt_right">NA</td>
 <td headers="Structural model parameters  corr" class="gt_row gt_right">NA</td>
 <td headers="Structural model parameters  sd" class="gt_row gt_right">NA</td>
-<td headers="Structural model parameters  dt_all" class="gt_row gt_left">Identity</td></tr>
+<td headers="Structural model parameters  dt_all" class="gt_row gt_left">Identity</td>
+<td headers="Structural model parameters  dt_cv" class="gt_row gt_left">Identity</td></tr>
     <tr><td headers="Structural model parameters  name" class="gt_row gt_left">TVV</td>
 <td headers="Structural model parameters  symbol" class="gt_row gt_left">$\theta_{2}$</td>
 <td headers="Structural model parameters  unit" class="gt_row gt_left">L</td>
@@ -2399,7 +3588,8 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Structural model parameters  cv" class="gt_row gt_right">NA</td>
 <td headers="Structural model parameters  corr" class="gt_row gt_right">NA</td>
 <td headers="Structural model parameters  sd" class="gt_row gt_right">NA</td>
-<td headers="Structural model parameters  dt_all" class="gt_row gt_left">Identity</td></tr>
+<td headers="Structural model parameters  dt_all" class="gt_row gt_left">Identity</td>
+<td headers="Structural model parameters  dt_cv" class="gt_row gt_left">Identity</td></tr>
     <tr><td headers="Structural model parameters  name" class="gt_row gt_left">TVKA</td>
 <td headers="Structural model parameters  symbol" class="gt_row gt_left">$\theta_{3}$</td>
 <td headers="Structural model parameters  unit" class="gt_row gt_left">1/hr</td>
@@ -2417,17 +3607,18 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Structural model parameters  cv" class="gt_row gt_right">NA</td>
 <td headers="Structural model parameters  corr" class="gt_row gt_right">NA</td>
 <td headers="Structural model parameters  sd" class="gt_row gt_right">NA</td>
-<td headers="Structural model parameters  dt_all" class="gt_row gt_left">Identity</td></tr>
+<td headers="Structural model parameters  dt_all" class="gt_row gt_left">Identity</td>
+<td headers="Structural model parameters  dt_cv" class="gt_row gt_left">Identity</td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="18" class="gt_group_heading" scope="colgroup" id="Interindividual variance parameters">Interindividual variance parameters</th>
+      <th colspan="19" class="gt_group_heading" scope="colgroup" id="Interindividual variance parameters">Interindividual variance parameters</th>
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM1 TVCL</td>
-<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(1,1)})$</td>
+<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(1,1)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">1.13014054</td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.12234200</td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right">1.02392904</td>
-<td headers="Interindividual variance parameters  ci_high" class="gt_row gt_right">1.24736930</td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right">0.02364723</td>
+<td headers="Interindividual variance parameters  ci_high" class="gt_row gt_right">0.22103677</td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right">41.159536</td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right">13.14400</td>
 <td headers="Interindividual variance parameters  fixed" class="gt_row gt_center">FALSE</td>
@@ -2438,14 +3629,15 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Interindividual variance parameters  cv" class="gt_row gt_right">36.07500</td>
 <td headers="Interindividual variance parameters  corr" class="gt_row gt_right">NA</td>
 <td headers="Interindividual variance parameters  sd" class="gt_row gt_right">0.3497740</td>
-<td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">LogNormal</td></tr>
+<td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">identity</td>
+<td headers="Interindividual variance parameters  dt_cv" class="gt_row gt_left">LogNormal</td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM2 TVV</td>
-<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(2,2)})$</td>
+<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(2,2)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">1.13187777</td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.12387800</td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right">1.05322426</td>
-<td headers="Interindividual variance parameters  ci_high" class="gt_row gt_right">1.21640504</td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right">0.05185618</td>
+<td headers="Interindividual variance parameters  ci_high" class="gt_row gt_right">0.19589982</td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right">29.663459</td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right">4.63131</td>
 <td headers="Interindividual variance parameters  fixed" class="gt_row gt_center">FALSE</td>
@@ -2456,14 +3648,15 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Interindividual variance parameters  cv" class="gt_row gt_right">36.31498</td>
 <td headers="Interindividual variance parameters  corr" class="gt_row gt_right">NA</td>
 <td headers="Interindividual variance parameters  sd" class="gt_row gt_right">0.3519630</td>
-<td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">LogNormal</td></tr>
+<td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">identity</td>
+<td headers="Interindividual variance parameters  dt_cv" class="gt_row gt_left">LogNormal</td></tr>
     <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM3 TVKA</td>
-<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(3,3)})$</td>
+<td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(3,3)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">1.13021966</td>
+<td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.12241200</td>
 <td headers="Interindividual variance parameters  variability" class="gt_row gt_left">NA</td>
-<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right">1.01218256</td>
-<td headers="Interindividual variance parameters  ci_high" class="gt_row gt_right">1.26202181</td>
+<td headers="Interindividual variance parameters  ci_low" class="gt_row gt_right">0.01210895</td>
+<td headers="Interindividual variance parameters  ci_high" class="gt_row gt_right">0.23271505</td>
 <td headers="Interindividual variance parameters  rse" class="gt_row gt_right">45.974333</td>
 <td headers="Interindividual variance parameters  shrinkage" class="gt_row gt_right">24.33760</td>
 <td headers="Interindividual variance parameters  fixed" class="gt_row gt_center">FALSE</td>
@@ -2474,17 +3667,18 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Interindividual variance parameters  cv" class="gt_row gt_right">36.08596</td>
 <td headers="Interindividual variance parameters  corr" class="gt_row gt_right">NA</td>
 <td headers="Interindividual variance parameters  sd" class="gt_row gt_right">0.3498740</td>
-<td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">LogNormal</td></tr>
+<td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">identity</td>
+<td headers="Interindividual variance parameters  dt_cv" class="gt_row gt_left">LogNormal</td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="18" class="gt_group_heading" scope="colgroup" id="Interindividual covariance parameters">Interindividual covariance parameters</th>
+      <th colspan="19" class="gt_group_heading" scope="colgroup" id="Interindividual covariance parameters">Interindividual covariance parameters</th>
     </tr>
     <tr class="gt_row_group_first"><td headers="Interindividual covariance parameters  name" class="gt_row gt_left">OM1,2 TVCL, TVV</td>
-<td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left">$\exp(\Omega_{(2,1)})$</td>
+<td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left">$\Omega_{(2,1)}$</td>
 <td headers="Interindividual covariance parameters  unit" class="gt_row gt_left">NA</td>
-<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right">1.07739199</td>
+<td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right">0.07454330</td>
 <td headers="Interindividual covariance parameters  variability" class="gt_row gt_left">NA</td>
-<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_right">1.01321438</td>
-<td headers="Interindividual covariance parameters  ci_high" class="gt_row gt_right">1.14563466</td>
+<td headers="Interindividual covariance parameters  ci_low" class="gt_row gt_right">0.01312783</td>
+<td headers="Interindividual covariance parameters  ci_high" class="gt_row gt_right">0.13595877</td>
 <td headers="Interindividual covariance parameters  rse" class="gt_row gt_right">42.035971</td>
 <td headers="Interindividual covariance parameters  shrinkage" class="gt_row gt_right">NA</td>
 <td headers="Interindividual covariance parameters  fixed" class="gt_row gt_center">FALSE</td>
@@ -2495,9 +3689,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Interindividual covariance parameters  cv" class="gt_row gt_right">27.81942</td>
 <td headers="Interindividual covariance parameters  corr" class="gt_row gt_right">0.605513</td>
 <td headers="Interindividual covariance parameters  sd" class="gt_row gt_right">NA</td>
-<td headers="Interindividual covariance parameters  dt_all" class="gt_row gt_left">LogNormal</td></tr>
+<td headers="Interindividual covariance parameters  dt_all" class="gt_row gt_left">identity</td>
+<td headers="Interindividual covariance parameters  dt_cv" class="gt_row gt_left">LogNormal</td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="18" class="gt_group_heading" scope="colgroup" id="Residual error">Residual error</th>
+      <th colspan="19" class="gt_group_heading" scope="colgroup" id="Residual error">Residual error</th>
     </tr>
     <tr class="gt_row_group_first"><td headers="Residual error  name" class="gt_row gt_left">SIG1</td>
 <td headers="Residual error  symbol" class="gt_row gt_left">$\Sigma_{(1,1)}$</td>
@@ -2516,7 +3711,8 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Residual error  cv" class="gt_row gt_right">NA</td>
 <td headers="Residual error  corr" class="gt_row gt_right">NA</td>
 <td headers="Residual error  sd" class="gt_row gt_right">0.1937450</td>
-<td headers="Residual error  dt_all" class="gt_row gt_left">Identity</td></tr>
+<td headers="Residual error  dt_all" class="gt_row gt_left">Identity</td>
+<td headers="Residual error  dt_cv" class="gt_row gt_left">Identity</td></tr>
     <tr><td headers="Residual error  name" class="gt_row gt_left">SIG2</td>
 <td headers="Residual error  symbol" class="gt_row gt_left">$\Sigma_{(2,2)}$</td>
 <td headers="Residual error  unit" class="gt_row gt_left">NA</td>
@@ -2534,7 +3730,8 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Residual error  cv" class="gt_row gt_right">NA</td>
 <td headers="Residual error  corr" class="gt_row gt_right">NA</td>
 <td headers="Residual error  sd" class="gt_row gt_right">0.0726105</td>
-<td headers="Residual error  dt_all" class="gt_row gt_left">Identity</td></tr>
+<td headers="Residual error  dt_all" class="gt_row gt_left">Identity</td>
+<td headers="Residual error  dt_cv" class="gt_row gt_left">Identity</td></tr>
   </tbody>
   &#10;</table>
 </div>

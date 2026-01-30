@@ -27,7 +27,7 @@ export default defineConfig({
             { label: "Welcome", slug: "articles/readme" },
             { label: "Parameter Tables", slug: "articles/parameter-tables" },
             { label: "Comparison Tables", slug: "articles/comparison-tables" },
-            { label: "Modelling Summary Tables", slug: "articles/summary-tables" },
+            { label: "Summary Tables", slug: "articles/summary-tables" },
             { label: "Customizing Table Renders", slug: "articles/table-rendering" }
           ]
         }
