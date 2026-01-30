@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { remarkBaseUrl } from "./remark-base-url.mjs";
 import { starlightKatex } from "starlight-katex";
 
 // https://astro.build/config
@@ -8,6 +9,9 @@ export default defineConfig({
   site: process.env.ASTRO_SITE || "http://localhost",
   base: process.env.ASTRO_BASE || "/",
   trailingSlash: "always",
+  markdown: {
+    remarkPlugins: [remarkBaseUrl],
+  },
   integrations: [
     starlight({
       title: "hyperion.tables",

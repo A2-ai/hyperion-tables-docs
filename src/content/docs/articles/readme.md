@@ -70,7 +70,7 @@ param_gt <- params |>
   make_parameter_table()
 ```
 
-<img src={`${import.meta.env.BASE_URL}figures/README-param-table.png`} alt="" />
+![](/figures/README-param-table.png)
 
 ### Comparison table
 
@@ -105,7 +105,7 @@ comp_gt <- get_parameters(run002) |>
   make_comparison_table()
 ```
 
-<img src={`${import.meta.env.BASE_URL}figures/README-comparison-table.png`} alt="" />
+![](/figures/README-comparison-table.png)
 
 ### Summary table
 
@@ -118,7 +118,7 @@ summary_gt <- tree |>
   make_summary_table()
 ```
 
-<img src={`${import.meta.env.BASE_URL}figures/README-summary-table.png`} alt="" />
+![](/figures/README-summary-table.png)
 
 ### Custom renderers
 
