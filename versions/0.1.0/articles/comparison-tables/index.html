@@ -68,7 +68,7 @@ async function handleVersionChange(select) {
 	})();
 </script> <script type="module" src="/versions/0.1.0/_astro/Search.astro_astro_type_script_index_0_lang.BwVNHi6V.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="1vl0bug" class="astro-kku4brbg"> <script aria-hidden="true">
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="1wdifjr" class="astro-kku4brbg"> <script aria-hidden="true">
 		(() => {
 			try {
 				if (!matchMedia('(min-width: 50em)').matches) return;
@@ -91,7 +91,7 @@ async function handleVersionChange(select) {
 				);
 			} catch {}
 		})();
-	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Articles</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Getting Started</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/readme/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Welcome</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/parameter-tables/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Parameter Tables</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/comparison-tables/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Comparison Tables</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/summary-tables/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Modelling Summary Tables</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/table-rendering/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Customizing Table Renders</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Reference</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/hyperion-tables-package/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">hyperion.tables-package</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Classes</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/tablespec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">TableSpec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/summaryspec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">SummarySpec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/cioptions/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">CIOptions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/parameternameoptions/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">ParameterNameOptions</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Table Creation</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/make_parameter_table/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">make_parameter_table</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/make_summary_table/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">make_summary_table</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/make_comparison_table/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">make_comparison_table</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Application</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/apply_table_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">apply_table_spec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/apply_summary_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">apply_summary_spec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/apply_formatting/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">apply_formatting</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Extraction</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_table_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_table_spec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_summary_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_summary_spec</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Getters</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_columns</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_title/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_title</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_sigfig/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_sigfig</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_ci/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_ci</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_parameter_names/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_parameter_names</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_sections/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_sections</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_filter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_transforms/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_transforms</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_variability/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_variability</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_time_format/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_time_format</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - Columns</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="8"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/add_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">add_spec_columns</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/drop_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">drop_spec_columns</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_columns</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - Common</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="9"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_title/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_title</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_sigfig/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_sigfig</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_ofv_decimals/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_ofv_decimals</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_hide_empty/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_hide_empty</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_pvalue/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_pvalue</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_footnotes/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_footnotes</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - TableSpec</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="10"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_parameter_names/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_parameter_names</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_ci/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_ci</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_missing/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_missing</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_transforms/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_transforms</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_sections/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_sections</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_filter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_variability/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_variability</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - SummarySpec</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="11"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_time_format/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_time_format</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_models/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_models</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_tag_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_tag_filter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_remove_unrun/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_remove_unrun</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_summary_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_summary_filter</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Rule Builders</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="12"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/section_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">section_rules</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/filter_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">filter_rules</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/variability_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">variability_rules</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/summary_filter_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">summary_filter_rules</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Rendering</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="13"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/render_to_gt/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">render_to_gt</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/render_to_flextable/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">render_to_flextable</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Model Comparison</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="14"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/compare_with/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">compare_with</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/add_model_lineage/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">add_model_lineage</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/add_summary_info/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">add_summary_info</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Articles</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Getting Started</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/readme/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Welcome</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/parameter-tables/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Parameter Tables</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/comparison-tables/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Comparison Tables</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/summary-tables/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Summary Tables</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/articles/table-rendering/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Customizing Table Renders</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Reference</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/hyperion-tables-package/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">hyperion.tables-package</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Classes</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/tablespec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">TableSpec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/summaryspec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">SummarySpec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/cioptions/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">CIOptions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/parameternameoptions/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">ParameterNameOptions</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Table Creation</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/make_parameter_table/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">make_parameter_table</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/make_summary_table/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">make_summary_table</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/make_comparison_table/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">make_comparison_table</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Application</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/apply_table_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">apply_table_spec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/apply_summary_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">apply_summary_spec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/apply_formatting/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">apply_formatting</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Extraction</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_table_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_table_spec</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_summary_spec/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_summary_spec</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Getters</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_columns</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_title/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_title</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_sigfig/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_sigfig</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_ci/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_ci</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_parameter_names/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_parameter_names</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_sections/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_sections</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_filter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_transforms/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_transforms</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_variability/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_variability</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/get_spec_time_format/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">get_spec_time_format</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - Columns</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="8"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/add_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">add_spec_columns</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/drop_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">drop_spec_columns</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_columns/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_columns</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - Common</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="9"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_title/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_title</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_sigfig/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_sigfig</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_ofv_decimals/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_ofv_decimals</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_hide_empty/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_hide_empty</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_pvalue/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_pvalue</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_footnotes/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_footnotes</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - TableSpec</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="10"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_parameter_names/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_parameter_names</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_ci/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_ci</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_missing/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_missing</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_transforms/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_transforms</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_sections/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_sections</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_filter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_variability/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_variability</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spec Modifiers - SummarySpec</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="11"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_time_format/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_time_format</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_models/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_models</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_tag_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_tag_filter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_remove_unrun/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_remove_unrun</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/set_spec_summary_filter/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">set_spec_summary_filter</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Rule Builders</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="12"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/section_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">section_rules</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/filter_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">filter_rules</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/variability_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">variability_rules</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/summary_filter_rules/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">summary_filter_rules</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Rendering</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="13"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/render_to_gt/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">render_to_gt</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/render_to_flextable/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">render_to_flextable</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Model Comparison</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="14"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/compare_with/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">compare_with</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/add_model_lineage/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">add_model_lineage</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/versions/0.1.0/reference/add_summary_info/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">add_summary_info</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
 		(() => {
 			const scroller = document.getElementById('starlight__sidebar');
 			if (!window._starlightScrollRestore || !scroller) return;
@@ -108,20 +108,20 @@ async function handleVersionChange(select) {
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">paste0</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_run</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">".mod"</span><span style="--0:#D6DEEB;--1:#403F53">)))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">child_sum</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">child_info</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run002.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">child_info</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_sum</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual variance&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  drop_spec_columns(&#x22;variability&#x22;, &#x22;shrinkage&#x22;, &#x22;rse&#x22;) |>  set_spec_pvalue(scientific = FALSE)child_mod <- read_model(file.path(model_dir, paste0(model_run, &#x22;.mod&#x22;)))child_sum <- summary(child_mod)child_info <- get_model_parameter_info(child_mod)parent_mod <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum <- summary(parent_mod)info <- get_model_parameter_info(parent_mod)get_parameters(parent_mod) |>  apply_table_spec(spec, info) |>  add_summary_info(mod_sum) |>  compare_with(    get_parameters(child_mod) |>      apply_table_spec(spec, child_info) |>      add_summary_info(child_sum),    labels = c(&#x22;run002&#x22;, &#x22;run003&#x22;)  ) |>  make_comparison_table()"><div></div></button></div></figure></div>
-<div id="xuuelhqgxw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xuuelhqgxw table {
+<div id="qxxhzcgaql" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qxxhzcgaql table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#xuuelhqgxw thead, #xuuelhqgxw tbody, #xuuelhqgxw tfoot, #xuuelhqgxw tr, #xuuelhqgxw td, #xuuelhqgxw th {
+&#10;#qxxhzcgaql thead, #qxxhzcgaql tbody, #qxxhzcgaql tfoot, #qxxhzcgaql tr, #qxxhzcgaql td, #qxxhzcgaql th {
   border-style: none;
 }
-&#10;#xuuelhqgxw p {
+&#10;#qxxhzcgaql p {
   margin: 0;
   padding: 0;
 }
-&#10;#xuuelhqgxw .gt_table {
+&#10;#qxxhzcgaql .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -146,11 +146,11 @@ async function handleVersionChange(select) {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_caption {
+&#10;#qxxhzcgaql .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#xuuelhqgxw .gt_title {
+&#10;#qxxhzcgaql .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -161,7 +161,7 @@ async function handleVersionChange(select) {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#xuuelhqgxw .gt_subtitle {
+&#10;#qxxhzcgaql .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -172,7 +172,7 @@ async function handleVersionChange(select) {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#xuuelhqgxw .gt_heading {
+&#10;#qxxhzcgaql .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -183,12 +183,12 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_bottom_border {
+&#10;#qxxhzcgaql .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_col_headings {
+&#10;#qxxhzcgaql .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -202,7 +202,7 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_col_heading {
+&#10;#qxxhzcgaql .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -221,7 +221,7 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#xuuelhqgxw .gt_column_spanner_outer {
+&#10;#qxxhzcgaql .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -232,13 +232,13 @@ async function handleVersionChange(select) {
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#xuuelhqgxw .gt_column_spanner_outer:first-child {
+&#10;#qxxhzcgaql .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#xuuelhqgxw .gt_column_spanner_outer:last-child {
+&#10;#qxxhzcgaql .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#xuuelhqgxw .gt_column_spanner {
+&#10;#qxxhzcgaql .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -249,10 +249,10 @@ async function handleVersionChange(select) {
   display: inline-block;
   width: 100%;
 }
-&#10;#xuuelhqgxw .gt_spanner_row {
+&#10;#qxxhzcgaql .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#xuuelhqgxw .gt_group_heading {
+&#10;#qxxhzcgaql .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -277,7 +277,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   text-align: left;
 }
-&#10;#xuuelhqgxw .gt_empty_group_heading {
+&#10;#qxxhzcgaql .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -291,13 +291,13 @@ async function handleVersionChange(select) {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#xuuelhqgxw .gt_from_md > :first-child {
+&#10;#qxxhzcgaql .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#xuuelhqgxw .gt_from_md > :last-child {
+&#10;#qxxhzcgaql .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#xuuelhqgxw .gt_row {
+&#10;#qxxhzcgaql .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -315,7 +315,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#xuuelhqgxw .gt_stub {
+&#10;#qxxhzcgaql .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -327,7 +327,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#xuuelhqgxw .gt_stub_row_group {
+&#10;#qxxhzcgaql .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -340,13 +340,13 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#xuuelhqgxw .gt_row_group_first td {
+&#10;#qxxhzcgaql .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#xuuelhqgxw .gt_row_group_first th {
+&#10;#qxxhzcgaql .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#xuuelhqgxw .gt_summary_row {
+&#10;#qxxhzcgaql .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -355,14 +355,14 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#xuuelhqgxw .gt_first_summary_row {
+&#10;#qxxhzcgaql .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_first_summary_row.thick {
+&#10;#qxxhzcgaql .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#xuuelhqgxw .gt_last_summary_row {
+&#10;#qxxhzcgaql .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -371,7 +371,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_grand_summary_row {
+&#10;#qxxhzcgaql .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -380,7 +380,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#xuuelhqgxw .gt_first_grand_summary_row {
+&#10;#qxxhzcgaql .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -389,7 +389,7 @@ async function handleVersionChange(select) {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_last_grand_summary_row_top {
+&#10;#qxxhzcgaql .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -398,10 +398,10 @@ async function handleVersionChange(select) {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_striped {
+&#10;#qxxhzcgaql .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#xuuelhqgxw .gt_table_body {
+&#10;#qxxhzcgaql .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -409,7 +409,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_footnotes {
+&#10;#qxxhzcgaql .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -422,7 +422,7 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_footnote {
+&#10;#qxxhzcgaql .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -430,7 +430,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#xuuelhqgxw .gt_sourcenotes {
+&#10;#qxxhzcgaql .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -443,64 +443,64 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#xuuelhqgxw .gt_sourcenote {
+&#10;#qxxhzcgaql .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#xuuelhqgxw .gt_left {
+&#10;#qxxhzcgaql .gt_left {
   text-align: left;
 }
-&#10;#xuuelhqgxw .gt_center {
+&#10;#qxxhzcgaql .gt_center {
   text-align: center;
 }
-&#10;#xuuelhqgxw .gt_right {
+&#10;#qxxhzcgaql .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#xuuelhqgxw .gt_font_normal {
+&#10;#qxxhzcgaql .gt_font_normal {
   font-weight: normal;
 }
-&#10;#xuuelhqgxw .gt_font_bold {
+&#10;#qxxhzcgaql .gt_font_bold {
   font-weight: bold;
 }
-&#10;#xuuelhqgxw .gt_font_italic {
+&#10;#qxxhzcgaql .gt_font_italic {
   font-style: italic;
 }
-&#10;#xuuelhqgxw .gt_super {
+&#10;#qxxhzcgaql .gt_super {
   font-size: 65%;
 }
-&#10;#xuuelhqgxw .gt_footnote_marks {
+&#10;#qxxhzcgaql .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#xuuelhqgxw .gt_asterisk {
+&#10;#qxxhzcgaql .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#xuuelhqgxw .gt_indent_1 {
+&#10;#qxxhzcgaql .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#xuuelhqgxw .gt_indent_2 {
+&#10;#qxxhzcgaql .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#xuuelhqgxw .gt_indent_3 {
+&#10;#qxxhzcgaql .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#xuuelhqgxw .gt_indent_4 {
+&#10;#qxxhzcgaql .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#xuuelhqgxw .gt_indent_5 {
+&#10;#qxxhzcgaql .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#xuuelhqgxw .katex-display {
+&#10;#qxxhzcgaql .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#xuuelhqgxw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#qxxhzcgaql div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -692,20 +692,20 @@ async function handleVersionChange(select) {
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003b1.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum2</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run003b1"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  set_spec_columns(&#x22;symbol&#x22;, &#x22;estimate&#x22;, &#x22;ci&#x22;, &#x22;rse&#x22;, &#x22;pct_change&#x22;) |>  set_spec_hide_empty(FALSE)mod1 <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum1 <- summary(mod1)info1 <- get_model_parameter_info(mod1)mod2 <- read_model(file.path(model_dir, &#x22;run003.mod&#x22;))mod_sum2 <- summary(mod2)info2 <- get_model_parameter_info(mod2)mod3 <- read_model(file.path(model_dir, &#x22;run003b1.mod&#x22;))mod_sum3 <- summary(mod3)info3 <- get_model_parameter_info(mod3)comp <- get_parameters(mod1) |>  apply_table_spec(spec, info1) |>  add_summary_info(mod_sum1) |>  compare_with(    get_parameters(mod2) |>      apply_table_spec(spec, info2) |>      add_summary_info(mod_sum2),    labels = c(&#x22;run002&#x22;, &#x22;run003&#x22;)  ) |>  compare_with(    get_parameters(mod3) |>      apply_table_spec(spec, info3) |>      add_summary_info(mod_sum3),    labels = c(&#x22;run003b1&#x22;)  )comp |>  make_comparison_table()"><div></div></button></div></figure></div>
-<div id="gwjyramhmx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gwjyramhmx table {
+<div id="igepantalu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#igepantalu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#gwjyramhmx thead, #gwjyramhmx tbody, #gwjyramhmx tfoot, #gwjyramhmx tr, #gwjyramhmx td, #gwjyramhmx th {
+&#10;#igepantalu thead, #igepantalu tbody, #igepantalu tfoot, #igepantalu tr, #igepantalu td, #igepantalu th {
   border-style: none;
 }
-&#10;#gwjyramhmx p {
+&#10;#igepantalu p {
   margin: 0;
   padding: 0;
 }
-&#10;#gwjyramhmx .gt_table {
+&#10;#igepantalu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -730,11 +730,11 @@ async function handleVersionChange(select) {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_caption {
+&#10;#igepantalu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#gwjyramhmx .gt_title {
+&#10;#igepantalu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -745,7 +745,7 @@ async function handleVersionChange(select) {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#gwjyramhmx .gt_subtitle {
+&#10;#igepantalu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -756,7 +756,7 @@ async function handleVersionChange(select) {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#gwjyramhmx .gt_heading {
+&#10;#igepantalu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -767,12 +767,12 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_bottom_border {
+&#10;#igepantalu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_col_headings {
+&#10;#igepantalu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -786,7 +786,7 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_col_heading {
+&#10;#igepantalu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -805,7 +805,7 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#gwjyramhmx .gt_column_spanner_outer {
+&#10;#igepantalu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -816,13 +816,13 @@ async function handleVersionChange(select) {
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#gwjyramhmx .gt_column_spanner_outer:first-child {
+&#10;#igepantalu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#gwjyramhmx .gt_column_spanner_outer:last-child {
+&#10;#igepantalu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#gwjyramhmx .gt_column_spanner {
+&#10;#igepantalu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -833,10 +833,10 @@ async function handleVersionChange(select) {
   display: inline-block;
   width: 100%;
 }
-&#10;#gwjyramhmx .gt_spanner_row {
+&#10;#igepantalu .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#gwjyramhmx .gt_group_heading {
+&#10;#igepantalu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -861,7 +861,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   text-align: left;
 }
-&#10;#gwjyramhmx .gt_empty_group_heading {
+&#10;#igepantalu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -875,13 +875,13 @@ async function handleVersionChange(select) {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#gwjyramhmx .gt_from_md > :first-child {
+&#10;#igepantalu .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#gwjyramhmx .gt_from_md > :last-child {
+&#10;#igepantalu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#gwjyramhmx .gt_row {
+&#10;#igepantalu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -899,7 +899,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#gwjyramhmx .gt_stub {
+&#10;#igepantalu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -911,7 +911,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gwjyramhmx .gt_stub_row_group {
+&#10;#igepantalu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -924,13 +924,13 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#gwjyramhmx .gt_row_group_first td {
+&#10;#igepantalu .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#gwjyramhmx .gt_row_group_first th {
+&#10;#igepantalu .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#gwjyramhmx .gt_summary_row {
+&#10;#igepantalu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -939,14 +939,14 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gwjyramhmx .gt_first_summary_row {
+&#10;#igepantalu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_first_summary_row.thick {
+&#10;#igepantalu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#gwjyramhmx .gt_last_summary_row {
+&#10;#igepantalu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,7 +955,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_grand_summary_row {
+&#10;#igepantalu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -964,7 +964,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gwjyramhmx .gt_first_grand_summary_row {
+&#10;#igepantalu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -973,7 +973,7 @@ async function handleVersionChange(select) {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_last_grand_summary_row_top {
+&#10;#igepantalu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -982,10 +982,10 @@ async function handleVersionChange(select) {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_striped {
+&#10;#igepantalu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#gwjyramhmx .gt_table_body {
+&#10;#igepantalu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -993,7 +993,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_footnotes {
+&#10;#igepantalu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1006,7 +1006,7 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_footnote {
+&#10;#igepantalu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1014,7 +1014,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gwjyramhmx .gt_sourcenotes {
+&#10;#igepantalu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1027,64 +1027,64 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#gwjyramhmx .gt_sourcenote {
+&#10;#igepantalu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#gwjyramhmx .gt_left {
+&#10;#igepantalu .gt_left {
   text-align: left;
 }
-&#10;#gwjyramhmx .gt_center {
+&#10;#igepantalu .gt_center {
   text-align: center;
 }
-&#10;#gwjyramhmx .gt_right {
+&#10;#igepantalu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#gwjyramhmx .gt_font_normal {
+&#10;#igepantalu .gt_font_normal {
   font-weight: normal;
 }
-&#10;#gwjyramhmx .gt_font_bold {
+&#10;#igepantalu .gt_font_bold {
   font-weight: bold;
 }
-&#10;#gwjyramhmx .gt_font_italic {
+&#10;#igepantalu .gt_font_italic {
   font-style: italic;
 }
-&#10;#gwjyramhmx .gt_super {
+&#10;#igepantalu .gt_super {
   font-size: 65%;
 }
-&#10;#gwjyramhmx .gt_footnote_marks {
+&#10;#igepantalu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#gwjyramhmx .gt_asterisk {
+&#10;#igepantalu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#gwjyramhmx .gt_indent_1 {
+&#10;#igepantalu .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#gwjyramhmx .gt_indent_2 {
+&#10;#igepantalu .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#gwjyramhmx .gt_indent_3 {
+&#10;#igepantalu .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#gwjyramhmx .gt_indent_4 {
+&#10;#igepantalu .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#gwjyramhmx .gt_indent_5 {
+&#10;#igepantalu .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#gwjyramhmx .katex-display {
+&#10;#igepantalu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#gwjyramhmx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#igepantalu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -1362,21 +1362,21 @@ async function handleVersionChange(select) {
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run002.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum2</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info2</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003b1.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum4</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info4</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum2</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run001"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">   </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info4</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum4</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run004"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|></span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">names</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  [1] "name"          "symbol_1"      "fixed_1"       "estimate_1"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  [5] "symbol_2"      "fixed_2"       "estimate_2"    "symbol_3"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#>  [9] "fixed_3"       "estimate_3"    "pct_change_2"  "pct_change"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> [13] "pct_change_3"  "symbol_4"      "fixed_4"       "estimate_4"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> [17] "kind"          "section"       "random_effect" "diagonal"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> [21] "pct_change_4"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  set_spec_columns(&#x22;symbol&#x22;, &#x22;fixed&#x22;, &#x22;estimate&#x22;) |>  set_spec_title(&#x22;Structural Model Parameter Comparison&#x22;)mod1 <- read_model(file.path(model_dir, &#x22;run001.mod&#x22;))mod_sum1 <- summary(mod1)info1 <- get_model_parameter_info(mod1)mod2 <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum2 <- summary(mod2)info2 <- get_model_parameter_info(mod2)mod3 <- read_model(file.path(model_dir, &#x22;run003.mod&#x22;))mod_sum3 <- summary(mod3)info3 <- get_model_parameter_info(mod3)mod4 <- read_model(file.path(model_dir, &#x22;run003b1.mod&#x22;))mod_sum4 <- summary(mod4)info4 <- get_model_parameter_info(mod4)comp <- get_parameters(mod1) |>  apply_table_spec(spec, info1) |>  add_summary_info(mod_sum1) |>  compare_with(    get_parameters(mod2) |>      apply_table_spec(spec, info2) |>      add_summary_info(mod_sum2),    labels = c(&#x22;run001&#x22;, &#x22;run002&#x22;)   ) |>  compare_with(    get_parameters(mod3) |>      apply_table_spec(spec, info3) |>      add_summary_info(mod_sum3),    labels = c(&#x22;run003&#x22;)  ) |>  compare_with(    get_parameters(mod4) |>      apply_table_spec(spec, info4) |>      add_summary_info(mod_sum4),    labels = c(&#x22;run004&#x22;)  )comp |> names()#>  [1] &#x22;name&#x22;          &#x22;symbol_1&#x22;      &#x22;fixed_1&#x22;       &#x22;estimate_1&#x22;#>  [5] &#x22;symbol_2&#x22;      &#x22;fixed_2&#x22;       &#x22;estimate_2&#x22;    &#x22;symbol_3&#x22;#>  [9] &#x22;fixed_3&#x22;       &#x22;estimate_3&#x22;    &#x22;pct_change_2&#x22;  &#x22;pct_change&#x22;#> [13] &#x22;pct_change_3&#x22;  &#x22;symbol_4&#x22;      &#x22;fixed_4&#x22;       &#x22;estimate_4&#x22;#> [17] &#x22;kind&#x22;          &#x22;section&#x22;       &#x22;random_effect&#x22; &#x22;diagonal&#x22;#> [21] &#x22;pct_change_4&#x22;comp |>  make_comparison_table()"><div></div></button></div></figure></div>
-<div id="jepuxmkkax" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jepuxmkkax table {
+</div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum2</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run001"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">   </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info4</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum4</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run004"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  set_spec_columns(&#x22;symbol&#x22;, &#x22;fixed&#x22;, &#x22;estimate&#x22;) |>  set_spec_title(&#x22;Structural Model Parameter Comparison&#x22;)mod1 <- read_model(file.path(model_dir, &#x22;run001.mod&#x22;))mod_sum1 <- summary(mod1)info1 <- get_model_parameter_info(mod1)mod2 <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum2 <- summary(mod2)info2 <- get_model_parameter_info(mod2)mod3 <- read_model(file.path(model_dir, &#x22;run003.mod&#x22;))mod_sum3 <- summary(mod3)info3 <- get_model_parameter_info(mod3)mod4 <- read_model(file.path(model_dir, &#x22;run003b1.mod&#x22;))mod_sum4 <- summary(mod4)info4 <- get_model_parameter_info(mod4)comp <- get_parameters(mod1) |>  apply_table_spec(spec, info1) |>  add_summary_info(mod_sum1) |>  compare_with(    get_parameters(mod2) |>      apply_table_spec(spec, info2) |>      add_summary_info(mod_sum2),    labels = c(&#x22;run001&#x22;, &#x22;run002&#x22;)   ) |>  compare_with(    get_parameters(mod3) |>      apply_table_spec(spec, info3) |>      add_summary_info(mod_sum3),    labels = c(&#x22;run003&#x22;)  ) |>  compare_with(    get_parameters(mod4) |>      apply_table_spec(spec, info4) |>      add_summary_info(mod_sum4),    labels = c(&#x22;run004&#x22;)  )comp |>  make_comparison_table()"><div></div></button></div></figure></div>
+<div id="cnvidvdopu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cnvidvdopu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#jepuxmkkax thead, #jepuxmkkax tbody, #jepuxmkkax tfoot, #jepuxmkkax tr, #jepuxmkkax td, #jepuxmkkax th {
+&#10;#cnvidvdopu thead, #cnvidvdopu tbody, #cnvidvdopu tfoot, #cnvidvdopu tr, #cnvidvdopu td, #cnvidvdopu th {
   border-style: none;
 }
-&#10;#jepuxmkkax p {
+&#10;#cnvidvdopu p {
   margin: 0;
   padding: 0;
 }
-&#10;#jepuxmkkax .gt_table {
+&#10;#cnvidvdopu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1401,11 +1401,11 @@ async function handleVersionChange(select) {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_caption {
+&#10;#cnvidvdopu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#jepuxmkkax .gt_title {
+&#10;#cnvidvdopu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1416,7 +1416,7 @@ async function handleVersionChange(select) {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#jepuxmkkax .gt_subtitle {
+&#10;#cnvidvdopu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1427,7 +1427,7 @@ async function handleVersionChange(select) {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#jepuxmkkax .gt_heading {
+&#10;#cnvidvdopu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1438,12 +1438,12 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_bottom_border {
+&#10;#cnvidvdopu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_col_headings {
+&#10;#cnvidvdopu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1457,7 +1457,7 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_col_heading {
+&#10;#cnvidvdopu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1476,7 +1476,7 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#jepuxmkkax .gt_column_spanner_outer {
+&#10;#cnvidvdopu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1487,13 +1487,13 @@ async function handleVersionChange(select) {
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#jepuxmkkax .gt_column_spanner_outer:first-child {
+&#10;#cnvidvdopu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#jepuxmkkax .gt_column_spanner_outer:last-child {
+&#10;#cnvidvdopu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#jepuxmkkax .gt_column_spanner {
+&#10;#cnvidvdopu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1504,10 +1504,10 @@ async function handleVersionChange(select) {
   display: inline-block;
   width: 100%;
 }
-&#10;#jepuxmkkax .gt_spanner_row {
+&#10;#cnvidvdopu .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#jepuxmkkax .gt_group_heading {
+&#10;#cnvidvdopu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1532,7 +1532,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   text-align: left;
 }
-&#10;#jepuxmkkax .gt_empty_group_heading {
+&#10;#cnvidvdopu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1546,13 +1546,13 @@ async function handleVersionChange(select) {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#jepuxmkkax .gt_from_md > :first-child {
+&#10;#cnvidvdopu .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#jepuxmkkax .gt_from_md > :last-child {
+&#10;#cnvidvdopu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#jepuxmkkax .gt_row {
+&#10;#cnvidvdopu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1570,7 +1570,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#jepuxmkkax .gt_stub {
+&#10;#cnvidvdopu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1582,7 +1582,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#jepuxmkkax .gt_stub_row_group {
+&#10;#cnvidvdopu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1595,13 +1595,13 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#jepuxmkkax .gt_row_group_first td {
+&#10;#cnvidvdopu .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#jepuxmkkax .gt_row_group_first th {
+&#10;#cnvidvdopu .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#jepuxmkkax .gt_summary_row {
+&#10;#cnvidvdopu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1610,14 +1610,14 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#jepuxmkkax .gt_first_summary_row {
+&#10;#cnvidvdopu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_first_summary_row.thick {
+&#10;#cnvidvdopu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#jepuxmkkax .gt_last_summary_row {
+&#10;#cnvidvdopu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1626,7 +1626,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_grand_summary_row {
+&#10;#cnvidvdopu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1635,7 +1635,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#jepuxmkkax .gt_first_grand_summary_row {
+&#10;#cnvidvdopu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1644,7 +1644,7 @@ async function handleVersionChange(select) {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_last_grand_summary_row_top {
+&#10;#cnvidvdopu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1653,10 +1653,10 @@ async function handleVersionChange(select) {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_striped {
+&#10;#cnvidvdopu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#jepuxmkkax .gt_table_body {
+&#10;#cnvidvdopu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1664,7 +1664,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_footnotes {
+&#10;#cnvidvdopu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1677,7 +1677,7 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_footnote {
+&#10;#cnvidvdopu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1685,7 +1685,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#jepuxmkkax .gt_sourcenotes {
+&#10;#cnvidvdopu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1698,64 +1698,64 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#jepuxmkkax .gt_sourcenote {
+&#10;#cnvidvdopu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#jepuxmkkax .gt_left {
+&#10;#cnvidvdopu .gt_left {
   text-align: left;
 }
-&#10;#jepuxmkkax .gt_center {
+&#10;#cnvidvdopu .gt_center {
   text-align: center;
 }
-&#10;#jepuxmkkax .gt_right {
+&#10;#cnvidvdopu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#jepuxmkkax .gt_font_normal {
+&#10;#cnvidvdopu .gt_font_normal {
   font-weight: normal;
 }
-&#10;#jepuxmkkax .gt_font_bold {
+&#10;#cnvidvdopu .gt_font_bold {
   font-weight: bold;
 }
-&#10;#jepuxmkkax .gt_font_italic {
+&#10;#cnvidvdopu .gt_font_italic {
   font-style: italic;
 }
-&#10;#jepuxmkkax .gt_super {
+&#10;#cnvidvdopu .gt_super {
   font-size: 65%;
 }
-&#10;#jepuxmkkax .gt_footnote_marks {
+&#10;#cnvidvdopu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#jepuxmkkax .gt_asterisk {
+&#10;#cnvidvdopu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#jepuxmkkax .gt_indent_1 {
+&#10;#cnvidvdopu .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#jepuxmkkax .gt_indent_2 {
+&#10;#cnvidvdopu .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#jepuxmkkax .gt_indent_3 {
+&#10;#cnvidvdopu .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#jepuxmkkax .gt_indent_4 {
+&#10;#cnvidvdopu .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#jepuxmkkax .gt_indent_5 {
+&#10;#cnvidvdopu .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#jepuxmkkax .katex-display {
+&#10;#cnvidvdopu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#jepuxmkkax div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#cnvidvdopu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -2043,4 +2043,4 @@ async function handleVersionChange(select) {
     </tr>
   </tfoot>
 </table>
-</div> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/versions/0.1.0/articles/parameter-tables/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Parameter Tables</span> </span> </a> <a href="/versions/0.1.0/articles/summary-tables/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Modelling Summary Tables</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+</div> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/versions/0.1.0/articles/parameter-tables/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Parameter Tables</span> </span> </a> <a href="/versions/0.1.0/articles/summary-tables/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Summary Tables</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
