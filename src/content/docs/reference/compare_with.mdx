@@ -40,11 +40,11 @@ compare_with(
 </tr>
 <tr>
 <td><code>labels</code></td>
-<td>Character vector of length 2 for model labels in table headers. Default: c("Model 1", "Model 2")</td>
+<td>Model labels used in table headers. For an initial 2-model comparison, supply length 2 (default: <code>c("Model 1", "Model 2")</code>). For chained comparisons (<code>params1</code> is already a <code>hyperion_comparison</code>): length 1 appends a label for the new model; length 2 renames the previous latest label to <code>labels[1]</code> and appends <code>labels[2]</code> for the new model.</td>
 </tr>
 <tr>
 <td><code>reference_model</code></td>
-<td>Character string specifying which model to use as reference for percent change calculations. Should match the <code>run_name</code> of one of the models already in the comparison. When NULL (default), percent change is calculated relative to the previous model in the chain.</td>
+<td>Character string specifying which model to use as reference for percent change calculations. Must match a model already in the comparison by <code>run_name</code> or label (file extensions are ignored). When NULL (default), percent change is calculated relative to the previous model in the chain.</td>
 </tr>
 </tbody>
 </table>
