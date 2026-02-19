@@ -1,0 +1,9 @@
+$theta
+[1] "all"
+
+$omega
+[1] "all"
+
+$sigma
+[1] "all"
+ 
