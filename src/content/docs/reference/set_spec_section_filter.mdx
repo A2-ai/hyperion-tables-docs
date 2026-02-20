@@ -1,0 +1,54 @@
+---
+title: "Set section filter for a spec"
+description: "Filters out rows belonging to specified sections."
+pagefind: true
+---
+
+## Description
+
+Filters out rows belonging to specified sections. Use `NA` to also filter unmatched rows (those that didn't match any section rule).
+
+## Usage
+
+```r
+set_spec_section_filter(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec or SummarySpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Section labels to exclude. Pass <code>NA</code> to exclude unmatched rows. Call with no arguments to clear the filter.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## Value
+
+Modified spec
+
+## Examples
+
+```r
+spec <- SummarySpec(
+  sections = section_rules(
+    "base" %in% tags ~ "Base Models",
+    TRUE ~ "Other"
+  )
+) |>
+  set_spec_section_filter("Other")
+```

@@ -1,12 +1,12 @@
 ---
-title: "Set section rules for a TableSpec"
-description: "Controls how parameters are grouped into sections."
+title: "Set section rules for a spec"
+description: "Controls how rows are grouped into sections."
 pagefind: true
 ---
 
 ## Description
 
-Controls how parameters are grouped into sections. Pass formula expressions like `kind == "THETA" ~ "Structural Parameters"`.
+Controls how rows are grouped into sections. Pass formula expressions where the LHS is a condition and the RHS is the section label.
 
 ## Usage
 
@@ -27,7 +27,7 @@ set_spec_sections(spec, ..., overwrite = FALSE)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec or SummarySpec object</td>
 </tr>
 <tr>
 <td><code>...</code></td>
@@ -40,6 +40,12 @@ set_spec_sections(spec, ..., overwrite = FALSE)
 </tbody>
 </table>
 </div>
+
+## Details
+
+For TableSpec, rules are evaluated against parameter columns (e.g., `kind == "THETA" ~ "Structural Parameters"`).
+
+For SummarySpec, rules are evaluated row-by-row against summary columns including `tags` (e.g., `"base" %in% tags ~ "Base Models"`).
 
 ## Value
 

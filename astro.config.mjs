@@ -82,6 +82,7 @@ export default defineConfig({
             { label: "get_spec_ci", slug: "reference/get_spec_ci" },
             { label: "get_spec_parameter_names", slug: "reference/get_spec_parameter_names" },
             { label: "get_spec_sections", slug: "reference/get_spec_sections" },
+            { label: "get_spec_section_filter", slug: "reference/get_spec_section_filter" },
             { label: "get_spec_filter", slug: "reference/get_spec_filter" },
             { label: "get_spec_transforms", slug: "reference/get_spec_transforms" },
             { label: "get_spec_variability", slug: "reference/get_spec_variability" },
@@ -100,6 +101,8 @@ export default defineConfig({
           label: "Spec Modifiers - Common",
           items: [
             { label: "set_spec_title", slug: "reference/set_spec_title" },
+            { label: "set_spec_sections", slug: "reference/set_spec_sections" },
+            { label: "set_spec_section_filter", slug: "reference/set_spec_section_filter" },
             { label: "set_spec_sigfig", slug: "reference/set_spec_sigfig" },
             { label: "set_spec_ofv_decimals", slug: "reference/set_spec_ofv_decimals" },
             { label: "set_spec_hide_empty", slug: "reference/set_spec_hide_empty" },
@@ -114,7 +117,6 @@ export default defineConfig({
             { label: "set_spec_ci", slug: "reference/set_spec_ci" },
             { label: "set_spec_missing", slug: "reference/set_spec_missing" },
             { label: "set_spec_transforms", slug: "reference/set_spec_transforms" },
-            { label: "set_spec_sections", slug: "reference/set_spec_sections" },
             { label: "set_spec_filter", slug: "reference/set_spec_filter" },
             { label: "set_spec_variability", slug: "reference/set_spec_variability" }
           ]

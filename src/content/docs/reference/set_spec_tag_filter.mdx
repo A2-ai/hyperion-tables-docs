@@ -11,7 +11,7 @@ Filters which models appear in the summary table by tags.
 ## Usage
 
 ```r
-set_spec_tag_filter(spec, tags)
+set_spec_tag_filter(spec, tags, exclude)
 ```
 
 ## Arguments
@@ -31,7 +31,11 @@ set_spec_tag_filter(spec, tags)
 </tr>
 <tr>
 <td><code>tags</code></td>
-<td>Character vector of tags to filter by, or NULL for no filtering</td>
+<td>Character vector of tags to include, or NULL for no inclusion filter. Only models with at least one matching tag are kept.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>Character vector of tags to exclude, or NULL for no exclusion filter. Models with any matching tag are removed. Applied after <code>tags</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -46,4 +50,8 @@ Modified spec
 ```r
 spec <- SummarySpec() |>
   set_spec_tag_filter(c("final", "approved"))
+
+# Exclude models tagged "failed"
+spec <- SummarySpec() |>
+  set_spec_tag_filter(exclude = "failed")
 ```

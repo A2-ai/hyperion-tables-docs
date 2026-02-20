@@ -15,6 +15,7 @@ SummarySpec(
   title = "Run Summary",
   models_to_include = NULL,
   tag_filter = NULL,
+  tag_exclude = NULL,
   summary_filter = summary_filter_rules(),
   remove_unrun_models = TRUE,
   columns = NULL,
@@ -26,6 +27,8 @@ SummarySpec(
   time_format = "seconds",
   pvalue_scientific = FALSE,
   pvalue_threshold = NULL,
+  sections = section_rules(),
+  section_filter = NULL,
   footnote_order = "abbreviations"
 )
 ```
@@ -52,6 +55,10 @@ SummarySpec(
 <tr>
 <td><code>tag_filter</code></td>
 <td>Character vector of tags, or NULL (default). Only models with at least one matching tag are included.</td>
+</tr>
+<tr>
+<td><code>tag_exclude</code></td>
+<td>Character vector of tags to exclude, or NULL (default). Models with any matching tag are removed. Applied after tag_filter.</td>
 </tr>
 <tr>
 <td><code>summary_filter</code></td>
@@ -96,6 +103,14 @@ SummarySpec(
 <tr>
 <td><code>pvalue_threshold</code></td>
 <td>Numeric or NULL. If set, p-values below this threshold are displayed as "< threshold" (e.g., "< 0.05"). Default is NULL (no threshold).</td>
+</tr>
+<tr>
+<td><code>sections</code></td>
+<td>Section rules created with <code>section_rules()</code>.</td>
+</tr>
+<tr>
+<td><code>section_filter</code></td>
+<td>Character vector of section labels to exclude from the table. Use <code>NA</code> to also exclude models that don't match any section rule. Default is NULL (no filtering). See <code>set_spec_section_filter()</code>.</td>
 </tr>
 <tr>
 <td><code>footnote_order</code></td>
