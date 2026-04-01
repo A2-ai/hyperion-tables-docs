@@ -1,0 +1,17 @@
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^!fixed
+env:  0x112a3c390
+
+[[2]]
+<quosure>
+expr: ^diagonal
+env:  0x112a3c390
+
+[[3]]
+<quosure>
+expr: ^kind != "SIGMA"
+env:  0x112a3c390
+ 

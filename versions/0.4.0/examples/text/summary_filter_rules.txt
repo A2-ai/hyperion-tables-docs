@@ -1,0 +1,17 @@
+<list_of<quosure>>
+
+[[1]]
+<quosure>
+expr: ^ofv < 0
+env:  0x115ff7728
+
+[[2]]
+<quosure>
+expr: ^estimation_method == "FOCE"
+env:  0x115ff7728
+
+[[3]]
+<quosure>
+expr: ^model %in% c("run001", "run003")
+env:  0x115ff7728
+ 
