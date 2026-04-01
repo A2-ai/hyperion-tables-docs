@@ -8,10 +8,15 @@ pagefind: true
 
 Filters which models appear in the summary table by name.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_models(spec, models)
+set_spec_models(spec, models, ...)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_models(spec, models)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -33,13 +35,20 @@ set_spec_models(spec, models)
 <td><code>models</code></td>
 <td>Character vector of model names, or NULL for all models</td>
 </tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -47,3 +56,4 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_models(c("run001", "run002", "run003"))
 ```
+

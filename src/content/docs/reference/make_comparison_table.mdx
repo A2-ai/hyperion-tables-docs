@@ -1,12 +1,19 @@
 ---
 title: "Build comparison table"
-description: "Creates a formatted table comparing parameters from two or more models."
+description: "Creates a formatted table comparing parameters from two or more models. Supports multiple output formats: gt (default), flextable, or the intermediate HyperionT"
 pagefind: true
 ---
 
 ## Description
 
-Creates a formatted table comparing parameters from two or more models. Supports multiple output formats: gt (default), flextable, or the intermediate HyperionTable object.
+Creates a formatted table comparing parameters from two or more models.
+Supports multiple output formats: gt (default), flextable, or the
+intermediate HyperionTable object.
+
+
+
+
+
 
 ## Usage
 
@@ -19,15 +26,12 @@ make_comparison_table(comparison, output = c("gt", "flextable", "data"))
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>comparison</code></td>
-<td>Comparison data frame from <code>compare_with()</code></td>
+<td>Comparison data frame from `compare_with()`</td>
 </tr>
 <tr>
 <td><code>output</code></td>
@@ -37,6 +41,10 @@ make_comparison_table(comparison, output = c("gt", "flextable", "data"))
 </table>
 </div>
 
+
 ## Value
 
 A gt table, flextable, or HyperionTable object depending on `output`
+
+
+

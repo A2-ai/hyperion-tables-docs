@@ -3,15 +3,15 @@
 [[1]]
 <quosure>
 expr: ^ofv < 0
-env:  global
+env:  0x115ff7728
 
 [[2]]
 <quosure>
 expr: ^estimation_method == "FOCE"
-env:  global
+env:  0x115ff7728
 
 [[3]]
 <quosure>
 expr: ^model %in% c("run001", "run003")
-env:  global
+env:  0x115ff7728
  

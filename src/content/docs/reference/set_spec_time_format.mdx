@@ -8,10 +8,15 @@ pagefind: true
 
 Controls how time columns are formatted.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_time_format(spec, format)
+set_spec_time_format(spec, format, ...)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_time_format(spec, format)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -33,13 +35,20 @@ set_spec_time_format(spec, format)
 <td><code>format</code></td>
 <td>One of "seconds", "minutes", "hours", or "auto"</td>
 </tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -47,3 +56,4 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_time_format("minutes")
 ```
+

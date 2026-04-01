@@ -8,6 +8,11 @@ pagefind: true
 
 Controls CI merge behavior and missing-value display.
 
+
+
+
+
+
 ## Usage
 
 ```r
@@ -24,10 +29,7 @@ CIOptions(
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -40,7 +42,7 @@ CIOptions(
 </tr>
 <tr>
 <td><code>pattern</code></td>
-<td>sprintf pattern used when merging CI values. Must include exactly two <code>⁠%s⁠</code>.</td>
+<td>sprintf pattern used when merging CI values. Must include exactly two `%s`.</td>
 </tr>
 <tr>
 <td><code>missing_text</code></td>
@@ -50,10 +52,15 @@ CIOptions(
 </table>
 </div>
 
+
+
 ## Properties
 
-The following properties are available on a `CIOptions` object: 
+The following properties are available on a `CIOptions` object:
 - `level` - Confidence interval level (0-1).
 - `merge` - Whether to merge CI bounds into a single column.
-- `pattern` - sprintf pattern for merged CI display (two %s).
+- `pattern` - sprintf pattern for merged CI display (two `%s`).
 - `missing_text` - Text to show for missing CI values.
+
+
+

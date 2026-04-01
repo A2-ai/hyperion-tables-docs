@@ -8,10 +8,20 @@ pagefind: true
 
 Controls how parameter names are displayed in the table.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_parameter_names(spec, source = NULL, append_omega_with_theta = NULL)
+set_spec_parameter_names(
+  spec,
+  ...,
+  source = NULL,
+  append_omega_with_theta = NULL
+)
 ```
 
 ## Arguments
@@ -19,15 +29,16 @@ set_spec_parameter_names(spec, source = NULL, append_omega_with_theta = NULL)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>spec</code></td>
 <td>A TableSpec object</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
 </tr>
 <tr>
 <td><code>source</code></td>
@@ -41,9 +52,12 @@ set_spec_parameter_names(spec, source = NULL, append_omega_with_theta = NULL)
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -51,3 +65,4 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_parameter_names(source = "nonmem", append_omega_with_theta = FALSE)
 ```
+

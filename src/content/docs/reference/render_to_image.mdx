@@ -1,0 +1,52 @@
+---
+title: "Render a table to a PNG image"
+description: "Converts a rendered gt or flextable object to a PNG screenshot. The primary output is always placed at a knitr-relative path (during knit) or a temporary file ("
+pagefind: true
+---
+
+## Description
+
+Converts a rendered gt or flextable object to a PNG screenshot.
+The primary output is always placed at a knitr-relative path (during knit)
+or a temporary file (interactively). When `path` is provided, a copy is
+saved to that location as a side effect.
+
+
+
+
+
+
+## Usage
+
+```r
+render_to_image(table, path = NULL)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>table</code></td>
+<td>A gt or flextable object</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>Optional file path to save a copy of the PNG. This is a convenience for persisting the image; the returned object still references the primary (knitr or temp) path.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+A `knitr::include_graphics()` object pointing to the primary
+PNG path (not `path`).
+
+
+

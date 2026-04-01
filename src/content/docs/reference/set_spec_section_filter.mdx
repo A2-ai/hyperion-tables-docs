@@ -1,12 +1,25 @@
 ---
 title: "Set section filter for a spec"
-description: "Filters out rows belonging to specified sections."
+description: "Filters out rows belonging to specified sections. Use `NA` to also filter unmatched rows (those that didn't match any section rule)."
 pagefind: true
 ---
 
 ## Description
 
-Filters out rows belonging to specified sections. Use `NA` to also filter unmatched rows (those that didn't match any section rule).
+Filters out rows belonging to specified sections. Use `NA` to also
+filter unmatched rows (those that didn't match any section rule).
+
+## Details
+
+Built-in methods for `TableSpec` and `SummarySpec` interpret values in
+`...` as section labels to exclude. Pass `NA` to also exclude unmatched rows
+(those that did not match any section rule). Call with no arguments to clear
+the filter. Named arguments in `...` are ignored with a warning.
+
+
+
+
+
 
 ## Usage
 
@@ -19,10 +32,7 @@ set_spec_section_filter(spec, ...)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -31,15 +41,19 @@ set_spec_section_filter(spec, ...)
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Section labels to exclude. Pass <code>NA</code> to exclude unmatched rows. Call with no arguments to clear the filter.</td>
+<td>Additional arguments passed to methods.</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
+
 
 ## Examples
 
@@ -52,3 +66,4 @@ spec <- SummarySpec(
 ) |>
   set_spec_section_filter("Other")
 ```
+

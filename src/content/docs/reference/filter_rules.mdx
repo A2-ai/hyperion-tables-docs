@@ -1,12 +1,18 @@
 ---
 title: "Create row filter rules"
-description: "Creates rules for filtering which parameters appear in the output table."
+description: "Creates rules for filtering which parameters appear in the output table. Rules are evaluated after name transformation."
 pagefind: true
 ---
 
 ## Description
 
-Creates rules for filtering which parameters appear in the output table. Rules are evaluated after name transformation.
+Creates rules for filtering which parameters appear in the output table.
+Rules are evaluated after name transformation.
+
+
+
+
+
 
 ## Usage
 
@@ -19,33 +25,35 @@ filter_rules(...)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>...</code></td>
-<td>Filter expressions like <code>!fixed</code>, <code>diagonal</code></td>
+<td>Filter expressions like `!fixed`, `diagonal`</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 List of quosures for use in TableSpec
 
+
+
 ## Available columns
 
-The following columns are available for use in filter rules: 
+The following columns are available for use in filter rules:
 - `nonmem_name` - NONMEM identifier ("THETA1", "OMEGA(1,1)")
 - `user_name` - User name from control file comments ("CL", "OM1")
 - `name` - Display name (depends on `parameter_names` setting)
 - `kind` - Parameter type: "THETA", "OMEGA", or "SIGMA"
 - `diagonal` - TRUE for diagonal matrix elements (variance), FALSE for off-diagonal (covariance)
 - `fixed` - TRUE if parameter is fixed
+
+
 
 ## Examples
 
@@ -56,7 +64,6 @@ filter_rules(
   kind != "SIGMA"
 )
 ```
-
 ### Output
 
 ```
@@ -65,16 +72,18 @@ filter_rules(
 [[1]]
 <quosure>
 expr: ^!fixed
-env:  global
+env:  0x112a3c390
 
 [[2]]
 <quosure>
 expr: ^diagonal
-env:  global
+env:  0x112a3c390
 
 [[3]]
 <quosure>
 expr: ^kind != "SIGMA"
-env:  global
+env:  0x112a3c390
  
 ```
+
+

@@ -1,12 +1,18 @@
 ---
 title: "Create filter rules for summary table filtering"
-description: "Creates rules for filtering which models appear in the summary table."
+description: "Creates rules for filtering which models appear in the summary table. Rules are evaluated against the summary data frame."
 pagefind: true
 ---
 
 ## Description
 
-Creates rules for filtering which models appear in the summary table. Rules are evaluated against the summary data frame.
+Creates rules for filtering which models appear in the summary table.
+Rules are evaluated against the summary data frame.
+
+
+
+
+
 
 ## Usage
 
@@ -19,27 +25,29 @@ summary_filter_rules(...)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>...</code></td>
-<td>Filter expressions like <code>"final" %in% tags</code>, <code>!is.null(description)</code></td>
+<td>Filter expressions like `"final" %in% tags`, `!is.null(description)`</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 List of quosures for use in SummarySpec
 
+
+
 ## Available columns
 
-The following columns are available for use in filter rules. Filters are evaluated against the summary data frame, so columns must be included in `SummarySpec@columns` to be available. 
+The following columns are available for use in filter rules. Filters are
+evaluated against the summary data frame, so columns must be included in
+`SummarySpec@columns` to be available.
 - `model` - Model name (e.g., "run001")
 - `based_on` - Reference model name(s)
 - `description` - Model description
@@ -61,6 +69,8 @@ The following columns are available for use in filter rules. Filters are evaluat
 - `pvalue` - LRT p-value
 - `df` - Degrees of freedom
 
+
+
 ## Examples
 
 ```r
@@ -70,7 +80,6 @@ summary_filter_rules(
   model %in% c("run001", "run003")
 )
 ```
-
 ### Output
 
 ```
@@ -79,16 +88,18 @@ summary_filter_rules(
 [[1]]
 <quosure>
 expr: ^ofv < 0
-env:  global
+env:  0x115ff7728
 
 [[2]]
 <quosure>
 expr: ^estimation_method == "FOCE"
-env:  global
+env:  0x115ff7728
 
 [[3]]
 <quosure>
 expr: ^model %in% c("run001", "run003")
-env:  global
+env:  0x115ff7728
  
 ```
+
+

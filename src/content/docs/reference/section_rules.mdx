@@ -1,12 +1,21 @@
 ---
 title: "Create section assignment rules"
-description: "Creates rules for assigning parameters to named sections in the output table."
+description: "Creates rules for assigning parameters to named sections in the output table. Rules are evaluated after name transformation, so you can match on the final displ"
 pagefind: true
 ---
 
+import { Icon } from '@astrojs/starlight/components';
+
 ## Description
 
-Creates rules for assigning parameters to named sections in the output table. Rules are evaluated after name transformation, so you can match on the final display name or use the preserved `nonmem_name` and `user_name` columns.
+Creates rules for assigning parameters to named sections in the output table.
+Rules are evaluated after name transformation, so you can match on the final
+display name or use the preserved `nonmem_name` and `user_name` columns.
+
+
+
+
+
 
 ## Usage
 
@@ -19,33 +28,35 @@ section_rules(...)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>...</code></td>
-<td>Formula expressions like <code>kind == "THETA" ~ "Structural Parameters"</code></td>
+<td>Formula expressions following [`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case_when.html)<span style = {{ display: 'inline-block', verticalAlign: 'middle' }}><Icon name="external" /></span> syntax, `kind == "THETA" ~ "Structural Parameters"`</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 List of quosures for use in TableSpec
 
+
+
 ## Available columns
 
-The following columns are available for use in section rules: 
+The following columns are available for use in section rules:
 - `nonmem_name` - NONMEM identifier ("THETA1", "OMEGA(1,1)")
 - `user_name` - User name from control file comments ("CL", "OM1")
 - `name` - Display name (depends on `parameter_names` setting)
 - `kind` - Parameter type: "THETA", "OMEGA", or "SIGMA"
 - `diagonal` - TRUE for diagonal matrix elements (variance), FALSE for off-diagonal (covariance)
 - `fixed` - TRUE if parameter is fixed
+
+
 
 ## Examples
 
@@ -57,7 +68,6 @@ section_rules(
   kind == "SIGMA" ~ "Residual Variability"
 )
 ```
-
 ### Output
 
 ```
@@ -66,21 +76,23 @@ section_rules(
 [[1]]
 <quosure>
 expr: ^grepl("~", user_name) ~ "Covariate Effects"
-env:  global
+env:  0x12051b9e0
 
 [[2]]
 <quosure>
 expr: ^kind == "THETA" ~ "Structural Parameters"
-env:  global
+env:  0x12051b9e0
 
 [[3]]
 <quosure>
 expr: ^kind == "OMEGA" & diagonal ~ "Between-Subject Variability"
-env:  global
+env:  0x12051b9e0
 
 [[4]]
 <quosure>
 expr: ^kind == "SIGMA" ~ "Residual Variability"
-env:  global
+env:  0x12051b9e0
  
 ```
+
+

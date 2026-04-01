@@ -8,10 +8,15 @@ pagefind: true
 
 Returns the CIOptions object.
 
+
+
+
+
+
 ## Usage
 
 ```r
-get_spec_ci(spec)
+get_spec_ci(spec, ...)
 ```
 
 ## Arguments
@@ -19,23 +24,27 @@ get_spec_ci(spec)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>spec</code></td>
 <td>A TableSpec object</td>
 </tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 CIOptions object
+
+
 
 ## Examples
 
@@ -43,7 +52,6 @@ CIOptions object
 spec <- TableSpec()
 get_spec_ci(spec)
 ```
-
 ### Output
 
 ```
@@ -53,3 +61,5 @@ get_spec_ci(spec)
  @ pattern     : chr "[%s, %s]"
  @ missing_text: chr "-" 
 ```
+
+

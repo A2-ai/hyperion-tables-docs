@@ -3,20 +3,20 @@
 [[1]]
 <quosure>
 expr: ^grepl("~", user_name) ~ "Covariate Effects"
-env:  global
+env:  0x12051b9e0
 
 [[2]]
 <quosure>
 expr: ^kind == "THETA" ~ "Structural Parameters"
-env:  global
+env:  0x12051b9e0
 
 [[3]]
 <quosure>
 expr: ^kind == "OMEGA" & diagonal ~ "Between-Subject Variability"
-env:  global
+env:  0x12051b9e0
 
 [[4]]
 <quosure>
 expr: ^kind == "SIGMA" ~ "Residual Variability"
-env:  global
+env:  0x12051b9e0
  

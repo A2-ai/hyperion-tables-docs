@@ -8,10 +8,15 @@ pagefind: true
 
 Returns the section labels being filtered out, or NULL if no filter is set.
 
+
+
+
+
+
 ## Usage
 
 ```r
-get_spec_section_filter(spec)
+get_spec_section_filter(spec, ...)
 ```
 
 ## Arguments
@@ -19,20 +24,25 @@ get_spec_section_filter(spec)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>spec</code></td>
 <td>A TableSpec or SummarySpec object</td>
 </tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Character vector or NULL
+
+
+

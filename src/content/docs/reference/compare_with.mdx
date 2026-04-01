@@ -1,12 +1,21 @@
 ---
 title: "Compare two enriched parameter data frames"
-description: "Joins two enriched parameter data frames for side-by-side comparison."
+description: "Joins two enriched parameter data frames for side-by-side comparison. Both inputs should be prepared using the standard pipeline: `get_parameters() |> apply_tab"
 pagefind: true
 ---
 
 ## Description
 
-Joins two enriched parameter data frames for side-by-side comparison. Both inputs should be prepared using the standard pipeline: `get_parameters() |> apply_table_spec() |> add_summary_info()`. Can also be chained by passing an existing `hyperion_comparison` object as `params1` to add another model comparison.
+Joins two enriched parameter data frames for side-by-side comparison.
+Both inputs should be prepared using the standard pipeline:
+`get_parameters() |> apply_table_spec() |> add_summary_info()`.
+Can also be chained by passing an existing `hyperion_comparison` object as
+`params1` to add another model comparison.
+
+
+
+
+
 
 ## Usage
 
@@ -24,10 +33,7 @@ compare_with(
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -40,16 +46,21 @@ compare_with(
 </tr>
 <tr>
 <td><code>labels</code></td>
-<td>Model labels used in table headers. For an initial 2-model comparison, supply length 2 (default: <code>c("Model 1", "Model 2")</code>). For chained comparisons (<code>params1</code> is already a <code>hyperion_comparison</code>): length 1 appends a label for the new model; length 2 renames the previous latest label to <code>labels[1]</code> and appends <code>labels[2]</code> for the new model.</td>
+<td>Model labels used in table headers. For an initial 2-model comparison, supply length 2 (default: `c("Model 1", "Model 2")`). For chained comparisons (`params1` is already a `hyperion_comparison`): length 1 appends a label for the new model; length 2 renames the previous latest label to `labels[1]` and appends `labels[2]` for the new model.</td>
 </tr>
 <tr>
 <td><code>reference_model</code></td>
-<td>Character string specifying which model to use as reference for percent change calculations. Must match a model already in the comparison by <code>run_name</code> or label (file extensions are ignored). When NULL (default), percent change is calculated relative to the previous model in the chain.</td>
+<td>Character string specifying which model to use as reference for percent change calculations. Must match a model already in the comparison by `run_name` or label (file extensions are ignored). When NULL (default), percent change is calculated relative to the previous model in the chain.</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
-Data frame with class `hyperion_comparison` containing joined parameter data with suffixed columns and comparison attributes.
+Data frame with class `hyperion_comparison` containing joined
+parameter data with suffixed columns and comparison attributes.
+
+
+

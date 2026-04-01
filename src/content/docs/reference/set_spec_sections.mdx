@@ -1,12 +1,30 @@
 ---
 title: "Set section rules for a spec"
-description: "Controls how rows are grouped into sections."
+description: "Controls how rows are grouped into sections. Pass formula expressions where the LHS is a condition and the RHS is the section label."
 pagefind: true
 ---
 
 ## Description
 
-Controls how rows are grouped into sections. Pass formula expressions where the LHS is a condition and the RHS is the section label.
+Controls how rows are grouped into sections. Pass formula expressions
+where the LHS is a condition and the RHS is the section label.
+
+## Details
+
+For TableSpec, rules are evaluated against parameter columns
+(e.g., `kind == "THETA" ~ "Structural Parameters"`).
+
+For SummarySpec, rules are evaluated row-by-row against summary columns
+including `tags` (e.g., `"base" %in% tags ~ "Base Models"`).
+
+Built-in methods for `TableSpec` and `SummarySpec` interpret unnamed
+arguments in `...` as section rule formulas. Named arguments in `...` are
+ignored with a warning.
+
+
+
+
+
 
 ## Usage
 
@@ -19,10 +37,7 @@ set_spec_sections(spec, ..., overwrite = FALSE)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -31,7 +46,7 @@ set_spec_sections(spec, ..., overwrite = FALSE)
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Section rule formulas</td>
+<td>Additional arguments passed to methods.</td>
 </tr>
 <tr>
 <td><code>overwrite</code></td>
@@ -41,15 +56,13 @@ set_spec_sections(spec, ..., overwrite = FALSE)
 </table>
 </div>
 
-## Details
-
-For TableSpec, rules are evaluated against parameter columns (e.g., `kind == "THETA" ~ "Structural Parameters"`).
-
-For SummarySpec, rules are evaluated row-by-row against summary columns including `tags` (e.g., `"base" %in% tags ~ "Base Models"`).
 
 ## Value
 
 Modified spec
+
+
+
 
 ## Examples
 
@@ -60,3 +73,4 @@ spec <- TableSpec() |>
     kind == "OMEGA" ~ "IIV"
   )
 ```
+

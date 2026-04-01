@@ -6,7 +6,19 @@ pagefind: true
 
 ## Description
 
-Controls which models appear in the summary table based on filter expressions evaluated against summary columns.
+Controls which models appear in the summary table based on filter
+expressions evaluated against summary columns.
+
+## Details
+
+The built-in `SummarySpec` method interprets unnamed arguments in `...` as
+summary filter rule expressions. Named arguments in `...` are ignored with a
+warning.
+
+
+
+
+
 
 ## Usage
 
@@ -19,10 +31,7 @@ set_spec_summary_filter(spec, ..., overwrite = FALSE)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -31,7 +40,7 @@ set_spec_summary_filter(spec, ..., overwrite = FALSE)
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Filter rule expressions</td>
+<td>Additional arguments passed to methods.</td>
 </tr>
 <tr>
 <td><code>overwrite</code></td>
@@ -41,9 +50,13 @@ set_spec_summary_filter(spec, ..., overwrite = FALSE)
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
+
 
 ## Examples
 
@@ -51,3 +64,4 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_summary_filter(ofv < 1000)
 ```
+

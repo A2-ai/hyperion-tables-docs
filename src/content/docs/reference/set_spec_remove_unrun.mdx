@@ -8,10 +8,15 @@ pagefind: true
 
 Controls whether models without completed runs are excluded.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_remove_unrun(spec, remove)
+set_spec_remove_unrun(spec, remove, ...)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_remove_unrun(spec, remove)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -33,13 +35,20 @@ set_spec_remove_unrun(spec, remove)
 <td><code>remove</code></td>
 <td>Logical value</td>
 </tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -47,3 +56,4 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_remove_unrun(FALSE)
 ```
+

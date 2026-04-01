@@ -1,12 +1,24 @@
 ---
 title: "Set columns for a spec"
-description: "Replaces the spec's columns list entirely."
+description: "Replaces the spec's columns list entirely. This overrides the default column set."
 pagefind: true
 ---
 
 ## Description
 
-Replaces the spec's columns list entirely. This overrides the default column set.
+Replaces the spec's columns list entirely. This overrides the default
+column set.
+
+## Details
+
+Built-in methods for `TableSpec` and `SummarySpec` interpret unnamed
+arguments in `...` as column names (character strings). Named arguments in
+`...` are ignored with a warning.
+
+
+
+
+
 
 ## Usage
 
@@ -19,10 +31,7 @@ set_spec_columns(spec, ...)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -31,15 +40,19 @@ set_spec_columns(spec, ...)
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Column names to include (character strings)</td>
+<td>Additional arguments passed to methods.</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
+
 
 ## Examples
 
@@ -47,3 +60,4 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_columns("name", "estimate", "rse")
 ```
+

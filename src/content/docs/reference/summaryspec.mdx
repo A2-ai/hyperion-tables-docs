@@ -1,12 +1,17 @@
 ---
 title: "Summary specification for run summary tables"
-description: "Summary specification for run summary tables"
+description: "Summary specification for run summary tables."
 pagefind: true
 ---
 
 ## Description
 
 Summary specification for run summary tables
+
+
+
+
+
 
 ## Usage
 
@@ -38,10 +43,7 @@ SummarySpec(
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -62,7 +64,7 @@ SummarySpec(
 </tr>
 <tr>
 <td><code>summary_filter</code></td>
-<td>Filter rules created with <code>summary_filter_rules()</code>.</td>
+<td>Filter rules created with `summary_filter_rules()`.</td>
 </tr>
 <tr>
 <td><code>remove_unrun_models</code></td>
@@ -74,7 +76,7 @@ SummarySpec(
 </tr>
 <tr>
 <td><code>add_columns</code></td>
-<td>Character vector of columns to append to the default <code>columns</code> list, or NULL (default).</td>
+<td>Character vector of columns to append to the default `columns` list, or NULL (default).</td>
 </tr>
 <tr>
 <td><code>drop_columns</code></td>
@@ -102,15 +104,15 @@ SummarySpec(
 </tr>
 <tr>
 <td><code>pvalue_threshold</code></td>
-<td>Numeric or NULL. If set, p-values below this threshold are displayed as "< threshold" (e.g., "< 0.05"). Default is NULL (no threshold).</td>
+<td>Numeric or NULL. If set, p-values below this threshold are displayed as "\< threshold" (e.g., "\< 0.05"). Default is NULL (no threshold).</td>
 </tr>
 <tr>
 <td><code>sections</code></td>
-<td>Section rules created with <code>section_rules()</code>.</td>
+<td>Section rules created with `section_rules()`.</td>
 </tr>
 <tr>
 <td><code>section_filter</code></td>
-<td>Character vector of section labels to exclude from the table. Use <code>NA</code> to also exclude models that don't match any section rule. Default is NULL (no filtering). See <code>set_spec_section_filter()</code>.</td>
+<td>Character vector of section labels to exclude from the table. Use `NA` to also exclude models that don't match any section rule. Default is NULL (no filtering). See `set_spec_section_filter()`.</td>
 </tr>
 <tr>
 <td><code>footnote_order</code></td>
@@ -120,4 +122,5 @@ SummarySpec(
 </table>
 </div>
 
-| `footnote_order` | Character vector controlling the order of footnote sections, or NULL to disable footnotes. Valid value for SummarySpec: "abbreviations". Default is c("abbreviations"). |
+
+

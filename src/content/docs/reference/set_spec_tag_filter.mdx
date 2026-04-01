@@ -8,10 +8,15 @@ pagefind: true
 
 Filters which models appear in the summary table by tags.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_tag_filter(spec, tags, exclude)
+set_spec_tag_filter(spec, ..., tags, exclude)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_tag_filter(spec, tags, exclude)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -30,20 +32,27 @@ set_spec_tag_filter(spec, tags, exclude)
 <td>A SummarySpec object</td>
 </tr>
 <tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
+<tr>
 <td><code>tags</code></td>
 <td>Character vector of tags to include, or NULL for no inclusion filter. Only models with at least one matching tag are kept.</td>
 </tr>
 <tr>
 <td><code>exclude</code></td>
-<td>Character vector of tags to exclude, or NULL for no exclusion filter. Models with any matching tag are removed. Applied after <code>tags</code>.</td>
+<td>Character vector of tags to exclude, or NULL for no exclusion filter. Models with any matching tag are removed. Applied after `tags`.</td>
 </tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -55,3 +64,4 @@ spec <- SummarySpec() |>
 spec <- SummarySpec() |>
   set_spec_tag_filter(exclude = "failed")
 ```
+

@@ -1,12 +1,19 @@
 ---
 title: "Create summary table from prepared data"
-description: "Creates a formatted table from summary data prepared by apply_summary_spec()."
+description: "Creates a formatted table from summary data prepared by apply_summary_spec(). Supports multiple output formats: gt (default), flextable, or the intermediate Hyp"
 pagefind: true
 ---
 
 ## Description
 
-Creates a formatted table from summary data prepared by apply_summary_spec(). Supports multiple output formats: gt (default), flextable, or the intermediate HyperionTable object.
+Creates a formatted table from summary data prepared by apply_summary_spec().
+Supports multiple output formats: gt (default), flextable, or the
+intermediate HyperionTable object.
+
+
+
+
+
 
 ## Usage
 
@@ -19,10 +26,7 @@ make_summary_table(data, output = c("gt", "flextable", "data"))
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -37,6 +41,10 @@ make_summary_table(data, output = c("gt", "flextable", "data"))
 </table>
 </div>
 
+
 ## Value
 
 A gt table, flextable, or HyperionTable object depending on `output`
+
+
+

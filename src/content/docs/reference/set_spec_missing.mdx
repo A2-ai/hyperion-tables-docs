@@ -8,10 +8,15 @@ pagefind: true
 
 Controls how NA values are displayed in the table.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_missing(spec, text = NULL, apply_to = NULL)
+set_spec_missing(spec, text = NULL, ..., apply_to = NULL)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_missing(spec, text = NULL, apply_to = NULL)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -34,6 +36,10 @@ set_spec_missing(spec, text = NULL, apply_to = NULL)
 <td>Text to substitute for NA values</td>
 </tr>
 <tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
+<tr>
 <td><code>apply_to</code></td>
 <td>Which columns to apply missing text to: "all", "numeric", or "character"</td>
 </tr>
@@ -41,9 +47,12 @@ set_spec_missing(spec, text = NULL, apply_to = NULL)
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -51,3 +60,4 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_missing("-", apply_to = "numeric")
 ```
+

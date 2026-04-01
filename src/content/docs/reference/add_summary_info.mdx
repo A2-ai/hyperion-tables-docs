@@ -6,7 +6,14 @@ pagefind: true
 
 ## Description
 
-Attaches estimation method, OFV, condition number, and number of observations to parameter data for display as the first footnote in the parameter table.
+Attaches estimation method, OFV, condition number, and number of
+observations to parameter data for display as the first footnote in
+the parameter table.
+
+
+
+
+
 
 ## Usage
 
@@ -26,19 +33,16 @@ add_summary_info(
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><code>params</code></td>
-<td>Enriched parameter data frame from <code>apply_table_spec()</code></td>
+<td>Enriched parameter data frame from `apply_table_spec()`</td>
 </tr>
 <tr>
 <td><code>model_sum</code></td>
-<td>Summary object from <code>summary()</code>, or NULL to skip</td>
+<td>Summary object from `summary()`, or NULL to skip</td>
 </tr>
 <tr>
 <td><code>show_method</code></td>
@@ -60,6 +64,10 @@ add_summary_info(
 </table>
 </div>
 
+
 ## Value
 
 Data frame with model_summary attribute attached
+
+
+

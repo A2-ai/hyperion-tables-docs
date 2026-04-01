@@ -8,10 +8,15 @@ pagefind: true
 
 Controls how p-values are displayed in the table.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_pvalue(spec, threshold, scientific)
+set_spec_pvalue(spec, ..., threshold, scientific)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_pvalue(spec, threshold, scientific)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -30,8 +32,12 @@ set_spec_pvalue(spec, threshold, scientific)
 <td>A TableSpec or SummarySpec object</td>
 </tr>
 <tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
+<tr>
 <td><code>threshold</code></td>
-<td>Numeric threshold below which p-values display as "< threshold", or NULL to disable threshold display</td>
+<td>Numeric threshold below which p-values display as "\< threshold", or NULL to disable threshold display</td>
 </tr>
 <tr>
 <td><code>scientific</code></td>
@@ -41,9 +47,12 @@ set_spec_pvalue(spec, threshold, scientific)
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -51,3 +60,4 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_pvalue(threshold = 0.001, scientific = TRUE)
 ```
+

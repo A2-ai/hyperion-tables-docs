@@ -8,10 +8,15 @@ pagefind: true
 
 Controls the order of footnote sections, or disables footnotes entirely.
 
+
+
+
+
+
 ## Usage
 
 ```r
-set_spec_footnotes(spec, order)
+set_spec_footnotes(spec, order, ...)
 ```
 
 ## Arguments
@@ -19,10 +24,7 @@ set_spec_footnotes(spec, order)
 <div class="arg-table">
 <table>
 <thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
+<tr><th>Argument</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -33,13 +35,20 @@ set_spec_footnotes(spec, order)
 <td><code>order</code></td>
 <td>Character vector of footnote sections in desired order, or NULL to disable footnotes. For TableSpec: "summary_info", "equations", "abbreviations". For SummarySpec: only "abbreviations" is valid.</td>
 </tr>
+<tr>
+<td><code>...</code></td>
+<td>Additional arguments passed to methods.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+
 ## Value
 
 Modified spec
+
+
 
 ## Examples
 
@@ -51,3 +60,4 @@ spec <- TableSpec() |>
 spec <- TableSpec() |>
   set_spec_footnotes(NULL)
 ```
+
