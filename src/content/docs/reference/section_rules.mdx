@@ -33,7 +33,7 @@ section_rules(...)
 <tbody>
 <tr>
 <td><code>...</code></td>
-<td>Formula expressions following [`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case_when.html)<span style = {{ display: 'inline-block', verticalAlign: 'middle' }}><Icon name="external" /></span> syntax, `kind == "THETA" ~ "Structural Parameters"`</td>
+<td>Formula expressions following [`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)<span style = {{ display: 'inline-block', verticalAlign: 'middle' }}><Icon name="external" /></span> syntax, `kind == "THETA" ~ "Structural Parameters"`</td>
 </tr>
 </tbody>
 </table>
@@ -76,22 +76,22 @@ section_rules(
 [[1]]
 <quosure>
 expr: ^grepl("~", user_name) ~ "Covariate Effects"
-env:  0x12051b9e0
+env:  0x13323e278
 
 [[2]]
 <quosure>
 expr: ^kind == "THETA" ~ "Structural Parameters"
-env:  0x12051b9e0
+env:  0x13323e278
 
 [[3]]
 <quosure>
 expr: ^kind == "OMEGA" & diagonal ~ "Between-Subject Variability"
-env:  0x12051b9e0
+env:  0x13323e278
 
 [[4]]
 <quosure>
 expr: ^kind == "SIGMA" ~ "Residual Variability"
-env:  0x12051b9e0
+env:  0x13323e278
  
 ```
 
