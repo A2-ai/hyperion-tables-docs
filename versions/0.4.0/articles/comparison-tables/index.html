@@ -108,20 +108,20 @@ async function handleVersionChange(select) {
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">paste0</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_run</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">".mod"</span><span style="--0:#D6DEEB;--1:#403F53">)))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">child_sum</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">child_info</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run002.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">parent_mod</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_mod</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">child_info</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">child_sum</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> LRT suppressed for run002 vs run003: no lineage attached</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual variance&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  drop_spec_columns(&#x22;variability&#x22;, &#x22;shrinkage&#x22;, &#x22;rse&#x22;) |>  set_spec_pvalue(scientific = FALSE)child_mod <- read_model(file.path(model_dir, paste0(model_run, &#x22;.mod&#x22;)))child_sum <- summary(child_mod)child_info <- get_model_parameter_info(child_mod)parent_mod <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum <- summary(parent_mod)info <- get_model_parameter_info(parent_mod)get_parameters(parent_mod) |>  apply_table_spec(spec, info) |>  add_summary_info(mod_sum) |>  compare_with(    get_parameters(child_mod) |>      apply_table_spec(spec, child_info) |>      add_summary_info(child_sum),    labels = c(&#x22;run002&#x22;, &#x22;run003&#x22;)  ) |>  make_comparison_table()#> LRT suppressed for run002 vs run003: no lineage attached#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met."><div></div></button></div></figure></div>
-<div id="oygraicfma" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oygraicfma table {
+<div id="fhlhaanker" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fhlhaanker table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#oygraicfma thead, #oygraicfma tbody, #oygraicfma tfoot, #oygraicfma tr, #oygraicfma td, #oygraicfma th {
+&#10;#fhlhaanker thead, #fhlhaanker tbody, #fhlhaanker tfoot, #fhlhaanker tr, #fhlhaanker td, #fhlhaanker th {
   border-style: none;
 }
-&#10;#oygraicfma p {
+&#10;#fhlhaanker p {
   margin: 0;
   padding: 0;
 }
-&#10;#oygraicfma .gt_table {
+&#10;#fhlhaanker .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -146,11 +146,11 @@ async function handleVersionChange(select) {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_caption {
+&#10;#fhlhaanker .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#oygraicfma .gt_title {
+&#10;#fhlhaanker .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -161,7 +161,7 @@ async function handleVersionChange(select) {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#oygraicfma .gt_subtitle {
+&#10;#fhlhaanker .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -172,7 +172,7 @@ async function handleVersionChange(select) {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#oygraicfma .gt_heading {
+&#10;#fhlhaanker .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -183,12 +183,12 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_bottom_border {
+&#10;#fhlhaanker .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_col_headings {
+&#10;#fhlhaanker .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -202,7 +202,7 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_col_heading {
+&#10;#fhlhaanker .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -221,7 +221,7 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#oygraicfma .gt_column_spanner_outer {
+&#10;#fhlhaanker .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -232,13 +232,13 @@ async function handleVersionChange(select) {
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#oygraicfma .gt_column_spanner_outer:first-child {
+&#10;#fhlhaanker .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#oygraicfma .gt_column_spanner_outer:last-child {
+&#10;#fhlhaanker .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#oygraicfma .gt_column_spanner {
+&#10;#fhlhaanker .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -249,10 +249,10 @@ async function handleVersionChange(select) {
   display: inline-block;
   width: 100%;
 }
-&#10;#oygraicfma .gt_spanner_row {
+&#10;#fhlhaanker .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#oygraicfma .gt_group_heading {
+&#10;#fhlhaanker .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -277,7 +277,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   text-align: left;
 }
-&#10;#oygraicfma .gt_empty_group_heading {
+&#10;#fhlhaanker .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -291,13 +291,13 @@ async function handleVersionChange(select) {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#oygraicfma .gt_from_md > :first-child {
+&#10;#fhlhaanker .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#oygraicfma .gt_from_md > :last-child {
+&#10;#fhlhaanker .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#oygraicfma .gt_row {
+&#10;#fhlhaanker .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -315,7 +315,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#oygraicfma .gt_stub {
+&#10;#fhlhaanker .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -327,7 +327,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oygraicfma .gt_stub_row_group {
+&#10;#fhlhaanker .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -340,13 +340,13 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#oygraicfma .gt_row_group_first td {
+&#10;#fhlhaanker .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#oygraicfma .gt_row_group_first th {
+&#10;#fhlhaanker .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#oygraicfma .gt_summary_row {
+&#10;#fhlhaanker .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -355,14 +355,14 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oygraicfma .gt_first_summary_row {
+&#10;#fhlhaanker .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_first_summary_row.thick {
+&#10;#fhlhaanker .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#oygraicfma .gt_last_summary_row {
+&#10;#fhlhaanker .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -371,7 +371,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_grand_summary_row {
+&#10;#fhlhaanker .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -380,7 +380,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oygraicfma .gt_first_grand_summary_row {
+&#10;#fhlhaanker .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -389,7 +389,7 @@ async function handleVersionChange(select) {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_last_grand_summary_row_top {
+&#10;#fhlhaanker .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -398,10 +398,10 @@ async function handleVersionChange(select) {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_striped {
+&#10;#fhlhaanker .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#oygraicfma .gt_table_body {
+&#10;#fhlhaanker .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -409,7 +409,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_footnotes {
+&#10;#fhlhaanker .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -422,7 +422,7 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_footnote {
+&#10;#fhlhaanker .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -430,7 +430,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oygraicfma .gt_sourcenotes {
+&#10;#fhlhaanker .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -443,64 +443,64 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#oygraicfma .gt_sourcenote {
+&#10;#fhlhaanker .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oygraicfma .gt_left {
+&#10;#fhlhaanker .gt_left {
   text-align: left;
 }
-&#10;#oygraicfma .gt_center {
+&#10;#fhlhaanker .gt_center {
   text-align: center;
 }
-&#10;#oygraicfma .gt_right {
+&#10;#fhlhaanker .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#oygraicfma .gt_font_normal {
+&#10;#fhlhaanker .gt_font_normal {
   font-weight: normal;
 }
-&#10;#oygraicfma .gt_font_bold {
+&#10;#fhlhaanker .gt_font_bold {
   font-weight: bold;
 }
-&#10;#oygraicfma .gt_font_italic {
+&#10;#fhlhaanker .gt_font_italic {
   font-style: italic;
 }
-&#10;#oygraicfma .gt_super {
+&#10;#fhlhaanker .gt_super {
   font-size: 65%;
 }
-&#10;#oygraicfma .gt_footnote_marks {
+&#10;#fhlhaanker .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#oygraicfma .gt_asterisk {
+&#10;#fhlhaanker .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#oygraicfma .gt_indent_1 {
+&#10;#fhlhaanker .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#oygraicfma .gt_indent_2 {
+&#10;#fhlhaanker .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#oygraicfma .gt_indent_3 {
+&#10;#fhlhaanker .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#oygraicfma .gt_indent_4 {
+&#10;#fhlhaanker .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#oygraicfma .gt_indent_5 {
+&#10;#fhlhaanker .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#oygraicfma .katex-display {
+&#10;#fhlhaanker .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#oygraicfma div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#fhlhaanker div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -692,20 +692,20 @@ async function handleVersionChange(select) {
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003b1.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum2</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run003b1"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> LRT suppressed for run002 vs run003: no lineage attached</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> LRT suppressed for run003 vs run003b1: no lineage attached</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  set_spec_columns(&#x22;symbol&#x22;, &#x22;estimate&#x22;, &#x22;ci&#x22;, &#x22;rse&#x22;, &#x22;pct_change&#x22;) |>  set_spec_hide_empty(FALSE)mod1 <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum1 <- summary(mod1)info1 <- get_model_parameter_info(mod1)mod2 <- read_model(file.path(model_dir, &#x22;run003.mod&#x22;))mod_sum2 <- summary(mod2)info2 <- get_model_parameter_info(mod2)mod3 <- read_model(file.path(model_dir, &#x22;run003b1.mod&#x22;))mod_sum3 <- summary(mod3)info3 <- get_model_parameter_info(mod3)comp <- get_parameters(mod1) |>  apply_table_spec(spec, info1) |>  add_summary_info(mod_sum1) |>  compare_with(    get_parameters(mod2) |>      apply_table_spec(spec, info2) |>      add_summary_info(mod_sum2),    labels = c(&#x22;run002&#x22;, &#x22;run003&#x22;)  ) |>  compare_with(    get_parameters(mod3) |>      apply_table_spec(spec, info3) |>      add_summary_info(mod_sum3),    labels = c(&#x22;run003b1&#x22;)  )comp |>  make_comparison_table()#> LRT suppressed for run002 vs run003: no lineage attached#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.#> LRT suppressed for run003 vs run003b1: no lineage attached#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met."><div></div></button></div></figure></div>
-<div id="sdkivogjfq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sdkivogjfq table {
+<div id="lzugrmjahd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lzugrmjahd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#sdkivogjfq thead, #sdkivogjfq tbody, #sdkivogjfq tfoot, #sdkivogjfq tr, #sdkivogjfq td, #sdkivogjfq th {
+&#10;#lzugrmjahd thead, #lzugrmjahd tbody, #lzugrmjahd tfoot, #lzugrmjahd tr, #lzugrmjahd td, #lzugrmjahd th {
   border-style: none;
 }
-&#10;#sdkivogjfq p {
+&#10;#lzugrmjahd p {
   margin: 0;
   padding: 0;
 }
-&#10;#sdkivogjfq .gt_table {
+&#10;#lzugrmjahd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -730,11 +730,11 @@ async function handleVersionChange(select) {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_caption {
+&#10;#lzugrmjahd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#sdkivogjfq .gt_title {
+&#10;#lzugrmjahd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -745,7 +745,7 @@ async function handleVersionChange(select) {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#sdkivogjfq .gt_subtitle {
+&#10;#lzugrmjahd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -756,7 +756,7 @@ async function handleVersionChange(select) {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#sdkivogjfq .gt_heading {
+&#10;#lzugrmjahd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -767,12 +767,12 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_bottom_border {
+&#10;#lzugrmjahd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_col_headings {
+&#10;#lzugrmjahd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -786,7 +786,7 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_col_heading {
+&#10;#lzugrmjahd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -805,7 +805,7 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#sdkivogjfq .gt_column_spanner_outer {
+&#10;#lzugrmjahd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -816,13 +816,13 @@ async function handleVersionChange(select) {
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#sdkivogjfq .gt_column_spanner_outer:first-child {
+&#10;#lzugrmjahd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#sdkivogjfq .gt_column_spanner_outer:last-child {
+&#10;#lzugrmjahd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#sdkivogjfq .gt_column_spanner {
+&#10;#lzugrmjahd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -833,10 +833,10 @@ async function handleVersionChange(select) {
   display: inline-block;
   width: 100%;
 }
-&#10;#sdkivogjfq .gt_spanner_row {
+&#10;#lzugrmjahd .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#sdkivogjfq .gt_group_heading {
+&#10;#lzugrmjahd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -861,7 +861,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   text-align: left;
 }
-&#10;#sdkivogjfq .gt_empty_group_heading {
+&#10;#lzugrmjahd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -875,13 +875,13 @@ async function handleVersionChange(select) {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#sdkivogjfq .gt_from_md > :first-child {
+&#10;#lzugrmjahd .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#sdkivogjfq .gt_from_md > :last-child {
+&#10;#lzugrmjahd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#sdkivogjfq .gt_row {
+&#10;#lzugrmjahd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -899,7 +899,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#sdkivogjfq .gt_stub {
+&#10;#lzugrmjahd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -911,7 +911,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#sdkivogjfq .gt_stub_row_group {
+&#10;#lzugrmjahd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -924,13 +924,13 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#sdkivogjfq .gt_row_group_first td {
+&#10;#lzugrmjahd .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#sdkivogjfq .gt_row_group_first th {
+&#10;#lzugrmjahd .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#sdkivogjfq .gt_summary_row {
+&#10;#lzugrmjahd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -939,14 +939,14 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#sdkivogjfq .gt_first_summary_row {
+&#10;#lzugrmjahd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_first_summary_row.thick {
+&#10;#lzugrmjahd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#sdkivogjfq .gt_last_summary_row {
+&#10;#lzugrmjahd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,7 +955,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_grand_summary_row {
+&#10;#lzugrmjahd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -964,7 +964,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#sdkivogjfq .gt_first_grand_summary_row {
+&#10;#lzugrmjahd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -973,7 +973,7 @@ async function handleVersionChange(select) {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_last_grand_summary_row_top {
+&#10;#lzugrmjahd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -982,10 +982,10 @@ async function handleVersionChange(select) {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_striped {
+&#10;#lzugrmjahd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#sdkivogjfq .gt_table_body {
+&#10;#lzugrmjahd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -993,7 +993,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_footnotes {
+&#10;#lzugrmjahd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1006,7 +1006,7 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_footnote {
+&#10;#lzugrmjahd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1014,7 +1014,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#sdkivogjfq .gt_sourcenotes {
+&#10;#lzugrmjahd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1027,64 +1027,64 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#sdkivogjfq .gt_sourcenote {
+&#10;#lzugrmjahd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#sdkivogjfq .gt_left {
+&#10;#lzugrmjahd .gt_left {
   text-align: left;
 }
-&#10;#sdkivogjfq .gt_center {
+&#10;#lzugrmjahd .gt_center {
   text-align: center;
 }
-&#10;#sdkivogjfq .gt_right {
+&#10;#lzugrmjahd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#sdkivogjfq .gt_font_normal {
+&#10;#lzugrmjahd .gt_font_normal {
   font-weight: normal;
 }
-&#10;#sdkivogjfq .gt_font_bold {
+&#10;#lzugrmjahd .gt_font_bold {
   font-weight: bold;
 }
-&#10;#sdkivogjfq .gt_font_italic {
+&#10;#lzugrmjahd .gt_font_italic {
   font-style: italic;
 }
-&#10;#sdkivogjfq .gt_super {
+&#10;#lzugrmjahd .gt_super {
   font-size: 65%;
 }
-&#10;#sdkivogjfq .gt_footnote_marks {
+&#10;#lzugrmjahd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#sdkivogjfq .gt_asterisk {
+&#10;#lzugrmjahd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#sdkivogjfq .gt_indent_1 {
+&#10;#lzugrmjahd .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#sdkivogjfq .gt_indent_2 {
+&#10;#lzugrmjahd .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#sdkivogjfq .gt_indent_3 {
+&#10;#lzugrmjahd .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#sdkivogjfq .gt_indent_4 {
+&#10;#lzugrmjahd .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#sdkivogjfq .gt_indent_5 {
+&#10;#lzugrmjahd .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#sdkivogjfq .katex-display {
+&#10;#lzugrmjahd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#sdkivogjfq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#lzugrmjahd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
@@ -1363,20 +1363,20 @@ async function handleVersionChange(select) {
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">read_model</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#82AAFF;--1:#3B61B0">file.path</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">model_dir</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run003b1.mod"</span><span style="--0:#D6DEEB;--1:#403F53">))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">mod_sum4</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">summary</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">info4</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_model_parameter_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">&#x3C;-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum1</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info2</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum2</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run001"</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#984E4D">"run002"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">   </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info3</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum3</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run003"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">compare_with</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#82AAFF;--1:#3B61B0">get_parameters</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod4</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">apply_table_spec</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">spec</span><span style="--0:#7FDBCA;--1:#096E72">,</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">info4</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#82AAFF;--1:#3B61B0">add_summary_info</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">mod_sum4</span><span style="--0:#D6DEEB;--1:#403F53">)</span><span style="--0:#7FDBCA;--1:#096E72">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--1:#403F53">    </span></span><span style="--0:#D7DBE0;--1:#403F53">labels</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">c</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#ECC48D;--1:#984E4D">"run004"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">comp</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|></span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">make_comparison_table</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> LRT suppressed for run001 vs run002: no lineage attached</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> LRT suppressed for run002 vs run003: no lineage attached</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> LRT suppressed for run003 vs run004: no lineage attached</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="spec <- TableSpec() |>  set_spec_transforms(omega = &#x22;cv&#x22;) |>  set_spec_sections(    kind == &#x22;THETA&#x22; ~ &#x22;Structural model parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; diagonal ~ &#x22;Interindividual variance parameters&#x22;,    kind == &#x22;OMEGA&#x22; &#x26; !diagonal ~ &#x22;Interindividual covariance parameters&#x22;,    kind == &#x22;SIGMA&#x22; ~ &#x22;Residual error&#x22;,    TRUE ~ &#x22;Other&#x22;  ) |>  set_spec_sigfig(3) |>  set_spec_columns(&#x22;symbol&#x22;, &#x22;fixed&#x22;, &#x22;estimate&#x22;) |>  set_spec_title(&#x22;Structural Model Parameter Comparison&#x22;)mod1 <- read_model(file.path(model_dir, &#x22;run001.mod&#x22;))mod_sum1 <- summary(mod1)info1 <- get_model_parameter_info(mod1)mod2 <- read_model(file.path(model_dir, &#x22;run002.mod&#x22;))mod_sum2 <- summary(mod2)info2 <- get_model_parameter_info(mod2)mod3 <- read_model(file.path(model_dir, &#x22;run003.mod&#x22;))mod_sum3 <- summary(mod3)info3 <- get_model_parameter_info(mod3)mod4 <- read_model(file.path(model_dir, &#x22;run003b1.mod&#x22;))mod_sum4 <- summary(mod4)info4 <- get_model_parameter_info(mod4)comp <- get_parameters(mod1) |>  apply_table_spec(spec, info1) |>  add_summary_info(mod_sum1) |>  compare_with(    get_parameters(mod2) |>      apply_table_spec(spec, info2) |>      add_summary_info(mod_sum2),    labels = c(&#x22;run001&#x22;, &#x22;run002&#x22;)   ) |>  compare_with(    get_parameters(mod3) |>      apply_table_spec(spec, info3) |>      add_summary_info(mod_sum3),    labels = c(&#x22;run003&#x22;)  ) |>  compare_with(    get_parameters(mod4) |>      apply_table_spec(spec, info4) |>      add_summary_info(mod_sum4),    labels = c(&#x22;run004&#x22;)  )comp |>  make_comparison_table()#> LRT suppressed for run001 vs run002: no lineage attached#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.#> LRT suppressed for run002 vs run003: no lineage attached#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.#> LRT suppressed for run003 vs run004: no lineage attached#> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met."><div></div></button></div></figure></div>
-<div id="deoxwwmsuh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#deoxwwmsuh table {
+<div id="aoexnvnmnp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aoexnvnmnp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#deoxwwmsuh thead, #deoxwwmsuh tbody, #deoxwwmsuh tfoot, #deoxwwmsuh tr, #deoxwwmsuh td, #deoxwwmsuh th {
+&#10;#aoexnvnmnp thead, #aoexnvnmnp tbody, #aoexnvnmnp tfoot, #aoexnvnmnp tr, #aoexnvnmnp td, #aoexnvnmnp th {
   border-style: none;
 }
-&#10;#deoxwwmsuh p {
+&#10;#aoexnvnmnp p {
   margin: 0;
   padding: 0;
 }
-&#10;#deoxwwmsuh .gt_table {
+&#10;#aoexnvnmnp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1401,11 +1401,11 @@ async function handleVersionChange(select) {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_caption {
+&#10;#aoexnvnmnp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#deoxwwmsuh .gt_title {
+&#10;#aoexnvnmnp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1416,7 +1416,7 @@ async function handleVersionChange(select) {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#deoxwwmsuh .gt_subtitle {
+&#10;#aoexnvnmnp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1427,7 +1427,7 @@ async function handleVersionChange(select) {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#deoxwwmsuh .gt_heading {
+&#10;#aoexnvnmnp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1438,12 +1438,12 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_bottom_border {
+&#10;#aoexnvnmnp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_col_headings {
+&#10;#aoexnvnmnp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1457,7 +1457,7 @@ async function handleVersionChange(select) {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_col_heading {
+&#10;#aoexnvnmnp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1476,7 +1476,7 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#deoxwwmsuh .gt_column_spanner_outer {
+&#10;#aoexnvnmnp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1487,13 +1487,13 @@ async function handleVersionChange(select) {
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#deoxwwmsuh .gt_column_spanner_outer:first-child {
+&#10;#aoexnvnmnp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#deoxwwmsuh .gt_column_spanner_outer:last-child {
+&#10;#aoexnvnmnp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#deoxwwmsuh .gt_column_spanner {
+&#10;#aoexnvnmnp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1504,10 +1504,10 @@ async function handleVersionChange(select) {
   display: inline-block;
   width: 100%;
 }
-&#10;#deoxwwmsuh .gt_spanner_row {
+&#10;#aoexnvnmnp .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#deoxwwmsuh .gt_group_heading {
+&#10;#aoexnvnmnp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1532,7 +1532,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   text-align: left;
 }
-&#10;#deoxwwmsuh .gt_empty_group_heading {
+&#10;#aoexnvnmnp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1546,13 +1546,13 @@ async function handleVersionChange(select) {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#deoxwwmsuh .gt_from_md > :first-child {
+&#10;#aoexnvnmnp .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#deoxwwmsuh .gt_from_md > :last-child {
+&#10;#aoexnvnmnp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#deoxwwmsuh .gt_row {
+&#10;#aoexnvnmnp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1570,7 +1570,7 @@ async function handleVersionChange(select) {
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#deoxwwmsuh .gt_stub {
+&#10;#aoexnvnmnp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1582,7 +1582,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#deoxwwmsuh .gt_stub_row_group {
+&#10;#aoexnvnmnp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1595,13 +1595,13 @@ async function handleVersionChange(select) {
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#deoxwwmsuh .gt_row_group_first td {
+&#10;#aoexnvnmnp .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#deoxwwmsuh .gt_row_group_first th {
+&#10;#aoexnvnmnp .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#deoxwwmsuh .gt_summary_row {
+&#10;#aoexnvnmnp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1610,14 +1610,14 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#deoxwwmsuh .gt_first_summary_row {
+&#10;#aoexnvnmnp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_first_summary_row.thick {
+&#10;#aoexnvnmnp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#deoxwwmsuh .gt_last_summary_row {
+&#10;#aoexnvnmnp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1626,7 +1626,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_grand_summary_row {
+&#10;#aoexnvnmnp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1635,7 +1635,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#deoxwwmsuh .gt_first_grand_summary_row {
+&#10;#aoexnvnmnp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1644,7 +1644,7 @@ async function handleVersionChange(select) {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_last_grand_summary_row_top {
+&#10;#aoexnvnmnp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1653,10 +1653,10 @@ async function handleVersionChange(select) {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_striped {
+&#10;#aoexnvnmnp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#deoxwwmsuh .gt_table_body {
+&#10;#aoexnvnmnp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1664,7 +1664,7 @@ async function handleVersionChange(select) {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_footnotes {
+&#10;#aoexnvnmnp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1677,7 +1677,7 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_footnote {
+&#10;#aoexnvnmnp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1685,7 +1685,7 @@ async function handleVersionChange(select) {
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#deoxwwmsuh .gt_sourcenotes {
+&#10;#aoexnvnmnp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1698,64 +1698,64 @@ async function handleVersionChange(select) {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#deoxwwmsuh .gt_sourcenote {
+&#10;#aoexnvnmnp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#deoxwwmsuh .gt_left {
+&#10;#aoexnvnmnp .gt_left {
   text-align: left;
 }
-&#10;#deoxwwmsuh .gt_center {
+&#10;#aoexnvnmnp .gt_center {
   text-align: center;
 }
-&#10;#deoxwwmsuh .gt_right {
+&#10;#aoexnvnmnp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#deoxwwmsuh .gt_font_normal {
+&#10;#aoexnvnmnp .gt_font_normal {
   font-weight: normal;
 }
-&#10;#deoxwwmsuh .gt_font_bold {
+&#10;#aoexnvnmnp .gt_font_bold {
   font-weight: bold;
 }
-&#10;#deoxwwmsuh .gt_font_italic {
+&#10;#aoexnvnmnp .gt_font_italic {
   font-style: italic;
 }
-&#10;#deoxwwmsuh .gt_super {
+&#10;#aoexnvnmnp .gt_super {
   font-size: 65%;
 }
-&#10;#deoxwwmsuh .gt_footnote_marks {
+&#10;#aoexnvnmnp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#deoxwwmsuh .gt_asterisk {
+&#10;#aoexnvnmnp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#deoxwwmsuh .gt_indent_1 {
+&#10;#aoexnvnmnp .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#deoxwwmsuh .gt_indent_2 {
+&#10;#aoexnvnmnp .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#deoxwwmsuh .gt_indent_3 {
+&#10;#aoexnvnmnp .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#deoxwwmsuh .gt_indent_4 {
+&#10;#aoexnvnmnp .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#deoxwwmsuh .gt_indent_5 {
+&#10;#aoexnvnmnp .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#deoxwwmsuh .katex-display {
+&#10;#aoexnvnmnp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#deoxwwmsuh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#aoexnvnmnp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 &#10;td, th {
