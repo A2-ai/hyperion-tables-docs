@@ -1,0 +1,69 @@
+---
+title: "Get models to include from a SummarySpec"
+description: "`get_spec_models()` returns the character vector of model names to include, or NULL when no model filter is set. Operates on `SummarySpec` only."
+sidebar:
+  label: "get_spec_models"
+pagefind: true
+---
+
+## Description
+
+`get_spec_models()` returns the character vector of model names to include,
+or NULL when no model filter is set. Operates on `SummarySpec` only.
+
+
+
+
+
+
+## Usage
+
+```r
+get_spec_models(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object.</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Not used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+Character vector of model names, or NULL.
+
+
+
+## Examples
+
+```r
+spec <- SummarySpec()
+get_spec_models(spec)
+```
+### Output
+
+```
+NULL
+```
+
+
+## See Also
+
+[`set_spec_models()`](../set_spec_models/).
+
+

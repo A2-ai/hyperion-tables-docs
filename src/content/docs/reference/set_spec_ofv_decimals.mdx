@@ -1,13 +1,15 @@
 ---
 title: "Set decimal places for OFV values"
-description: "Controls the number of decimal places for OFV and dOFV values. Use NA to keep significant-figure formatting."
+description: "`set_spec_ofv_decimals()` controls the number of decimal places for OFV and dOFV values. Use `NA` to keep significant-figure formatting."
+sidebar:
+  label: "set_spec_ofv_decimals"
 pagefind: true
 ---
 
 ## Description
 
-Controls the number of decimal places for OFV and dOFV values. Use NA to
-keep significant-figure formatting.
+`set_spec_ofv_decimals()` controls the number of decimal places for OFV and
+dOFV values. Use `NA` to keep significant-figure formatting.
 
 
 
@@ -30,15 +32,15 @@ set_spec_ofv_decimals(spec, n, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>n</code></td>
-<td>Non-negative integer or NA</td>
+<td>Non-negative integer or NA.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -47,7 +49,7 @@ set_spec_ofv_decimals(spec, n, ...)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -57,4 +59,9 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_ofv_decimals(2)
 ```
+
+## See Also
+
+[`get_spec_ofv_decimals()`](../get_spec_ofv_decimals/).
+
 

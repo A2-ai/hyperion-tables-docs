@@ -1,12 +1,15 @@
 ---
 title: "Set time format for a SummarySpec"
-description: "Controls how time columns are formatted."
+description: "`set_spec_time_format()` controls how time columns are formatted. Operates on `SummarySpec` only."
+sidebar:
+  label: "set_spec_time_format"
 pagefind: true
 ---
 
 ## Description
 
-Controls how time columns are formatted.
+`set_spec_time_format()` controls how time columns are formatted. Operates
+on `SummarySpec` only.
 
 
 
@@ -29,15 +32,15 @@ set_spec_time_format(spec, format, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A SummarySpec object</td>
+<td>A SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
-<td>One of "seconds", "minutes", "hours", or "auto"</td>
+<td>One of "seconds", "minutes", "hours", or "auto".</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -46,7 +49,7 @@ set_spec_time_format(spec, format, ...)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -56,4 +59,9 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_time_format("minutes")
 ```
+
+## See Also
+
+[`get_spec_time_format()`](../get_spec_time_format/).
+
 

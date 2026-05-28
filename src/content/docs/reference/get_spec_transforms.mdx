@@ -1,12 +1,15 @@
 ---
 title: "Get display transforms from a TableSpec"
-description: "Returns the display transforms configuration."
+description: "`get_spec_transforms()` returns the display transforms configuration. Operates on `TableSpec` only."
+sidebar:
+  label: "get_spec_transforms"
 pagefind: true
 ---
 
 ## Description
 
-Returns the display transforms configuration.
+`get_spec_transforms()` returns the display transforms configuration.
+Operates on `TableSpec` only.
 
 
 
@@ -29,11 +32,11 @@ get_spec_transforms(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +45,7 @@ get_spec_transforms(spec, ...)
 
 ## Value
 
-Named list with theta, omega, sigma entries
+Named list with theta, omega, sigma entries.
 
 
 
@@ -63,7 +66,12 @@ $omega
 
 $sigma
 [1] "all"
- 
+
 ```
+
+
+## See Also
+
+[`set_spec_transforms()`](../set_spec_transforms/).
 
 

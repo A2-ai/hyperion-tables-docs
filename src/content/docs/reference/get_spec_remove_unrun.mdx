@@ -1,0 +1,69 @@
+---
+title: "Get remove_unrun_models from a SummarySpec"
+description: "`get_spec_remove_unrun()` returns whether models without completed runs are excluded. Operates on `SummarySpec` only."
+sidebar:
+  label: "get_spec_remove_unrun"
+pagefind: true
+---
+
+## Description
+
+`get_spec_remove_unrun()` returns whether models without completed runs are
+excluded. Operates on `SummarySpec` only.
+
+
+
+
+
+
+## Usage
+
+```r
+get_spec_remove_unrun(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object.</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Not used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+Logical scalar.
+
+
+
+## Examples
+
+```r
+spec <- SummarySpec()
+get_spec_remove_unrun(spec)
+```
+### Output
+
+```
+[1] TRUE
+```
+
+
+## See Also
+
+[`set_spec_remove_unrun()`](../set_spec_remove_unrun/).
+
+

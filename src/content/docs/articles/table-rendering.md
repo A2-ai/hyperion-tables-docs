@@ -1,5 +1,5 @@
 ---
-title: "Table Rendering"
+title: "table-rendering"
 pagefind: true
 ---
 
@@ -8,7 +8,9 @@ library(hyperion)
 #> 
 #> 
 #> ── pharos configuration ────────────────────────────────────────────────────────
-#> ✔ pharos.toml found: /Users/mattsmith/Documents/hyperion.tables/vignettes/pharos.toml
+#> ✔ pharos CLI: 0.5.1 (/Users/mattsmith/.cargo/bin/pharos)
+#> ✖ No pharos.toml config file found. Please call hyperion::init() to create one
+#>     └ hyperion.config_dir : (unset)
 #> ── hyperion options ────────────────────────────────────────────────────────────
 #> ✔ hyperion.significant_number_display : 4
 #> ── hyperion nonmem object options ──────────────────────────────────────────────
@@ -23,6 +25,7 @@ library(officer)
 
 data_dir <- system.file("extdata", package = "hyperion.tables")
 model_dir <- file.path(data_dir, "models", "onecmt")
+options(hyperion.config_dir = system.file(package = "hyperion.tables"))
 model_run <- "run003"
 ```
 
@@ -74,15 +77,15 @@ Render rules live on `TableSpec`:
 
 ``` r
 spec <- TableSpec(
-  sections = section_rules(
+  title = paste(model_run, "Parameters")
+) |>
+  set_spec_sections(
     kind == "THETA" ~ "Structural model parameters",
     kind == "OMEGA" & diagonal ~ "Interindividual variance parameters",
     kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters",
     kind == "SIGMA" ~ "Residual error",
     TRUE ~ "Other"
-  ),
-  title = paste(model_run, "Parameters")
-) |>
+  ) |>
     set_spec_transforms(omega = "cv")
 
 run003 <- read_model(file.path(model_dir, paste0(model_run, ".mod")))
@@ -94,7 +97,7 @@ hyperion_table <- get_parameters(run003) |>
 hyperion_table
 #> <hyperion.tables::HyperionTable>
 #>  @ data            :'data.frame':    9 obs. of  20 variables:
-#>  .. $ name         : chr  "TVCL" "TVV" "TVKA" "OM1 TVCL" ...
+#>  .. $ name         : chr  "TVCL" "TVV" "TVKA" "OM1 (TVCL)" ...
 #>  .. $ symbol       : chr  "$\\theta_{1}$" "$\\theta_{2}$" "$\\theta_{3}$" "$\\Omega_{(1,1)}$" ...
 #>  .. $ unit         : chr  "L/hr" "L" "1/hr" NA ...
 #>  .. $ estimate     : num  1.325 40.163 1.212 0.122 0.124 ...
@@ -114,28 +117,36 @@ hyperion_table
 #>  .. $ sd           : num  NA NA NA 0.35 0.352 ...
 #>  .. $ dt_all       : chr  "Identity" "Identity" "Identity" "identity" ...
 #>  .. $ dt_cv        : chr  "Identity" "Identity" "Identity" "LogNormal" ...
-#>  .. - attr(*, "table_spec")= <hyperion.tables::TableSpec>
+#>  .. - attr(*, "hyperion_spec")= <hyperion.tables::TableSpec>
 #>  ..  ..@ title             : chr "run003 Parameters"
-#>  ..  ..@ parameter_names   : <hyperion.tables::ParameterNameOptions>
-#>  .. .. .. @ source                 : chr "name"
-#>  .. .. .. @ append_omega_with_theta: logi TRUE
-#>  ..  ..@ columns           : chr [1:9] "name" "symbol" "unit" "estimate" ...
+#>  ..  ..@ sections          : <hyperion.tables::SectionOptions>
+#>  .. .. .. @ rules       :List of 5
+#>  .. .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. .. $ : language ~(TRUE ~ "Other")
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. @ assignments : list()
+#>  .. .. .. @ inline_items: chr(0) 
+#>  .. .. .. @ order       : NULL
+#>  .. .. .. @ filter      : list()
+#>  ..  ..@ columns           : NULL
 #>  ..  ..@ add_columns       : NULL
 #>  ..  ..@ drop_columns      : NULL
+#>  ..  ..@ allowed_footnotes : chr [1:3] "summary_info" "equations" "abbreviations"
 #>  ..  ..@ hide_empty_columns: logi TRUE
-#>  ..  ..@ sections          :List of 5
-#>  .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. .. $ : language ~(TRUE ~ "Other")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
-#>  ..  ..@ section_filter    : NULL
+#>  ..  ..@ n_sigfig          : num 3
+#>  ..  ..@ n_decimals_ofv    : num 3
+#>  ..  ..@ pvalue_scientific : logi FALSE
+#>  ..  ..@ pvalue_threshold  : NULL
+#>  ..  ..@ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"
+#>  ..  ..@ parameter_names   : <hyperion.tables::ParameterNameOptions>
+#>  .. .. .. @ source: chr "name"
 #>  ..  ..@ row_filter        : Named list()
 #>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  ..  ..@ display_transforms:List of 3
@@ -144,20 +155,16 @@ hyperion_table
 #>  .. .. .. $ sigma: chr "all"
 #>  ..  ..@ variability_rules :List of 5
 #>  .. .. .. $ : language ~(fixed ~ "(Fixed)")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. .. $ : language ~(!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. .. $ : language ~(TRUE ~ NA_character_)
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
-#>  ..  ..@ n_sigfig          : num 3
-#>  ..  ..@ n_decimals_ofv    : num 3
-#>  ..  ..@ pvalue_scientific : logi FALSE
-#>  ..  ..@ pvalue_threshold  : NULL
 #>  ..  ..@ ci                : <hyperion.tables::CIOptions>
 #>  .. .. .. @ level       : num 0.95
 #>  .. .. .. @ merge       : logi TRUE
@@ -165,8 +172,7 @@ hyperion_table
 #>  .. .. .. @ missing_text: chr "-"
 #>  ..  ..@ missing_text      : chr ""
 #>  ..  ..@ missing_apply_to  : chr "all"
-#>  ..  ..@ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"
-#>  ..  ..@ .columns_provided : logi FALSE
+#>  ..  ..@ default_columns   : chr [1:9] "name" "symbol" "unit" "estimate" ...
 #>  @ table_type      : chr "parameter"
 #>  @ groupname_col   : chr "section"
 #>  @ hide_cols       : chr [1:10] "kind" "random_effect" "diagonal" "transforms" "cv" "corr" ...
@@ -199,12 +205,15 @@ hyperion_table
 #>  @ missing_apply_to: chr "all"
 #>  @ bold_locations  : chr [1:3] "column_labels" "title" "row_groups"
 #>  @ borders         : list()
-#>  @ footnotes       :List of 5
+#>  @ footnotes       :List of 6
 #>  .. $ :List of 2
-#>  ..  ..$ content    : 'from_markdown' chr "95% CI: $\\mathrm{Estimate} \\pm z_{0.025} \\cdot \\mathrm{SE}$"
+#>  ..  ..$ content    : chr "95% CI: $\\mathrm{Estimate} \\pm z_{0.025} \\cdot \\mathrm{SE}$"
 #>  ..  ..$ is_markdown: logi TRUE
 #>  .. $ :List of 2
-#>  ..  ..$ content    : 'from_markdown' chr "CV% for log-normal $\\Omega$: $\\sqrt{\\exp(\\mathrm{Estimate}) - 1} \\times 100$"
+#>  ..  ..$ content    : chr "CV% for log-normal $\\Omega$: $\\sqrt{\\exp(\\mathrm{Estimate}) - 1} \\times 100$"
+#>  ..  ..$ is_markdown: logi TRUE
+#>  .. $ :List of 2
+#>  ..  ..$ content    : chr "CV% for proportional $\\Sigma$: $\\sqrt{\\mathrm{Estimate}} \\times 100$"
 #>  ..  ..$ is_markdown: logi TRUE
 #>  .. $ :List of 2
 #>  ..  ..$ content    : chr "Abbreviations:"
@@ -217,26 +226,34 @@ hyperion_table
 #>  ..  ..$ is_markdown: logi FALSE
 #>  @ source_spec     : <hyperion.tables::TableSpec>
 #>  .. @ title             : chr "run003 Parameters"
-#>  .. @ parameter_names   : <hyperion.tables::ParameterNameOptions>
-#>  .. .. @ source                 : chr "name"
-#>  .. .. @ append_omega_with_theta: logi TRUE
-#>  .. @ columns           : chr [1:9] "name" "symbol" "unit" "estimate" "variability" ...
+#>  .. @ sections          : <hyperion.tables::SectionOptions>
+#>  .. .. @ rules       :List of 5
+#>  .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. $ : language ~(TRUE ~ "Other")
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. @ assignments : list()
+#>  .. .. @ inline_items: chr(0) 
+#>  .. .. @ order       : NULL
+#>  .. .. @ filter      : list()
+#>  .. @ columns           : NULL
 #>  .. @ add_columns       : NULL
 #>  .. @ drop_columns      : NULL
+#>  .. @ allowed_footnotes : chr [1:3] "summary_info" "equations" "abbreviations"
 #>  .. @ hide_empty_columns: logi TRUE
-#>  .. @ sections          :List of 5
-#>  .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. $ : language ~(TRUE ~ "Other")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121c2e528> 
-#>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
-#>  .. @ section_filter    : NULL
+#>  .. @ n_sigfig          : num 3
+#>  .. @ n_decimals_ofv    : num 3
+#>  .. @ pvalue_scientific : logi FALSE
+#>  .. @ pvalue_threshold  : NULL
+#>  .. @ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"
+#>  .. @ parameter_names   : <hyperion.tables::ParameterNameOptions>
+#>  .. .. @ source: chr "name"
 #>  .. @ row_filter        : Named list()
 #>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  .. @ display_transforms:List of 3
@@ -245,20 +262,16 @@ hyperion_table
 #>  .. .. $ sigma: chr "all"
 #>  .. @ variability_rules :List of 5
 #>  .. .. $ : language ~(fixed ~ "(Fixed)")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. $ : language ~(!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. $ : language ~(TRUE ~ NA_character_)
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x121f6dea0> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
 #>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
-#>  .. @ n_sigfig          : num 3
-#>  .. @ n_decimals_ofv    : num 3
-#>  .. @ pvalue_scientific : logi FALSE
-#>  .. @ pvalue_threshold  : NULL
 #>  .. @ ci                : <hyperion.tables::CIOptions>
 #>  .. .. @ level       : num 0.95
 #>  .. .. @ merge       : logi TRUE
@@ -266,18 +279,18 @@ hyperion_table
 #>  .. .. @ missing_text: chr "-"
 #>  .. @ missing_text      : chr ""
 #>  .. @ missing_apply_to  : chr "all"
-#>  .. @ footnote_order    : chr [1:3] "summary_info" "equations" "abbreviations"
-#>  .. @ .columns_provided : logi FALSE
+#>  .. @ default_columns   : chr [1:9] "name" "symbol" "unit" "estimate" "variability" ...
 ```
 
 `hyperion.tables` includes two built-in renderers:
 
 ``` r
-render_to_gt(hyperion_table) |>
+hyperion_table |>
+    render_to_gt() |>
     render_to_image()
 ```
 
-![](/figures/table-rendering/unnamed-chunk-3-1.png)
+![]()
 
 ``` r
 hyperion_table |>
@@ -285,7 +298,34 @@ hyperion_table |>
     render_to_image()
 ```
 
-![](/figures/table-rendering/unnamed-chunk-4-1.png)
+![]()
+
+## Rendering to Word
+
+`render_to_word()` saves a rendered `gt` or `flextable` object to a
+`.docx` file. Inline LaTeX (`$...$`) in the rendered table is preserved
+as native Word equations rather than literal text. Pass
+`landscape = TRUE` for landscape orientation.
+
+``` r
+word_path <- tempfile(fileext = ".docx")
+hyperion_table |>
+    render_to_gt() |>
+    render_to_word(word_path)
+
+file.exists(word_path)
+#> [1] TRUE
+```
+
+``` r
+word_path <- tempfile(fileext = ".docx")
+hyperion_table |>
+    render_to_flextable() |>
+    render_to_word(word_path, landscape = TRUE)
+
+file.exists(word_path)
+#> [1] TRUE
+```
 
 ## Update render rules and re-render
 
@@ -294,13 +334,6 @@ and re-render it. You can also inspect the formatted data directly.
 
 ``` r
 spec <- TableSpec(
-  sections = section_rules(
-    kind == "THETA" ~ "Structural model parameters",
-    kind == "OMEGA" & diagonal ~ "Interindividual variance parameters",
-    kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters",
-    kind == "SIGMA" ~ "Residual error",
-    TRUE ~ "Other"
-  ),
   title = paste(model_run, "Parameters"),
   n_sigfig = 4,
   ci = CIOptions(
@@ -311,6 +344,13 @@ spec <- TableSpec(
   missing_text = "NA",
   missing_apply_to = "numeric"
 ) |>
+  set_spec_sections(
+    kind == "THETA" ~ "Structural model parameters",
+    kind == "OMEGA" & diagonal ~ "Interindividual variance parameters",
+    kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters",
+    kind == "SIGMA" ~ "Residual error",
+    TRUE ~ "Other"
+  ) |>
   set_spec_transforms(omega = "cv")
 
 hyperion_table <- get_parameters(run003) |>
@@ -324,28 +364,29 @@ names(formatted)
 ```
 
 ``` r
-render_to_gt(hyperion_table) |>
+hyperion_table |>
+    render_to_gt() |>
     render_to_image()
 ```
 
-![](/figures/table-rendering/unnamed-chunk-6-1.png)
+![]()
 
 ``` r
 head(formatted)
-#>                               section     name            symbol unit estimate
-#> 1         Structural model parameters     TVCL     $\\theta_{1}$ L/hr    1.325
-#> 2         Structural model parameters      TVV     $\\theta_{2}$    L    40.16
-#> 3         Structural model parameters     TVKA     $\\theta_{3}$ 1/hr    1.212
-#> 4 Interindividual variance parameters OM1 TVCL $\\Omega_{(1,1)}$ <NA>   0.1223
-#> 5 Interindividual variance parameters  OM2 TVV $\\Omega_{(2,2)}$ <NA>   0.1239
-#> 6 Interindividual variance parameters OM3 TVKA $\\Omega_{(3,3)}$ <NA>   0.1224
-#>     variability            ci_low   rse shrinkage
-#> 1          <NA>    (1.107; 1.544) 8.411      <NA>
-#> 2          <NA>    (34.60; 45.73) 7.069      <NA>
-#> 3          <NA>   (0.9966; 1.427) 9.057      <NA>
-#> 4 (CV = 36.07%) (0.02365; 0.2210) 41.16     13.14
-#> 5 (CV = 36.31%) (0.05186; 0.1959) 29.66     4.631
-#> 6 (CV = 36.09%) (0.01211; 0.2327) 45.97     24.34
+#>                               section       name            symbol unit
+#> 1         Structural model parameters       TVCL     $\\theta_{1}$ L/hr
+#> 2         Structural model parameters        TVV     $\\theta_{2}$    L
+#> 3         Structural model parameters       TVKA     $\\theta_{3}$ 1/hr
+#> 4 Interindividual variance parameters OM1 (TVCL) $\\Omega_{(1,1)}$     
+#> 5 Interindividual variance parameters  OM2 (TVV) $\\Omega_{(2,2)}$     
+#> 6 Interindividual variance parameters OM3 (TVKA) $\\Omega_{(3,3)}$     
+#>   estimate   variability            ci_low   rse shrinkage
+#> 1    1.325                  (1.107; 1.544) 8.411        NA
+#> 2    40.16                  (34.60; 45.73) 7.069        NA
+#> 3    1.212                 (0.9966; 1.427) 9.057        NA
+#> 4   0.1223 (CV = 36.07%) (0.02365; 0.2210) 41.16     13.14
+#> 5   0.1239 (CV = 36.31%) (0.05186; 0.1959) 29.66     4.631
+#> 6   0.1224 (CV = 36.09%) (0.01211; 0.2327) 45.97     24.34
 ```
 
 ## Extending with a custom renderer
@@ -365,7 +406,7 @@ render_custom(hyperion_table) |>
     render_to_image()
 ```
 
-![](/figures/table-rendering/unnamed-chunk-8-1.png)
+![]()
 
 ## What if you skip `apply_formatting()`?
 
@@ -378,20 +419,20 @@ raw_data <- hyperion_table@data
 gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 ```
 
-<div id="qinbczonch" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qinbczonch table {
+<div id="rjwnlqvkxo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rjwnlqvkxo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#qinbczonch thead, #qinbczonch tbody, #qinbczonch tfoot, #qinbczonch tr, #qinbczonch td, #qinbczonch th {
+&#10;#rjwnlqvkxo thead, #rjwnlqvkxo tbody, #rjwnlqvkxo tfoot, #rjwnlqvkxo tr, #rjwnlqvkxo td, #rjwnlqvkxo th {
   border-style: none;
 }
-&#10;#qinbczonch p {
+&#10;#rjwnlqvkxo p {
   margin: 0;
   padding: 0;
 }
-&#10;#qinbczonch .gt_table {
+&#10;#rjwnlqvkxo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -416,11 +457,11 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_caption {
+&#10;#rjwnlqvkxo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#qinbczonch .gt_title {
+&#10;#rjwnlqvkxo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -431,7 +472,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#qinbczonch .gt_subtitle {
+&#10;#rjwnlqvkxo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -442,7 +483,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#qinbczonch .gt_heading {
+&#10;#rjwnlqvkxo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -453,12 +494,12 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_bottom_border {
+&#10;#rjwnlqvkxo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_col_headings {
+&#10;#rjwnlqvkxo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -472,7 +513,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_col_heading {
+&#10;#rjwnlqvkxo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -491,7 +532,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#qinbczonch .gt_column_spanner_outer {
+&#10;#rjwnlqvkxo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -502,13 +543,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#qinbczonch .gt_column_spanner_outer:first-child {
+&#10;#rjwnlqvkxo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#qinbczonch .gt_column_spanner_outer:last-child {
+&#10;#rjwnlqvkxo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#qinbczonch .gt_column_spanner {
+&#10;#rjwnlqvkxo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -519,10 +560,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   display: inline-block;
   width: 100%;
 }
-&#10;#qinbczonch .gt_spanner_row {
+&#10;#rjwnlqvkxo .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#qinbczonch .gt_group_heading {
+&#10;#rjwnlqvkxo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -547,7 +588,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#qinbczonch .gt_empty_group_heading {
+&#10;#rjwnlqvkxo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -561,13 +602,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#qinbczonch .gt_from_md > :first-child {
+&#10;#rjwnlqvkxo .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#qinbczonch .gt_from_md > :last-child {
+&#10;#rjwnlqvkxo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#qinbczonch .gt_row {
+&#10;#rjwnlqvkxo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -585,7 +626,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#qinbczonch .gt_stub {
+&#10;#rjwnlqvkxo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -597,7 +638,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qinbczonch .gt_stub_row_group {
+&#10;#rjwnlqvkxo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -610,13 +651,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#qinbczonch .gt_row_group_first td {
+&#10;#rjwnlqvkxo .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#qinbczonch .gt_row_group_first th {
+&#10;#rjwnlqvkxo .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#qinbczonch .gt_summary_row {
+&#10;#rjwnlqvkxo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -625,14 +666,14 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qinbczonch .gt_first_summary_row {
+&#10;#rjwnlqvkxo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_first_summary_row.thick {
+&#10;#rjwnlqvkxo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#qinbczonch .gt_last_summary_row {
+&#10;#rjwnlqvkxo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -641,7 +682,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_grand_summary_row {
+&#10;#rjwnlqvkxo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -650,7 +691,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qinbczonch .gt_first_grand_summary_row {
+&#10;#rjwnlqvkxo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +700,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_last_grand_summary_row_top {
+&#10;#rjwnlqvkxo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -668,10 +709,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_striped {
+&#10;#rjwnlqvkxo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#qinbczonch .gt_table_body {
+&#10;#rjwnlqvkxo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -679,7 +720,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_footnotes {
+&#10;#rjwnlqvkxo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -692,7 +733,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_footnote {
+&#10;#rjwnlqvkxo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -700,7 +741,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qinbczonch .gt_sourcenotes {
+&#10;#rjwnlqvkxo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -713,64 +754,64 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#qinbczonch .gt_sourcenote {
+&#10;#rjwnlqvkxo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qinbczonch .gt_left {
+&#10;#rjwnlqvkxo .gt_left {
   text-align: left;
 }
-&#10;#qinbczonch .gt_center {
+&#10;#rjwnlqvkxo .gt_center {
   text-align: center;
 }
-&#10;#qinbczonch .gt_right {
+&#10;#rjwnlqvkxo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#qinbczonch .gt_font_normal {
+&#10;#rjwnlqvkxo .gt_font_normal {
   font-weight: normal;
 }
-&#10;#qinbczonch .gt_font_bold {
+&#10;#rjwnlqvkxo .gt_font_bold {
   font-weight: bold;
 }
-&#10;#qinbczonch .gt_font_italic {
+&#10;#rjwnlqvkxo .gt_font_italic {
   font-style: italic;
 }
-&#10;#qinbczonch .gt_super {
+&#10;#rjwnlqvkxo .gt_super {
   font-size: 65%;
 }
-&#10;#qinbczonch .gt_footnote_marks {
+&#10;#rjwnlqvkxo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#qinbczonch .gt_asterisk {
+&#10;#rjwnlqvkxo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#qinbczonch .gt_indent_1 {
+&#10;#rjwnlqvkxo .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#qinbczonch .gt_indent_2 {
+&#10;#rjwnlqvkxo .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#qinbczonch .gt_indent_3 {
+&#10;#rjwnlqvkxo .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#qinbczonch .gt_indent_4 {
+&#10;#rjwnlqvkxo .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#qinbczonch .gt_indent_5 {
+&#10;#rjwnlqvkxo .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#qinbczonch .katex-display {
+&#10;#rjwnlqvkxo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#qinbczonch div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#rjwnlqvkxo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -862,7 +903,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
     <tr class="gt_group_heading_row">
       <th colspan="19" class="gt_group_heading" scope="colgroup" id="Interindividual variance parameters">Interindividual variance parameters</th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM1 TVCL</td>
+    <tr class="gt_row_group_first"><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM1 (TVCL)</td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(1,1)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
 <td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.12234200</td>
@@ -881,7 +922,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Interindividual variance parameters  sd" class="gt_row gt_right">0.3497740</td>
 <td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">identity</td>
 <td headers="Interindividual variance parameters  dt_cv" class="gt_row gt_left">LogNormal</td></tr>
-    <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM2 TVV</td>
+    <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM2 (TVV)</td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(2,2)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
 <td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.12387800</td>
@@ -900,7 +941,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Interindividual variance parameters  sd" class="gt_row gt_right">0.3519630</td>
 <td headers="Interindividual variance parameters  dt_all" class="gt_row gt_left">identity</td>
 <td headers="Interindividual variance parameters  dt_cv" class="gt_row gt_left">LogNormal</td></tr>
-    <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM3 TVKA</td>
+    <tr><td headers="Interindividual variance parameters  name" class="gt_row gt_left">OM3 (TVKA)</td>
 <td headers="Interindividual variance parameters  symbol" class="gt_row gt_left">$\Omega_{(3,3)}$</td>
 <td headers="Interindividual variance parameters  unit" class="gt_row gt_left">NA</td>
 <td headers="Interindividual variance parameters  estimate" class="gt_row gt_right">0.12241200</td>
@@ -922,7 +963,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
     <tr class="gt_group_heading_row">
       <th colspan="19" class="gt_group_heading" scope="colgroup" id="Interindividual covariance parameters">Interindividual covariance parameters</th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="Interindividual covariance parameters  name" class="gt_row gt_left">OM1,2 TVCL, TVV</td>
+    <tr class="gt_row_group_first"><td headers="Interindividual covariance parameters  name" class="gt_row gt_left">OM1,2 (TVCL, TVV)</td>
 <td headers="Interindividual covariance parameters  symbol" class="gt_row gt_left">$\Omega_{(2,1)}$</td>
 <td headers="Interindividual covariance parameters  unit" class="gt_row gt_left">NA</td>
 <td headers="Interindividual covariance parameters  estimate" class="gt_row gt_right">0.07454330</td>
@@ -944,7 +985,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
     <tr class="gt_group_heading_row">
       <th colspan="19" class="gt_group_heading" scope="colgroup" id="Residual error">Residual error</th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="Residual error  name" class="gt_row gt_left">SIG1</td>
+    <tr class="gt_row_group_first"><td headers="Residual error  name" class="gt_row gt_left">Proportional</td>
 <td headers="Residual error  symbol" class="gt_row gt_left">$\Sigma_{(1,1)}$</td>
 <td headers="Residual error  unit" class="gt_row gt_left">NA</td>
 <td headers="Residual error  estimate" class="gt_row gt_right">0.03753710</td>
@@ -957,15 +998,15 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Residual error  kind" class="gt_row gt_left">SIGMA</td>
 <td headers="Residual error  random_effect" class="gt_row gt_left">EPS1</td>
 <td headers="Residual error  diagonal" class="gt_row gt_center">TRUE</td>
-<td headers="Residual error  transforms" class="gt_row gt_left">Identity</td>
-<td headers="Residual error  cv" class="gt_row gt_right">NA</td>
+<td headers="Residual error  transforms" class="gt_row gt_left">Proportional</td>
+<td headers="Residual error  cv" class="gt_row gt_right">19.37449</td>
 <td headers="Residual error  corr" class="gt_row gt_right">NA</td>
 <td headers="Residual error  sd" class="gt_row gt_right">0.1937450</td>
-<td headers="Residual error  dt_all" class="gt_row gt_left">Identity</td>
-<td headers="Residual error  dt_cv" class="gt_row gt_left">Identity</td></tr>
-    <tr><td headers="Residual error  name" class="gt_row gt_left">SIG2</td>
+<td headers="Residual error  dt_all" class="gt_row gt_left">Proportional</td>
+<td headers="Residual error  dt_cv" class="gt_row gt_left">Proportional</td></tr>
+    <tr><td headers="Residual error  name" class="gt_row gt_left">Additive</td>
 <td headers="Residual error  symbol" class="gt_row gt_left">$\Sigma_{(2,2)}$</td>
-<td headers="Residual error  unit" class="gt_row gt_left">NA</td>
+<td headers="Residual error  unit" class="gt_row gt_left">mg/L</td>
 <td headers="Residual error  estimate" class="gt_row gt_right">0.00527228</td>
 <td headers="Residual error  variability" class="gt_row gt_left">NA</td>
 <td headers="Residual error  ci_low" class="gt_row gt_right">-0.01278087</td>
@@ -976,12 +1017,12 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 <td headers="Residual error  kind" class="gt_row gt_left">SIGMA</td>
 <td headers="Residual error  random_effect" class="gt_row gt_left">EPS2</td>
 <td headers="Residual error  diagonal" class="gt_row gt_center">TRUE</td>
-<td headers="Residual error  transforms" class="gt_row gt_left">Identity</td>
+<td headers="Residual error  transforms" class="gt_row gt_left">AddErr</td>
 <td headers="Residual error  cv" class="gt_row gt_right">NA</td>
 <td headers="Residual error  corr" class="gt_row gt_right">NA</td>
 <td headers="Residual error  sd" class="gt_row gt_right">0.0726105</td>
-<td headers="Residual error  dt_all" class="gt_row gt_left">Identity</td>
-<td headers="Residual error  dt_cv" class="gt_row gt_left">Identity</td></tr>
+<td headers="Residual error  dt_all" class="gt_row gt_left">AddErr</td>
+<td headers="Residual error  dt_cv" class="gt_row gt_left">AddErr</td></tr>
   </tbody>
   &#10;</table>
 </div>

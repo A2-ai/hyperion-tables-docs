@@ -1,12 +1,16 @@
 ---
 title: "Get section filter from a spec"
-description: "Returns the section labels being filtered out, or NULL if no filter is set."
+description: "Returns the current section filter as a list with one of two shapes: `list(exclude = c(. ))`, `list(keep = c(. ))`, or empty `list()` when no filter is set."
+sidebar:
+  label: "get_spec_section_filter"
 pagefind: true
 ---
 
 ## Description
 
-Returns the section labels being filtered out, or NULL if no filter is set.
+Returns the current section filter as a list with one of two shapes:
+`list(exclude = c(...))`, `list(keep = c(...))`, or empty `list()` when no
+filter is set.
 
 
 
@@ -16,7 +20,7 @@ Returns the section labels being filtered out, or NULL if no filter is set.
 ## Usage
 
 ```r
-get_spec_section_filter(spec, ...)
+get_spec_section_filter(spec)
 ```
 
 ## Arguments
@@ -29,11 +33,7 @@ get_spec_section_filter(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
-</tr>
-<tr>
-<td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +42,12 @@ get_spec_section_filter(spec, ...)
 
 ## Value
 
-Character vector or NULL
+A named list (possibly empty).
 
+
+
+## See Also
+
+[`set_spec_sections()`](../set_spec_sections/), [`get_spec_sections()`](../get_spec_sections/).
 
 

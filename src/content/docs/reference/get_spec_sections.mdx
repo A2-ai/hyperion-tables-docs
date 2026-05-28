@@ -1,12 +1,15 @@
 ---
-title: "Get section rules from a spec"
-description: "Returns the list of section assignment rules."
+title: "Get section configuration from a spec"
+description: "`get_spec_sections()` returns the spec's object (rules, assignments, order, filter)."
+sidebar:
+  label: "get_spec_sections"
 pagefind: true
 ---
 
 ## Description
 
-Returns the list of section assignment rules.
+`get_spec_sections()` returns the spec's [SectionOptions](../sectionoptions/) object (rules,
+assignments, order, filter).
 
 
 
@@ -29,11 +32,11 @@ get_spec_sections(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +45,7 @@ get_spec_sections(spec, ...)
 
 ## Value
 
-List of quosures
+A [SectionOptions](../sectionoptions/) object.
 
 
 
@@ -55,9 +58,17 @@ get_spec_sections(spec)
 ### Output
 
 ```
-<list_of<quosure>>
-
-named list() 
+<hyperion.tables::SectionOptions>
+ @ rules       : list()
+ @ assignments : list()
+ @ inline_items: chr(0) 
+ @ order       : NULL
+ @ filter      : list()
 ```
+
+
+## See Also
+
+[`set_spec_sections()`](../set_spec_sections/).
 
 

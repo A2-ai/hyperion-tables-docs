@@ -1,15 +1,15 @@
 ---
-title: "Get significant figures from a spec"
-description: "`get_spec_sigfig()` returns the number of significant figures used for numeric formatting."
+title: "Get OFV decimal places from a spec"
+description: "`get_spec_ofv_decimals()` returns the number of decimal places for OFV and dOFV values."
 sidebar:
-  label: "get_spec_sigfig"
+  label: "get_spec_ofv_decimals"
 pagefind: true
 ---
 
 ## Description
 
-`get_spec_sigfig()` returns the number of significant figures used for
-numeric formatting.
+`get_spec_ofv_decimals()` returns the number of decimal places for OFV and
+dOFV values.
 
 
 
@@ -19,7 +19,7 @@ numeric formatting.
 ## Usage
 
 ```r
-get_spec_sigfig(spec, ...)
+get_spec_ofv_decimals(spec, ...)
 ```
 
 ## Arguments
@@ -45,15 +45,15 @@ get_spec_sigfig(spec, ...)
 
 ## Value
 
-Numeric value.
+Numeric value (or NA).
 
 
 
 ## Examples
 
 ```r
-spec <- TableSpec()
-get_spec_sigfig(spec)
+spec <- SummarySpec()
+get_spec_ofv_decimals(spec)
 ```
 ### Output
 
@@ -64,6 +64,6 @@ get_spec_sigfig(spec)
 
 ## See Also
 
-[`set_spec_sigfig()`](../set_spec_sigfig/).
+[`set_spec_ofv_decimals()`](../set_spec_ofv_decimals/).
 
 

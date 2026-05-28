@@ -1,5 +1,5 @@
 ---
-title: "Summary Tables"
+title: "summary-tables"
 pagefind: true
 ---
 
@@ -8,7 +8,9 @@ library(hyperion)
 #> 
 #> 
 #> ── pharos configuration ────────────────────────────────────────────────────────
-#> ✔ pharos.toml found: /Users/mattsmith/Documents/hyperion.tables/vignettes/pharos.toml
+#> ✔ pharos CLI: 0.5.1 (/Users/mattsmith/.cargo/bin/pharos)
+#> ✖ No pharos.toml config file found. Please call hyperion::init() to create one
+#>     └ hyperion.config_dir : (unset)
 #> ── hyperion options ────────────────────────────────────────────────────────────
 #> ✔ hyperion.significant_number_display : 4
 #> ── hyperion nonmem object options ──────────────────────────────────────────────
@@ -18,6 +20,7 @@ library(hyperion)
 library(hyperion.tables)
 
 model_dir <- system.file("extdata", "models", "onecmt", package = "hyperion.tables")
+options(hyperion.config_dir = system.file(package = "hyperion.tables"))
 ```
 
 ## Basic Summary Table
@@ -26,7 +29,7 @@ Summary tables display model run information across a project. Start by
 loading the model lineage tree:
 
 ``` r
-tree <- get_model_lineage(model_dir)
+tree <- get_model_lineage()
 
 tree
 ```
@@ -35,26 +38,30 @@ tree
 
 ℹ️ <strong>Models:</strong> 8
 
-- <strong style="color:blue">run001</strong> <span style="color:gray">-
-  Base model</span>
-  - <span style="color:green">run004</span> <span style="color:gray">-
-    Updating run001 to run004 with jittered params …</span>
-  - <span style="color:orange">run002</span> <span style="color:gray">-
-    Adding COV step, unfixing eps(2)</span>
-    - <span style="color:green">run002a</span>
-      <span style="color:gray">- Some description about what makes
-      run002a diffe…</span>
-    - <span style="color:orange">run003</span>
-      <span style="color:gray">- Jittering initial estimates</span>
-      - <span style="color:green">run003b1</span>
-        <span style="color:gray">- Updating run003 to 003b1 with
-        jittered params. …</span>
-      - <span style="color:green">run003b2</span>
-        <span style="color:gray">- Updating run003 with mod
-        object</span>
-    - <span style="color:green">run002b001</span>
-      <span style="color:gray">- Jittering initial sigma estimates,
-      using theta/…</span>
+- <strong style="color:blue">extdata/models/onecmt/run001</strong>
+  <span style="color:teal">base</span>
+  <span style="color:gray">\|</span> <span style="color:gray">Base
+  model</span>
+  - <span style="color:orange">extdata/models/onecmt/run002</span>
+    <span style="color:gray">Adding COV step, unfixing eps(2)</span>
+    - <span style="color:green">extdata/models/onecmt/run002a</span>
+      <span style="color:gray">Some description about what makes run002a
+      diffe…</span>
+    - <span style="color:green">extdata/models/onecmt/run002b001</span>
+      <span style="color:gray">Jittering initial sigma estimates, using
+      theta/…</span>
+    - <span style="color:orange">extdata/models/onecmt/run003</span>
+      <span style="color:teal">key</span>
+      <span style="color:gray">\|</span>
+      <span style="color:gray">Jittering initial estimates</span>
+      - <span style="color:green">extdata/models/onecmt/run003b1</span>
+        <span style="color:gray">Updating run003 to 003b1 with jittered
+        params. …</span>
+      - <span style="color:green">extdata/models/onecmt/run003b2</span>
+        <span style="color:gray">Updating run003 with mod object</span>
+  - <span style="color:green">extdata/models/onecmt/run004</span>
+    <span style="color:gray">Updating run001 to run004 with jittered
+    params …</span>
 
 Create a summary table with default columns:
 
@@ -65,7 +72,7 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-3-1.png)
+![]()
 
 ## Customizing Columns
 
@@ -87,7 +94,7 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-4-1.png)
+![]()
 
 Available columns include: `based_on`, `description`, `n_parameters`,
 `problem`, `number_data_records`, `number_subjects`, `number_obs`,
@@ -107,7 +114,7 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-5-1.png)
+![]()
 
 Or use custom filter rules:
 
@@ -121,7 +128,7 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-6-1.png)
+![]()
 
 ## P-value Formatting
 
@@ -137,7 +144,7 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-7-1.png)
+![]()
 
 ``` r
 spec <- SummarySpec() |>
@@ -149,7 +156,7 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-8-1.png)
+![]()
 
 ## Table Title
 
@@ -163,4 +170,4 @@ tree |>
     render_to_image()
 ```
 
-![](/figures/summary-tables/unnamed-chunk-9-1.png)
+![]()

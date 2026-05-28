@@ -1,18 +1,16 @@
 ---
 title: "Set row filter rules for a TableSpec"
-description: "Controls which parameters appear in the output table. Pass filter expressions like `!fixed`, `diagonal`."
+description: "`set_spec_filter()` controls which parameters appear in the output table. Pass filter expressions like `!fixed`, `diagonal`. Operates on `TableSpec` only."
+sidebar:
+  label: "set_spec_filter"
 pagefind: true
 ---
 
 ## Description
 
-Controls which parameters appear in the output table. Pass filter
-expressions like `!fixed`, `diagonal`.
-
-## Details
-
-The built-in `TableSpec` method interprets unnamed arguments in `...` as
-filter rule expressions. Named arguments in `...` are ignored with a warning.
+`set_spec_filter()` controls which parameters appear in the output table.
+Pass filter expressions like `!fixed`, `diagonal`. Operates on `TableSpec`
+only.
 
 
 
@@ -35,11 +33,11 @@ set_spec_filter(spec, ..., overwrite = FALSE)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Filter expressions evaluated against parameter rows (e.g. `!fixed`, `diagonal`). Captured as quosures and combined via [`filter_rules()`](../filter_rules/).</td>
 </tr>
 <tr>
 <td><code>overwrite</code></td>
@@ -52,8 +50,7 @@ set_spec_filter(spec, ..., overwrite = FALSE)
 
 ## Value
 
-Modified spec
-
+Modified spec.
 
 
 
@@ -63,4 +60,9 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_filter(!fixed, diagonal)
 ```
+
+## See Also
+
+[`get_spec_filter()`](../get_spec_filter/).
+
 

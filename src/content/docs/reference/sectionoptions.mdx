@@ -1,0 +1,73 @@
+---
+title: "Section options for a spec"
+description: "Holds rule formulas, per-item assignments, display order, and the filter (keep / exclude) for a `TableSpec` or `SummarySpec`."
+sidebar:
+  label: "SectionOptions"
+pagefind: true
+---
+
+## Description
+
+Holds rule formulas, per-item assignments, display order, and the
+filter (keep / exclude) for a `TableSpec` or `SummarySpec`.
+
+
+
+
+
+
+## Usage
+
+```r
+SectionOptions(
+  rules = list(),
+  assignments = list(),
+  inline_items = character(0),
+  order = character(0),
+  filter = list()
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rules</code></td>
+<td>List of formulas created with [`section_rules()`](../section_rules/).</td>
+</tr>
+<tr>
+<td><code>assignments</code></td>
+<td>Named list keyed by section label; each value is a character vector of items belonging to that section.</td>
+</tr>
+<tr>
+<td><code>inline_items</code></td>
+<td>Internal: items that originated from an inline `parameters =` override (used to scope unmatched-item warnings). Not intended for direct use.</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>Character vector of section labels in display order, or NULL.</td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td>A list specifying section filtering: `list()` (no filter), `list(keep = c(...))`, or `list(exclude = c(...))`.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+## Properties
+
+- `rules` - List of formulas created with [`section_rules()`](../section_rules/).
+- `assignments` - Named list keyed by section label; each value is a character vector of items belonging to that section.
+- `order` - Character vector of section labels in display order, or NULL.
+- `filter` - List with one named entry (`keep` or `exclude`) holding section labels, or empty list for no filter.
+
+
+

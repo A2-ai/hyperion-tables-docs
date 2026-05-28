@@ -1,14 +1,14 @@
 ---
-title: "Get title from a spec"
-description: "`get_spec_title()` returns the table header title."
+title: "Get p-value formatting options from a spec"
+description: "`get_spec_pvalue()` returns the p-value formatting options as a named list."
 sidebar:
-  label: "get_spec_title"
+  label: "get_spec_pvalue"
 pagefind: true
 ---
 
 ## Description
 
-`get_spec_title()` returns the table header title.
+`get_spec_pvalue()` returns the p-value formatting options as a named list.
 
 
 
@@ -18,7 +18,7 @@ pagefind: true
 ## Usage
 
 ```r
-get_spec_title(spec, ...)
+get_spec_pvalue(spec, ...)
 ```
 
 ## Arguments
@@ -44,7 +44,7 @@ get_spec_title(spec, ...)
 
 ## Value
 
-Character string.
+A named list with elements `threshold` and `scientific`.
 
 
 
@@ -52,17 +52,22 @@ Character string.
 
 ```r
 spec <- TableSpec()
-get_spec_title(spec)
+get_spec_pvalue(spec)
 ```
 ### Output
 
 ```
-[1] "Model Parameters"
+$threshold
+NULL
+
+$scientific
+[1] FALSE
+
 ```
 
 
 ## See Also
 
-[`set_spec_title()`](../set_spec_title/).
+[`set_spec_pvalue()`](../set_spec_pvalue/).
 
 

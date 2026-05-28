@@ -1,20 +1,19 @@
 ---
 title: "Set section filter for a spec"
-description: "Filters out rows belonging to specified sections. Use `NA` to also filter unmatched rows (those that didn't match any section rule)."
+description: "[](https://lifecycle. r-lib. org/articles/stages. html#deprecated) `set_spec_section_filter()` was deprecated in hyperion. tables 0. 5. 0 and will be removed in"
+sidebar:
+  label: "set_spec_section_filter"
 pagefind: true
 ---
 
 ## Description
 
-Filters out rows belonging to specified sections. Use `NA` to also
-filter unmatched rows (those that didn't match any section rule).
+[](https://lifecycle.r-lib.org/articles/stages.html#deprecated)
 
-## Details
-
-Built-in methods for `TableSpec` and `SummarySpec` interpret values in
-`...` as section labels to exclude. Pass `NA` to also exclude unmatched rows
-(those that did not match any section rule). Call with no arguments to clear
-the filter. Named arguments in `...` are ignored with a warning.
+`set_spec_section_filter()` was deprecated in hyperion.tables 0.5.0 and
+will be removed in 0.6.0. Use [`set_spec_sections()`](../set_spec_sections/) with `keep` or
+`exclude` instead. Calling with no filter arguments still clears the
+existing filter for backward compatibility.
 
 
 
@@ -24,7 +23,7 @@ the filter. Named arguments in `...` are ignored with a warning.
 ## Usage
 
 ```r
-set_spec_section_filter(spec, ...)
+set_spec_section_filter(spec, exclude = NULL, keep = NULL)
 ```
 
 ## Arguments
@@ -37,11 +36,15 @@ set_spec_section_filter(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
-<td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td><code>exclude</code></td>
+<td>Character vector of section labels to drop, optionally including `NA` to also drop unmatched rows.</td>
+</tr>
+<tr>
+<td><code>keep</code></td>
+<td>Character vector of section labels to keep (everything else is dropped), optionally including `NA` to also keep unmatched rows.</td>
 </tr>
 </tbody>
 </table>
@@ -50,20 +53,18 @@ set_spec_section_filter(spec, ...)
 
 ## Value
 
-Modified spec
-
+Modified spec.
 
 
 
 ## Examples
 
 ```r
-spec <- SummarySpec(
-  sections = section_rules(
+spec <- SummarySpec() |>
+  set_spec_sections(
     "base" %in% tags ~ "Base Models",
     TRUE ~ "Other"
-  )
-) |>
-  set_spec_section_filter("Other")
+  ) |>
+  set_spec_section_filter(exclude = "Other")
 ```
 

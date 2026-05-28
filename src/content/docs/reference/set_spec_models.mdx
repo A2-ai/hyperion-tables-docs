@@ -1,12 +1,15 @@
 ---
 title: "Set models to include for a SummarySpec"
-description: "Filters which models appear in the summary table by name."
+description: "`set_spec_models()` filters which models appear in the summary table by name. Operates on `SummarySpec` only."
+sidebar:
+  label: "set_spec_models"
 pagefind: true
 ---
 
 ## Description
 
-Filters which models appear in the summary table by name.
+`set_spec_models()` filters which models appear in the summary table by
+name. Operates on `SummarySpec` only.
 
 
 
@@ -29,15 +32,15 @@ set_spec_models(spec, models, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A SummarySpec object</td>
+<td>A SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>models</code></td>
-<td>Character vector of model names, or NULL for all models</td>
+<td>Character vector of model names, or NULL for all models.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -46,7 +49,7 @@ set_spec_models(spec, models, ...)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -56,4 +59,9 @@ Modified spec
 spec <- SummarySpec() |>
   set_spec_models(c("run001", "run002", "run003"))
 ```
+
+## See Also
+
+[`get_spec_models()`](../get_spec_models/).
+
 

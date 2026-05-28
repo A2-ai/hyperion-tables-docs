@@ -1,12 +1,15 @@
 ---
 title: "Set CI options for a TableSpec"
-description: "Controls confidence interval rendering options."
+description: "`set_spec_ci()` controls confidence interval rendering options. Operates on `TableSpec` only."
+sidebar:
+  label: "set_spec_ci"
 pagefind: true
 ---
 
 ## Description
 
-Controls confidence interval rendering options.
+`set_spec_ci()` controls confidence interval rendering options. Operates on
+`TableSpec` only.
 
 
 
@@ -36,27 +39,27 @@ set_spec_ci(
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 <tr>
 <td><code>level</code></td>
-<td>Confidence interval level (0-1, exclusive)</td>
+<td>Confidence interval level (0-1, exclusive).</td>
 </tr>
 <tr>
 <td><code>merge</code></td>
-<td>Logical. If TRUE, merge CI bounds into a single column</td>
+<td>Logical. If TRUE, merge CI bounds into a single column.</td>
 </tr>
 <tr>
 <td><code>pattern</code></td>
-<td>sprintf pattern for merged CI display (must contain two %%s)</td>
+<td>sprintf pattern for merged CI display (must contain two %%s).</td>
 </tr>
 <tr>
 <td><code>missing_text</code></td>
-<td>Text to show for missing CI values</td>
+<td>Text to show for missing CI values.</td>
 </tr>
 </tbody>
 </table>
@@ -65,7 +68,7 @@ set_spec_ci(
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -75,4 +78,9 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_ci(level = 0.90, merge = TRUE, pattern = "(%s, %s)")
 ```
+
+## See Also
+
+[`get_spec_ci()`](../get_spec_ci/).
+
 

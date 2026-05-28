@@ -1,0 +1,74 @@
+---
+title: "Get tag filter from a SummarySpec"
+description: "`get_spec_tag_filter()` returns the tag filtering configuration as a named list. Operates on `SummarySpec` only."
+sidebar:
+  label: "get_spec_tag_filter"
+pagefind: true
+---
+
+## Description
+
+`get_spec_tag_filter()` returns the tag filtering configuration as a named
+list. Operates on `SummarySpec` only.
+
+
+
+
+
+
+## Usage
+
+```r
+get_spec_tag_filter(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object.</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Not used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+A named list with elements `include` and `exclude`.
+
+
+
+## Examples
+
+```r
+spec <- SummarySpec()
+get_spec_tag_filter(spec)
+```
+### Output
+
+```
+$include
+NULL
+
+$exclude
+NULL
+
+```
+
+
+## See Also
+
+[`set_spec_tag_filter()`](../set_spec_tag_filter/).
+
+

@@ -1,12 +1,14 @@
 ---
 title: "Set p-value formatting for a spec"
-description: "Controls how p-values are displayed in the table."
+description: "`set_spec_pvalue()` controls how p-values are displayed in the table."
+sidebar:
+  label: "set_spec_pvalue"
 pagefind: true
 ---
 
 ## Description
 
-Controls how p-values are displayed in the table.
+`set_spec_pvalue()` controls how p-values are displayed in the table.
 
 
 
@@ -29,19 +31,19 @@ set_spec_pvalue(spec, ..., threshold, scientific)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 <tr>
 <td><code>threshold</code></td>
-<td>Numeric threshold below which p-values display as "\< threshold", or NULL to disable threshold display</td>
+<td>Numeric threshold below which p-values display as "\< threshold", or NULL to disable threshold display.</td>
 </tr>
 <tr>
 <td><code>scientific</code></td>
-<td>Logical. If TRUE, use scientific notation for p-values</td>
+<td>Logical. If TRUE, use scientific notation for p-values.</td>
 </tr>
 </tbody>
 </table>
@@ -50,7 +52,7 @@ set_spec_pvalue(spec, ..., threshold, scientific)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -60,4 +62,9 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_pvalue(threshold = 0.001, scientific = TRUE)
 ```
+
+## See Also
+
+[`get_spec_pvalue()`](../get_spec_pvalue/).
+
 

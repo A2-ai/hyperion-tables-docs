@@ -1,12 +1,14 @@
 ---
 title: "Get CI options from a TableSpec"
-description: "Returns the CIOptions object."
+description: "`get_spec_ci()` returns the CIOptions object. Operates on `TableSpec` only."
+sidebar:
+  label: "get_spec_ci"
 pagefind: true
 ---
 
 ## Description
 
-Returns the CIOptions object.
+`get_spec_ci()` returns the CIOptions object. Operates on `TableSpec` only.
 
 
 
@@ -29,11 +31,11 @@ get_spec_ci(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +44,7 @@ get_spec_ci(spec, ...)
 
 ## Value
 
-CIOptions object
+CIOptions object.
 
 
 
@@ -59,7 +61,12 @@ get_spec_ci(spec)
  @ level       : num 0.95
  @ merge       : logi TRUE
  @ pattern     : chr "[%s, %s]"
- @ missing_text: chr "-" 
+ @ missing_text: chr "-"
 ```
+
+
+## See Also
+
+[`set_spec_ci()`](../set_spec_ci/).
 
 

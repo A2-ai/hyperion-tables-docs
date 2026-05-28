@@ -1,6 +1,8 @@
 ---
 title: "Table specification for parameter tables"
 description: "Table specification for parameter tables."
+sidebar:
+  label: "TableSpec"
 pagefind: true
 ---
 
@@ -19,15 +21,14 @@ Table specification for parameter tables
 TableSpec(
   title = "Model Parameters",
   parameter_names = ParameterNameOptions(),
+  sections = SectionOptions(),
   columns = NULL,
   add_columns = NULL,
   drop_columns = NULL,
   hide_empty_columns = TRUE,
-  sections = section_rules(),
-  section_filter = NULL,
   row_filter = filter_rules(),
   display_transforms = list(),
-  variability_rules = default_variability_rules(),
+  variability_rules = NULL,
   n_sigfig = 3,
   ci = CIOptions(),
   n_decimals_ofv = 3,
@@ -53,7 +54,11 @@ TableSpec(
 </tr>
 <tr>
 <td><code>parameter_names</code></td>
-<td>ParameterNameOptions object controlling how parameter names are displayed. Controls which name field to use ("name", "display", or "nonmem") and whether to append theta info to omega names. Defaults to `ParameterNameOptions()`.</td>
+<td>ParameterNameOptions object controlling how parameter names are displayed. Controls which name field to use ("name", "display", or "nonmem"). Defaults to `ParameterNameOptions()`.</td>
+</tr>
+<tr>
+<td><code>sections</code></td>
+<td>A `SectionOptions` object, or `NULL` for an empty section configuration. Prefer configuring sections with [`set_spec_sections()`](../set_spec_sections/) in a pipe for user-facing code.</td>
 </tr>
 <tr>
 <td><code>columns</code></td>
@@ -70,14 +75,6 @@ TableSpec(
 <tr>
 <td><code>hide_empty_columns</code></td>
 <td>Logical. If TRUE, columns that are all NA/empty are automatically hidden unless explicitly requested via `columns` or `add_columns`. Default is TRUE.</td>
-</tr>
-<tr>
-<td><code>sections</code></td>
-<td>Section rules created with `section_rules()`.</td>
-</tr>
-<tr>
-<td><code>section_filter</code></td>
-<td>Character vector of section labels to exclude from the table. Use `NA` to also exclude rows that don't match any section rule. Default is NULL (no filtering). See `set_spec_section_filter()`.</td>
 </tr>
 <tr>
 <td><code>row_filter</code></td>

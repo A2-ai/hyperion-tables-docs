@@ -1,5 +1,5 @@
 ---
-title: "Parameter Tables"
+title: "parameter-tables"
 pagefind: true
 ---
 
@@ -8,7 +8,9 @@ library(hyperion)
 #> 
 #> 
 #> ── pharos configuration ────────────────────────────────────────────────────────
-#> ✔ pharos.toml found: /Users/mattsmith/Documents/hyperion.tables/vignettes/pharos.toml
+#> ✔ pharos CLI: 0.5.1 (/Users/mattsmith/.cargo/bin/pharos)
+#> ✖ No pharos.toml config file found. Please call hyperion::init() to create one
+#>     └ hyperion.config_dir : (unset)
 #> ── hyperion options ────────────────────────────────────────────────────────────
 #> ✔ hyperion.significant_number_display : 4
 #> ── hyperion nonmem object options ──────────────────────────────────────────────
@@ -21,6 +23,7 @@ library(gt)
 library(flextable)
 
 model_dir <- system.file("extdata", "models", "onecmt", package = "hyperion.tables")
+options(hyperion.config_dir = system.file(package = "hyperion.tables"))
 model_run <- "run003"
 ```
 
@@ -56,7 +59,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-2-1.png)
+![]()
 
 ## Changing display names with `set_spec_parameter_names()`
 
@@ -76,7 +79,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-3-1.png)
+![]()
 
 ``` r
 spec <- spec |> set_spec_parameter_names(source = "nonmem")
@@ -88,7 +91,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-4-1.png)
+![]()
 
 ### Adding descriptions with `add_spec_columns()`
 
@@ -104,7 +107,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-5-1.png)
+![]()
 
 ### Removing columns with `drop_spec_columns()`
 
@@ -129,7 +132,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-6-1.png)
+![]()
 
 ``` r
 ## Drop multiple columns
@@ -142,7 +145,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-7-1.png)
+![]()
 
 ## Structural parameters only
 
@@ -161,7 +164,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-8-1.png)
+![]()
 
 ## Random Effect Parameters only
 
@@ -181,7 +184,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-9-1.png)
+![]()
 
 ## Confidence Interval level
 
@@ -208,7 +211,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-10-1.png)
+![]()
 
 ## Changing summary info shown
 
@@ -227,7 +230,7 @@ spec <- TableSpec() |>
   set_spec_parameter_names(source = "display")
 
 mod_sum <- summary(mod)
-info <- get_model_parameter_info(mod, lookup_path = normalizePath("../inst/lookup.toml"))
+info <- get_model_parameter_info(mod, lookup_path = system.file("lookup.toml", package = "hyperion.tables"))
 
 get_parameters(mod) |>
   apply_table_spec(spec, info) |>
@@ -236,7 +239,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-11-1.png)
+![]()
 
 ``` r
 get_parameters(mod) |>
@@ -246,7 +249,7 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-12-1.png)
+![]()
 
 ``` r
 get_parameters(mod) |>
@@ -256,27 +259,27 @@ get_parameters(mod) |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-13-1.png)
+![]()
 
 ## Transformation Reference
 
 The following table shows how CV, RSE, and CI are computed for each
 transform and parameter type combination.
 
-<div id="qtameqyqud" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qtameqyqud table {
+<div id="ocajptvndx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ocajptvndx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#qtameqyqud thead, #qtameqyqud tbody, #qtameqyqud tfoot, #qtameqyqud tr, #qtameqyqud td, #qtameqyqud th {
+&#10;#ocajptvndx thead, #ocajptvndx tbody, #ocajptvndx tfoot, #ocajptvndx tr, #ocajptvndx td, #ocajptvndx th {
   border-style: none;
 }
-&#10;#qtameqyqud p {
+&#10;#ocajptvndx p {
   margin: 0;
   padding: 0;
 }
-&#10;#qtameqyqud .gt_table {
+&#10;#ocajptvndx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -301,11 +304,11 @@ transform and parameter type combination.
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_caption {
+&#10;#ocajptvndx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#qtameqyqud .gt_title {
+&#10;#ocajptvndx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -316,7 +319,7 @@ transform and parameter type combination.
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#qtameqyqud .gt_subtitle {
+&#10;#ocajptvndx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -327,7 +330,7 @@ transform and parameter type combination.
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#qtameqyqud .gt_heading {
+&#10;#ocajptvndx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -338,12 +341,12 @@ transform and parameter type combination.
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_bottom_border {
+&#10;#ocajptvndx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_col_headings {
+&#10;#ocajptvndx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -357,7 +360,7 @@ transform and parameter type combination.
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_col_heading {
+&#10;#ocajptvndx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -376,7 +379,7 @@ transform and parameter type combination.
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#qtameqyqud .gt_column_spanner_outer {
+&#10;#ocajptvndx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -387,13 +390,13 @@ transform and parameter type combination.
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#qtameqyqud .gt_column_spanner_outer:first-child {
+&#10;#ocajptvndx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#qtameqyqud .gt_column_spanner_outer:last-child {
+&#10;#ocajptvndx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#qtameqyqud .gt_column_spanner {
+&#10;#ocajptvndx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -404,10 +407,10 @@ transform and parameter type combination.
   display: inline-block;
   width: 100%;
 }
-&#10;#qtameqyqud .gt_spanner_row {
+&#10;#ocajptvndx .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#qtameqyqud .gt_group_heading {
+&#10;#ocajptvndx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +435,7 @@ transform and parameter type combination.
   vertical-align: middle;
   text-align: left;
 }
-&#10;#qtameqyqud .gt_empty_group_heading {
+&#10;#ocajptvndx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -446,13 +449,13 @@ transform and parameter type combination.
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#qtameqyqud .gt_from_md > :first-child {
+&#10;#ocajptvndx .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#qtameqyqud .gt_from_md > :last-child {
+&#10;#ocajptvndx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#qtameqyqud .gt_row {
+&#10;#ocajptvndx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +473,7 @@ transform and parameter type combination.
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#qtameqyqud .gt_stub {
+&#10;#ocajptvndx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -482,7 +485,7 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qtameqyqud .gt_stub_row_group {
+&#10;#ocajptvndx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -495,13 +498,13 @@ transform and parameter type combination.
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#qtameqyqud .gt_row_group_first td {
+&#10;#ocajptvndx .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#qtameqyqud .gt_row_group_first th {
+&#10;#ocajptvndx .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#qtameqyqud .gt_summary_row {
+&#10;#ocajptvndx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -510,14 +513,14 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qtameqyqud .gt_first_summary_row {
+&#10;#ocajptvndx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_first_summary_row.thick {
+&#10;#ocajptvndx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#qtameqyqud .gt_last_summary_row {
+&#10;#ocajptvndx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -526,7 +529,7 @@ transform and parameter type combination.
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_grand_summary_row {
+&#10;#ocajptvndx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -535,7 +538,7 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qtameqyqud .gt_first_grand_summary_row {
+&#10;#ocajptvndx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -544,7 +547,7 @@ transform and parameter type combination.
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_last_grand_summary_row_top {
+&#10;#ocajptvndx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,10 +556,10 @@ transform and parameter type combination.
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_striped {
+&#10;#ocajptvndx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#qtameqyqud .gt_table_body {
+&#10;#ocajptvndx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -564,7 +567,7 @@ transform and parameter type combination.
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_footnotes {
+&#10;#ocajptvndx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -577,7 +580,7 @@ transform and parameter type combination.
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_footnote {
+&#10;#ocajptvndx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -585,7 +588,7 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qtameqyqud .gt_sourcenotes {
+&#10;#ocajptvndx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -598,64 +601,64 @@ transform and parameter type combination.
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#qtameqyqud .gt_sourcenote {
+&#10;#ocajptvndx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qtameqyqud .gt_left {
+&#10;#ocajptvndx .gt_left {
   text-align: left;
 }
-&#10;#qtameqyqud .gt_center {
+&#10;#ocajptvndx .gt_center {
   text-align: center;
 }
-&#10;#qtameqyqud .gt_right {
+&#10;#ocajptvndx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#qtameqyqud .gt_font_normal {
+&#10;#ocajptvndx .gt_font_normal {
   font-weight: normal;
 }
-&#10;#qtameqyqud .gt_font_bold {
+&#10;#ocajptvndx .gt_font_bold {
   font-weight: bold;
 }
-&#10;#qtameqyqud .gt_font_italic {
+&#10;#ocajptvndx .gt_font_italic {
   font-style: italic;
 }
-&#10;#qtameqyqud .gt_super {
+&#10;#ocajptvndx .gt_super {
   font-size: 65%;
 }
-&#10;#qtameqyqud .gt_footnote_marks {
+&#10;#ocajptvndx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#qtameqyqud .gt_asterisk {
+&#10;#ocajptvndx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#qtameqyqud .gt_indent_1 {
+&#10;#ocajptvndx .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#qtameqyqud .gt_indent_2 {
+&#10;#ocajptvndx .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#qtameqyqud .gt_indent_3 {
+&#10;#ocajptvndx .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#qtameqyqud .gt_indent_4 {
+&#10;#ocajptvndx .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#qtameqyqud .gt_indent_5 {
+&#10;#ocajptvndx .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#qtameqyqud .katex-display {
+&#10;#ocajptvndx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#qtameqyqud div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#ocajptvndx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -862,7 +865,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 ## Model Lineage
 
 ``` r
-example_tree <- get_model_lineage(model_dir)
+example_tree <- get_model_lineage()
 
 example_tree
 ```
@@ -871,26 +874,30 @@ example_tree
 
 ℹ️ <strong>Models:</strong> 8
 
-- <strong style="color:blue">run001</strong> <span style="color:gray">-
-  Base model</span>
-  - <span style="color:orange">run002</span> <span style="color:gray">-
-    Adding COV step, unfixing eps(2)</span>
-    - <span style="color:green">run002b001</span>
-      <span style="color:gray">- Jittering initial sigma estimates,
-      using theta/…</span>
-    - <span style="color:green">run002a</span>
-      <span style="color:gray">- Some description about what makes
-      run002a diffe…</span>
-    - <span style="color:orange">run003</span>
-      <span style="color:gray">- Jittering initial estimates</span>
-      - <span style="color:green">run003b2</span>
-        <span style="color:gray">- Updating run003 with mod
-        object</span>
-      - <span style="color:green">run003b1</span>
-        <span style="color:gray">- Updating run003 to 003b1 with
-        jittered params. …</span>
-  - <span style="color:green">run004</span> <span style="color:gray">-
-    Updating run001 to run004 with jittered params …</span>
+- <strong style="color:blue">extdata/models/onecmt/run001</strong>
+  <span style="color:teal">base</span>
+  <span style="color:gray">\|</span> <span style="color:gray">Base
+  model</span>
+  - <span style="color:orange">extdata/models/onecmt/run002</span>
+    <span style="color:gray">Adding COV step, unfixing eps(2)</span>
+    - <span style="color:green">extdata/models/onecmt/run002a</span>
+      <span style="color:gray">Some description about what makes run002a
+      diffe…</span>
+    - <span style="color:green">extdata/models/onecmt/run002b001</span>
+      <span style="color:gray">Jittering initial sigma estimates, using
+      theta/…</span>
+    - <span style="color:orange">extdata/models/onecmt/run003</span>
+      <span style="color:teal">key</span>
+      <span style="color:gray">\|</span>
+      <span style="color:gray">Jittering initial estimates</span>
+      - <span style="color:green">extdata/models/onecmt/run003b1</span>
+        <span style="color:gray">Updating run003 to 003b1 with jittered
+        params. …</span>
+      - <span style="color:green">extdata/models/onecmt/run003b2</span>
+        <span style="color:gray">Updating run003 with mod object</span>
+  - <span style="color:green">extdata/models/onecmt/run004</span>
+    <span style="color:gray">Updating run001 to run004 with jittered
+    params …</span>
 
 ``` r
 spec <- SummarySpec() |>
@@ -902,4 +909,4 @@ example_tree |>
     render_to_image()
 ```
 
-![](/figures/parameter-tables/unnamed-chunk-15-1.png)
+![]()

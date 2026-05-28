@@ -1,12 +1,15 @@
 ---
 title: "Get row filter rules from a TableSpec"
-description: "Returns the list of row filter rules."
+description: "`get_spec_filter()` returns the list of row filter rules. Operates on `TableSpec` only."
+sidebar:
+  label: "get_spec_filter"
 pagefind: true
 ---
 
 ## Description
 
-Returns the list of row filter rules.
+`get_spec_filter()` returns the list of row filter rules. Operates on
+`TableSpec` only.
 
 
 
@@ -29,11 +32,11 @@ get_spec_filter(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +45,7 @@ get_spec_filter(spec, ...)
 
 ## Value
 
-List of quosures
+List of quosures.
 
 
 
@@ -57,7 +60,12 @@ get_spec_filter(spec)
 ```
 <list_of<quosure>>
 
-named list() 
+named list()
 ```
+
+
+## See Also
+
+[`set_spec_filter()`](../set_spec_filter/).
 
 

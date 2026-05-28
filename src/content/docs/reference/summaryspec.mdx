@@ -1,6 +1,8 @@
 ---
 title: "Summary specification for run summary tables"
 description: "Summary specification for run summary tables."
+sidebar:
+  label: "SummarySpec"
 pagefind: true
 ---
 
@@ -23,6 +25,7 @@ SummarySpec(
   tag_exclude = NULL,
   summary_filter = summary_filter_rules(),
   remove_unrun_models = TRUE,
+  sections = SectionOptions(),
   columns = NULL,
   add_columns = NULL,
   drop_columns = NULL,
@@ -32,8 +35,6 @@ SummarySpec(
   time_format = "seconds",
   pvalue_scientific = FALSE,
   pvalue_threshold = NULL,
-  sections = section_rules(),
-  section_filter = NULL,
   footnote_order = "abbreviations"
 )
 ```
@@ -71,6 +72,10 @@ SummarySpec(
 <td>Logical. If TRUE (default), models without completed runs are excluded from the table.</td>
 </tr>
 <tr>
+<td><code>sections</code></td>
+<td>A `SectionOptions` object, or `NULL` for an empty section configuration. Prefer configuring sections with [`set_spec_sections()`](../set_spec_sections/) in a pipe for user-facing code.</td>
+</tr>
+<tr>
 <td><code>columns</code></td>
 <td>Character vector of columns to include. Valid columns: "based_on", "description", "n_parameters", "problem", "number_data_records", "number_subjects", "number_obs", "estimation_method", "estimation_time", "covariance_time", "postprocess_time", "function_evaluations", "significant_digits", "ofv", "dofv", "condition_number", "termination_status", "pvalue", "df". Note: "pvalue" and "df" require "dofv" to be calculated; pvalue uses the Likelihood Ratio Test (LRT) assuming nested models.</td>
 </tr>
@@ -105,14 +110,6 @@ SummarySpec(
 <tr>
 <td><code>pvalue_threshold</code></td>
 <td>Numeric or NULL. If set, p-values below this threshold are displayed as "\< threshold" (e.g., "\< 0.05"). Default is NULL (no threshold).</td>
-</tr>
-<tr>
-<td><code>sections</code></td>
-<td>Section rules created with `section_rules()`.</td>
-</tr>
-<tr>
-<td><code>section_filter</code></td>
-<td>Character vector of section labels to exclude from the table. Use `NA` to also exclude models that don't match any section rule. Default is NULL (no filtering). See `set_spec_section_filter()`.</td>
 </tr>
 <tr>
 <td><code>footnote_order</code></td>

@@ -1,12 +1,15 @@
 ---
 title: "Set tag filter for a SummarySpec"
-description: "Filters which models appear in the summary table by tags."
+description: "`set_spec_tag_filter()` filters which models appear in the summary table by tags. Operates on `SummarySpec` only."
+sidebar:
+  label: "set_spec_tag_filter"
 pagefind: true
 ---
 
 ## Description
 
-Filters which models appear in the summary table by tags.
+`set_spec_tag_filter()` filters which models appear in the summary table by
+tags. Operates on `SummarySpec` only.
 
 
 
@@ -16,7 +19,7 @@ Filters which models appear in the summary table by tags.
 ## Usage
 
 ```r
-set_spec_tag_filter(spec, ..., tags, exclude)
+set_spec_tag_filter(spec, ..., include, exclude)
 ```
 
 ## Arguments
@@ -29,19 +32,19 @@ set_spec_tag_filter(spec, ..., tags, exclude)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A SummarySpec object</td>
+<td>A SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 <tr>
-<td><code>tags</code></td>
+<td><code>include</code></td>
 <td>Character vector of tags to include, or NULL for no inclusion filter. Only models with at least one matching tag are kept.</td>
 </tr>
 <tr>
 <td><code>exclude</code></td>
-<td>Character vector of tags to exclude, or NULL for no exclusion filter. Models with any matching tag are removed. Applied after `tags`.</td>
+<td>Character vector of tags to exclude, or NULL for no exclusion filter. Models with any matching tag are removed. Applied after `include`.</td>
 </tr>
 </tbody>
 </table>
@@ -50,7 +53,7 @@ set_spec_tag_filter(spec, ..., tags, exclude)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -58,10 +61,15 @@ Modified spec
 
 ```r
 spec <- SummarySpec() |>
-  set_spec_tag_filter(c("final", "approved"))
+  set_spec_tag_filter(include = c("final", "approved"))
 
 # Exclude models tagged "failed"
 spec <- SummarySpec() |>
   set_spec_tag_filter(exclude = "failed")
 ```
+
+## See Also
+
+[`get_spec_tag_filter()`](../get_spec_tag_filter/).
+
 

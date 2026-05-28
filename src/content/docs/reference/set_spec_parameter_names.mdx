@@ -1,12 +1,15 @@
 ---
 title: "Set parameter name options for a TableSpec"
-description: "Controls how parameter names are displayed in the table."
+description: "`set_spec_parameter_names()` controls how parameter names are displayed in the table. Operates on `TableSpec` only."
+sidebar:
+  label: "set_spec_parameter_names"
 pagefind: true
 ---
 
 ## Description
 
-Controls how parameter names are displayed in the table.
+`set_spec_parameter_names()` controls how parameter names are displayed in
+the table. Operates on `TableSpec` only.
 
 
 
@@ -16,12 +19,7 @@ Controls how parameter names are displayed in the table.
 ## Usage
 
 ```r
-set_spec_parameter_names(
-  spec,
-  ...,
-  source = NULL,
-  append_omega_with_theta = NULL
-)
+set_spec_parameter_names(spec, ..., source = NULL)
 ```
 
 ## Arguments
@@ -34,19 +32,15 @@ set_spec_parameter_names(
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 <tr>
 <td><code>source</code></td>
 <td>One of "name", "display", or "nonmem". If NULL, keeps current value.</td>
-</tr>
-<tr>
-<td><code>append_omega_with_theta</code></td>
-<td>Logical. If TRUE, append associated theta names to omega parameters. If NULL, keeps current value.</td>
 </tr>
 </tbody>
 </table>
@@ -55,7 +49,7 @@ set_spec_parameter_names(
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -63,6 +57,11 @@ Modified spec
 
 ```r
 spec <- TableSpec() |>
-  set_spec_parameter_names(source = "nonmem", append_omega_with_theta = FALSE)
+  set_spec_parameter_names(source = "nonmem")
 ```
+
+## See Also
+
+[`get_spec_parameter_names()`](../get_spec_parameter_names/).
+
 

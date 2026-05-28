@@ -1,12 +1,15 @@
 ---
 title: "Set display transforms for a TableSpec"
-description: "Controls which transforms are applied for display by parameter kind."
+description: "`set_spec_transforms()` controls which transforms are applied for display by parameter kind. Operates on `TableSpec` only."
+sidebar:
+  label: "set_spec_transforms"
 pagefind: true
 ---
 
 ## Description
 
-Controls which transforms are applied for display by parameter kind.
+`set_spec_transforms()` controls which transforms are applied for display by
+parameter kind. Operates on `TableSpec` only.
 
 
 
@@ -29,23 +32,23 @@ set_spec_transforms(spec, ..., theta = NULL, omega = NULL, sigma = NULL)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 <tr>
 <td><code>theta</code></td>
-<td>Columns to transform for theta parameters</td>
+<td>Columns to transform for theta parameters.</td>
 </tr>
 <tr>
 <td><code>omega</code></td>
-<td>Columns to transform for omega parameters</td>
+<td>Columns to transform for omega parameters.</td>
 </tr>
 <tr>
 <td><code>sigma</code></td>
-<td>Columns to transform for sigma parameters</td>
+<td>Columns to transform for sigma parameters.</td>
 </tr>
 </tbody>
 </table>
@@ -54,7 +57,7 @@ set_spec_transforms(spec, ..., theta = NULL, omega = NULL, sigma = NULL)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -64,4 +67,9 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_transforms(theta = "all", omega = c("estimate", "cv"))
 ```
+
+## See Also
+
+[`get_spec_transforms()`](../get_spec_transforms/).
+
 

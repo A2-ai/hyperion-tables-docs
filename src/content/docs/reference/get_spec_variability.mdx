@@ -1,12 +1,15 @@
 ---
 title: "Get variability rules from a TableSpec"
-description: "Returns the list of variability display rules."
+description: "`get_spec_variability()` returns the list of variability display rules. Operates on `TableSpec` only."
+sidebar:
+  label: "get_spec_variability"
 pagefind: true
 ---
 
 ## Description
 
-Returns the list of variability display rules.
+`get_spec_variability()` returns the list of variability display rules.
+Operates on `TableSpec` only.
 
 
 
@@ -29,11 +32,11 @@ get_spec_variability(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +45,7 @@ get_spec_variability(spec, ...)
 
 ## Value
 
-List of quosures
+List of quosures.
 
 
 
@@ -60,28 +63,33 @@ get_spec_variability(spec)
 [[1]]
 <quosure>
 expr: ^fixed ~ "(Fixed)"
-env:  0x1075f8a20
+env:  0x1152bb4d8
 
 [[2]]
 <quosure>
 expr: ^!is.na(corr) ~ sprintf("(Corr = %s)", corr)
-env:  0x1075f8a20
+env:  0x1152bb4d8
 
 [[3]]
 <quosure>
 expr: ^!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv)
-env:  0x1075f8a20
+env:  0x1152bb4d8
 
 [[4]]
 <quosure>
 expr: ^!is.na(sd) ~ sprintf("(SD = %s)", sd)
-env:  0x1075f8a20
+env:  0x1152bb4d8
 
 [[5]]
 <quosure>
 expr: ^TRUE ~ NA_character_
-env:  0x1075f8a20
- 
+env:  0x1152bb4d8
+
 ```
+
+
+## See Also
+
+[`set_spec_variability()`](../set_spec_variability/).
 
 

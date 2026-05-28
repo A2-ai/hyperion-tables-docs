@@ -1,18 +1,15 @@
 ---
 title: "Set variability rules for a TableSpec"
-description: "Controls how the variability display column is constructed."
+description: "`set_spec_variability()` controls how the variability display column is constructed. Operates on `TableSpec` only."
+sidebar:
+  label: "set_spec_variability"
 pagefind: true
 ---
 
 ## Description
 
-Controls how the variability display column is constructed.
-
-## Details
-
-The built-in `TableSpec` method interprets unnamed arguments in `...` as
-variability rule formulas. Named arguments in `...` are ignored with a
-warning.
+`set_spec_variability()` controls how the variability display column is
+constructed. Operates on `TableSpec` only.
 
 
 
@@ -35,11 +32,11 @@ set_spec_variability(spec, ..., overwrite = FALSE)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Rule formulas (LHS condition ~ RHS expression) defining how the variability column is constructed. Combined via [`variability_rules()`](../variability_rules/).</td>
 </tr>
 <tr>
 <td><code>overwrite</code></td>
@@ -52,8 +49,7 @@ set_spec_variability(spec, ..., overwrite = FALSE)
 
 ## Value
 
-Modified spec
-
+Modified spec.
 
 
 
@@ -67,4 +63,9 @@ spec <- TableSpec() |>
     TRUE ~ NA_character_
   )
 ```
+
+## See Also
+
+[`get_spec_variability()`](../get_spec_variability/).
+
 

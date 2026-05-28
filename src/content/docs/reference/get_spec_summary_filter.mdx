@@ -1,0 +1,71 @@
+---
+title: "Get summary filter rules from a SummarySpec"
+description: "`get_spec_summary_filter()` returns the list of summary filter rules. Operates on `SummarySpec` only."
+sidebar:
+  label: "get_spec_summary_filter"
+pagefind: true
+---
+
+## Description
+
+`get_spec_summary_filter()` returns the list of summary filter rules.
+Operates on `SummarySpec` only.
+
+
+
+
+
+
+## Usage
+
+```r
+get_spec_summary_filter(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A SummarySpec object.</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Not used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+List of quosures.
+
+
+
+## Examples
+
+```r
+spec <- SummarySpec()
+get_spec_summary_filter(spec)
+```
+### Output
+
+```
+<list_of<quosure>>
+
+named list()
+```
+
+
+## See Also
+
+[`set_spec_summary_filter()`](../set_spec_summary_filter/).
+
+

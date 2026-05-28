@@ -1,12 +1,15 @@
 ---
 title: "Set footnote order for a spec"
-description: "Controls the order of footnote sections, or disables footnotes entirely."
+description: "`set_spec_footnotes()` controls the order of footnote sections, or disables footnotes entirely."
+sidebar:
+  label: "set_spec_footnotes"
 pagefind: true
 ---
 
 ## Description
 
-Controls the order of footnote sections, or disables footnotes entirely.
+`set_spec_footnotes()` controls the order of footnote sections, or disables
+footnotes entirely.
 
 
 
@@ -29,7 +32,7 @@ set_spec_footnotes(spec, order, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>order</code></td>
@@ -37,7 +40,7 @@ set_spec_footnotes(spec, order, ...)
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -46,7 +49,7 @@ set_spec_footnotes(spec, order, ...)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -60,4 +63,9 @@ spec <- TableSpec() |>
 spec <- TableSpec() |>
   set_spec_footnotes(NULL)
 ```
+
+## See Also
+
+[`get_spec_footnotes()`](../get_spec_footnotes/).
+
 

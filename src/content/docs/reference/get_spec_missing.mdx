@@ -1,0 +1,74 @@
+---
+title: "Get missing value handling from a TableSpec"
+description: "`get_spec_missing()` returns the missing-value handling configuration as a named list. Operates on `TableSpec` only."
+sidebar:
+  label: "get_spec_missing"
+pagefind: true
+---
+
+## Description
+
+`get_spec_missing()` returns the missing-value handling configuration as a
+named list. Operates on `TableSpec` only.
+
+
+
+
+
+
+## Usage
+
+```r
+get_spec_missing(spec, ...)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spec</code></td>
+<td>A TableSpec object.</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Not used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+A named list with elements `text` and `apply_to`.
+
+
+
+## Examples
+
+```r
+spec <- TableSpec()
+get_spec_missing(spec)
+```
+### Output
+
+```
+$text
+[1] ""
+
+$apply_to
+[1] "all"
+
+```
+
+
+## See Also
+
+[`set_spec_missing()`](../set_spec_missing/).
+
+

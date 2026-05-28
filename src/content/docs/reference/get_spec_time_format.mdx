@@ -1,12 +1,15 @@
 ---
 title: "Get time format from a SummarySpec"
-description: "Returns the time format setting."
+description: "`get_spec_time_format()` returns the time format setting. Operates on `SummarySpec` only."
+sidebar:
+  label: "get_spec_time_format"
 pagefind: true
 ---
 
 ## Description
 
-Returns the time format setting.
+`get_spec_time_format()` returns the time format setting. Operates on
+`SummarySpec` only.
 
 
 
@@ -29,11 +32,11 @@ get_spec_time_format(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A SummarySpec object</td>
+<td>A SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -42,7 +45,7 @@ get_spec_time_format(spec, ...)
 
 ## Value
 
-Character string: "seconds", "minutes", "hours", or "auto"
+Character string: "seconds", "minutes", "hours", or "auto".
 
 
 
@@ -55,7 +58,12 @@ get_spec_time_format(spec)
 ### Output
 
 ```
-[1] "seconds" 
+[1] "seconds"
 ```
+
+
+## See Also
+
+[`set_spec_time_format()`](../set_spec_time_format/).
 
 

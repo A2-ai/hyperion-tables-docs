@@ -44,6 +44,7 @@ export default defineConfig({
           items: [
             { label: "TableSpec", slug: "reference/tablespec" },
             { label: "SummarySpec", slug: "reference/summaryspec" },
+            { label: "SectionOptions", slug: "reference/sectionoptions" },
             { label: "CIOptions", slug: "reference/cioptions" },
             { label: "ParameterNameOptions", slug: "reference/parameternameoptions" }
           ]
@@ -81,10 +82,20 @@ export default defineConfig({
             { label: "get_spec_ci", slug: "reference/get_spec_ci" },
             { label: "get_spec_columns", slug: "reference/get_spec_columns" },
             { label: "get_spec_filter", slug: "reference/get_spec_filter" },
+            { label: "get_spec_footnotes", slug: "reference/get_spec_footnotes" },
+            { label: "get_spec_hide_empty", slug: "reference/get_spec_hide_empty" },
+            { label: "get_spec_missing", slug: "reference/get_spec_missing" },
+            { label: "get_spec_models", slug: "reference/get_spec_models" },
+            { label: "get_spec_ofv_decimals", slug: "reference/get_spec_ofv_decimals" },
             { label: "get_spec_parameter_names", slug: "reference/get_spec_parameter_names" },
+            { label: "get_spec_parameter_sections", slug: "reference/get_spec_parameter_sections" },
+            { label: "get_spec_pvalue", slug: "reference/get_spec_pvalue" },
+            { label: "get_spec_remove_unrun", slug: "reference/get_spec_remove_unrun" },
             { label: "get_spec_section_filter", slug: "reference/get_spec_section_filter" },
             { label: "get_spec_sections", slug: "reference/get_spec_sections" },
             { label: "get_spec_sigfig", slug: "reference/get_spec_sigfig" },
+            { label: "get_spec_summary_filter", slug: "reference/get_spec_summary_filter" },
+            { label: "get_spec_tag_filter", slug: "reference/get_spec_tag_filter" },
             { label: "get_spec_time_format", slug: "reference/get_spec_time_format" },
             { label: "get_spec_title", slug: "reference/get_spec_title" },
             { label: "get_spec_transforms", slug: "reference/get_spec_transforms" },
@@ -135,7 +146,8 @@ export default defineConfig({
           items: [
             { label: "render_to_gt", slug: "reference/render_to_gt" },
             { label: "render_to_flextable", slug: "reference/render_to_flextable" },
-            { label: "render_to_image", slug: "reference/render_to_image" }
+            { label: "render_to_image", slug: "reference/render_to_image" },
+            { label: "render_to_word", slug: "reference/render_to_word" }
           ]
         },
         {

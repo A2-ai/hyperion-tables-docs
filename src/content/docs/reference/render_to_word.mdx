@@ -1,0 +1,59 @@
+---
+title: "Render a table to a Word `.docx` file"
+description: "Saves a rendered gt or flextable object to Word. For flextable output the table is fitted to the page via before saving. For gt output, inline LaTeX math (`$. $"
+sidebar:
+  label: "render_to_word"
+pagefind: true
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+## Description
+
+Saves a rendered gt or flextable object to Word. For flextable output the
+table is fitted to the page via [`flextable::fit_to_width()`](https://ardata-fr.github.io/flextable-book//reference/fit_to_width.html)<span style = {{ display: 'inline-block', verticalAlign: 'middle' }}><Icon name="external" /></span> before saving.
+For gt output, inline LaTeX math (`$...$`) is converted to Word's native
+OMML equations so Word renders them as equations rather than plain text.
+
+
+
+
+
+
+## Usage
+
+```r
+render_to_word(table, path, landscape = FALSE)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>table</code></td>
+<td>A gt or flextable object.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>Output `.docx` path.</td>
+</tr>
+<tr>
+<td><code>landscape</code></td>
+<td>If `TRUE`, set page orientation to landscape (US Letter, 11 × 8.5 in). Defaults to `FALSE` (portrait).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+`path`, invisibly.
+
+
+

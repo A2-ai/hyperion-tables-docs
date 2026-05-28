@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: "README"
 pagefind: true
 ---
 
@@ -30,7 +30,9 @@ library(hyperion)
 #> 
 #> 
 #> ── pharos configuration ────────────────────────────────────────────────────────
-#> ✔ pharos.toml found: /Users/mattsmith/Documents/hyperion.tables/pharos.toml
+#> ✔ pharos CLI: 0.5.1 (/Users/mattsmith/.cargo/bin/pharos)
+#> ✔ pharos.toml found: /Users/mattsmith/Documents/hyperion.tables/inst/pharos.toml
+#>     └ hyperion.config_dir : /Users/mattsmith/Documents/hyperion.tables/inst
 #> ── hyperion options ────────────────────────────────────────────────────────────
 #> ✔ hyperion.significant_number_display : 4
 #> ── hyperion nonmem object options ──────────────────────────────────────────────
@@ -48,16 +50,16 @@ library(hyperion.tables)
 model_dir <- system.file("extdata", "models", "onecmt",  package = "hyperion.tables")
 spec <- TableSpec(
   display_transforms = list(omega = c("cv")),
-  sections = section_rules(
+  parameter_names = ParameterNameOptions(source = "display"),
+  title = "Model Parameters"
+) |>
+  set_spec_sections(
     kind == "THETA" ~ "Structural model parameters",
     kind == "OMEGA" & diagonal ~ "Interindividual variance parameters",
     kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters",
     kind == "SIGMA" ~ "Residual error",
     TRUE ~ "Other"
-  ),
-  parameter_names = ParameterNameOptions(source = "display"),
-  title = "Model Parameters"
-)
+  )
 
 model <- read_model(file.path(model_dir, "run003.mod"))
 params <- get_parameters(model)
@@ -71,7 +73,7 @@ params |>
   render_to_image()
 ```
 
-<img src="/figures/README-parameter-table-1.png" alt="" width="100%" />
+<img src="man/figures/README-parameter-table-1.png" alt="" width="100%" />
 
 ### Comparison table
 
@@ -80,15 +82,15 @@ model_dir <- system.file("extdata", "models", "onecmt", package = "hyperion.tabl
 
 spec <- TableSpec(
   display_transforms = list(omega = c("cv")),
-  sections = section_rules(
+  drop_columns = c("variability", "rse", "shrinkage")
+) |>
+  set_spec_sections(
     kind == "THETA" ~ "Structural model parameters",
     kind == "OMEGA" & diagonal ~ "Interindividual variance parameters",
     kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters",
     kind == "SIGMA" ~ "Residual variance",
     TRUE ~ "Other"
-  ),
-  drop_columns = c("variability", "rse", "shrinkage")
-)
+  )
 
 run002 <- read_model(file.path(model_dir, "run002.mod"))
 run003 <- read_model(file.path(model_dir, "run003.mod"))
@@ -107,13 +109,12 @@ get_parameters(run002) |>
   render_to_image()
 ```
 
-<img src="/figures/README-comparison-table-1.png" alt="" width="100%" />
+<img src="man/figures/README-comparison-table-1.png" alt="" width="100%" />
 
 ### Summary table
 
 ``` r
-model_dir <- system.file("extdata", "models", "onecmt", package = "hyperion.tables")
-tree <- get_model_lineage(model_dir)
+tree <- get_model_lineage()
 
 tree |>
   apply_summary_spec(SummarySpec()) |>
@@ -121,7 +122,7 @@ tree |>
   render_to_image()
 ```
 
-<img src="/figures/README-summary-table-1.png" alt="" width="100%" />
+<img src="man/figures/README-summary-table-1.png" alt="" width="100%" />
 
 ### Custom renderers
 

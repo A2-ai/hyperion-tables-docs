@@ -1,12 +1,14 @@
 ---
 title: "Set the title for a spec"
-description: "Sets the table header title."
+description: "`set_spec_title()` sets the table header title."
+sidebar:
+  label: "set_spec_title"
 pagefind: true
 ---
 
 ## Description
 
-Sets the table header title.
+`set_spec_title()` sets the table header title.
 
 
 
@@ -29,15 +31,15 @@ set_spec_title(spec, title, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>title</code></td>
-<td>Character string for the table title</td>
+<td>Character string for the table title.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -46,7 +48,7 @@ set_spec_title(spec, title, ...)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -56,4 +58,9 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_title("Parameter Estimates")
 ```
+
+## See Also
+
+[`get_spec_title()`](../get_spec_title/).
+
 

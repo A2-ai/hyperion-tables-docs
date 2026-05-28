@@ -1,13 +1,15 @@
 ---
 title: "Get parameter name options from a TableSpec"
-description: "Returns the ParameterNameOptions object controlling how parameter names are displayed."
+description: "`get_spec_parameter_names()` returns the ParameterNameOptions object controlling how parameter names are displayed. Operates on `TableSpec` only."
+sidebar:
+  label: "get_spec_parameter_names"
 pagefind: true
 ---
 
 ## Description
 
-Returns the ParameterNameOptions object controlling how parameter names
-are displayed.
+`get_spec_parameter_names()` returns the ParameterNameOptions object
+controlling how parameter names are displayed. Operates on `TableSpec` only.
 
 
 
@@ -30,11 +32,11 @@ get_spec_parameter_names(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -43,7 +45,7 @@ get_spec_parameter_names(spec, ...)
 
 ## Value
 
-ParameterNameOptions object
+ParameterNameOptions object.
 
 
 
@@ -57,8 +59,12 @@ get_spec_parameter_names(spec)
 
 ```
 <hyperion.tables::ParameterNameOptions>
- @ source                 : chr "name"
- @ append_omega_with_theta: logi TRUE 
+ @ source: chr "name"
 ```
+
+
+## See Also
+
+[`set_spec_parameter_names()`](../set_spec_parameter_names/).
 
 

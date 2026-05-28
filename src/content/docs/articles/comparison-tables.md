@@ -1,5 +1,5 @@
 ---
-title: "Comparison Tables"
+title: "comparison-tables"
 pagefind: true
 ---
 
@@ -9,7 +9,9 @@ library(hyperion)
 #> 
 #> 
 #> ── pharos configuration ────────────────────────────────────────────────────────
-#> ✔ pharos.toml found: /Users/mattsmith/Documents/hyperion.tables/vignettes/pharos.toml
+#> ✔ pharos CLI: 0.5.1 (/Users/mattsmith/.cargo/bin/pharos)
+#> ✖ No pharos.toml config file found. Please call hyperion::init() to create one
+#>     └ hyperion.config_dir : (unset)
 #> ── hyperion options ────────────────────────────────────────────────────────────
 #> ✔ hyperion.significant_number_display : 4
 #> ── hyperion nonmem object options ──────────────────────────────────────────────
@@ -21,6 +23,7 @@ library(gt)
 library(flextable)
 
 model_dir <- system.file("extdata", "models", "onecmt", package = "hyperion.tables")
+options(hyperion.config_dir = system.file(package = "hyperion.tables"))
 model_run <- "run003"
 ```
 
@@ -57,13 +60,13 @@ get_parameters(parent_mod) |>
       add_summary_info(child_sum),
     labels = c("run002", "run003")
   ) |>
-  make_comparison_table() |>
+  make_comparison_table(output = "flextable") |>
     render_to_image()
 #> LRT suppressed for run002 vs run003: no lineage attached
 #> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.
 ```
 
-![](/figures/comparison-tables/unnamed-chunk-2-1.png)
+![]()
 
 ### Multiple Comparison Table
 
@@ -118,7 +121,7 @@ comp |>
 #> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.
 ```
 
-![](/figures/comparison-tables/unnamed-chunk-3-1.png)
+![]()
 
 ### Structural model comparison
 
@@ -184,4 +187,4 @@ comp |>
 #> ℹ Both OFVs and matching observation counts are present, but LRT conditions are not met.
 ```
 
-![](/figures/comparison-tables/unnamed-chunk-4-1.png)
+![]()

@@ -1,14 +1,16 @@
 ---
 title: "Get columns from a spec"
-description: "Returns the current columns list from the spec. For TableSpec, this includes the base columns plus any add_columns. For SummarySpec, columns are already merged "
+description: "`get_spec_columns()` returns the current columns list from the spec. The result is resolved as `(columns %||% default_columns) ∪ add_columns − drop_columns`."
+sidebar:
+  label: "get_spec_columns"
 pagefind: true
 ---
 
 ## Description
 
-Returns the current columns list from the spec. For TableSpec, this includes
-the base columns plus any add_columns. For SummarySpec, columns are already
-merged with add_columns in construction.
+`get_spec_columns()` returns the current columns list from the spec. The
+result is resolved as
+`(columns %||% default_columns) ∪ add_columns − drop_columns`.
 
 
 
@@ -31,11 +33,11 @@ get_spec_columns(spec, ...)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec or SummarySpec object</td>
+<td>A TableSpec or SummarySpec object.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -44,7 +46,7 @@ get_spec_columns(spec, ...)
 
 ## Value
 
-Character vector of column names
+Character vector of column names.
 
 
 
@@ -58,7 +60,12 @@ get_spec_columns(spec)
 
 ```
 [1] "name"        "symbol"      "unit"        "estimate"    "variability"
-[6] "ci_low"      "ci_high"     "rse"         "shrinkage"   
+[6] "ci_low"      "ci_high"     "rse"         "shrinkage"  
 ```
+
+
+## See Also
+
+[`set_spec_columns()`](../set_spec_columns/), [`add_spec_columns()`](../add_spec_columns/), [`drop_spec_columns()`](../drop_spec_columns/).
 
 

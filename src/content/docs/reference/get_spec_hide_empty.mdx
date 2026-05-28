@@ -1,14 +1,15 @@
 ---
-title: "Get title from a spec"
-description: "`get_spec_title()` returns the table header title."
+title: "Get hide_empty_columns from a spec"
+description: "`get_spec_hide_empty()` returns whether empty columns are automatically hidden."
 sidebar:
-  label: "get_spec_title"
+  label: "get_spec_hide_empty"
 pagefind: true
 ---
 
 ## Description
 
-`get_spec_title()` returns the table header title.
+`get_spec_hide_empty()` returns whether empty columns are automatically
+hidden.
 
 
 
@@ -18,7 +19,7 @@ pagefind: true
 ## Usage
 
 ```r
-get_spec_title(spec, ...)
+get_spec_hide_empty(spec, ...)
 ```
 
 ## Arguments
@@ -44,7 +45,7 @@ get_spec_title(spec, ...)
 
 ## Value
 
-Character string.
+Logical scalar.
 
 
 
@@ -52,17 +53,17 @@ Character string.
 
 ```r
 spec <- TableSpec()
-get_spec_title(spec)
+get_spec_hide_empty(spec)
 ```
 ### Output
 
 ```
-[1] "Model Parameters"
+[1] TRUE
 ```
 
 
 ## See Also
 
-[`set_spec_title()`](../set_spec_title/).
+[`set_spec_hide_empty()`](../set_spec_hide_empty/).
 
 

@@ -1,12 +1,15 @@
 ---
 title: "Set missing value handling for a TableSpec"
-description: "Controls how NA values are displayed in the table."
+description: "`set_spec_missing()` controls how NA values are displayed in the table. Operates on `TableSpec` only."
+sidebar:
+  label: "set_spec_missing"
 pagefind: true
 ---
 
 ## Description
 
-Controls how NA values are displayed in the table.
+`set_spec_missing()` controls how NA values are displayed in the table.
+Operates on `TableSpec` only.
 
 
 
@@ -29,19 +32,19 @@ set_spec_missing(spec, text = NULL, ..., apply_to = NULL)
 <tbody>
 <tr>
 <td><code>spec</code></td>
-<td>A TableSpec object</td>
+<td>A TableSpec object.</td>
 </tr>
 <tr>
 <td><code>text</code></td>
-<td>Text to substitute for NA values</td>
+<td>Text to substitute for NA values.</td>
 </tr>
 <tr>
 <td><code>...</code></td>
-<td>Additional arguments passed to methods.</td>
+<td>Not used.</td>
 </tr>
 <tr>
 <td><code>apply_to</code></td>
-<td>Which columns to apply missing text to: "all", "numeric", or "character"</td>
+<td>Which columns to apply missing text to: "all", "numeric", or "character".</td>
 </tr>
 </tbody>
 </table>
@@ -50,7 +53,7 @@ set_spec_missing(spec, text = NULL, ..., apply_to = NULL)
 
 ## Value
 
-Modified spec
+Modified spec.
 
 
 
@@ -60,4 +63,9 @@ Modified spec
 spec <- TableSpec() |>
   set_spec_missing("-", apply_to = "numeric")
 ```
+
+## See Also
+
+[`get_spec_missing()`](../get_spec_missing/).
+
 
