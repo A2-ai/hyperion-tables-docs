@@ -122,15 +122,15 @@ hyperion_table
 #>  ..  ..@ sections          : <hyperion.tables::SectionOptions>
 #>  .. .. .. @ rules       :List of 5
 #>  .. .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
-#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
-#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
-#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
-#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. .. $ : language ~(TRUE ~ "Other")
-#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. @ assignments : list()
 #>  .. .. .. @ inline_items: chr(0) 
 #>  .. .. .. @ order       : NULL
@@ -155,15 +155,15 @@ hyperion_table
 #>  .. .. .. $ sigma: chr "all"
 #>  ..  ..@ variability_rules :List of 5
 #>  .. .. .. $ : language ~(fixed ~ "(Fixed)")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. .. $ : language ~(!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. .. $ : language ~(TRUE ~ NA_character_)
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  ..  ..@ ci                : <hyperion.tables::CIOptions>
 #>  .. .. .. @ level       : num 0.95
@@ -229,15 +229,15 @@ hyperion_table
 #>  .. @ sections          : <hyperion.tables::SectionOptions>
 #>  .. .. @ rules       :List of 5
 #>  .. .. .. $ : language ~(kind == "THETA" ~ "Structural model parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. $ : language ~(kind == "OMEGA" & diagonal ~ "Interindividual variance parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. $ : language ~(kind == "OMEGA" & !diagonal ~ "Interindividual covariance parameters")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. $ : language ~(kind == "SIGMA" ~ "Residual error")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. .. $ : language ~(TRUE ~ "Other")
-#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x12e77da50> 
+#>  .. .. ..  ..- attr(*, ".Environment")=<environment: 0x142514450> 
 #>  .. .. @ assignments : list()
 #>  .. .. @ inline_items: chr(0) 
 #>  .. .. @ order       : NULL
@@ -262,15 +262,15 @@ hyperion_table
 #>  .. .. $ sigma: chr "all"
 #>  .. @ variability_rules :List of 5
 #>  .. .. $ : language ~(fixed ~ "(Fixed)")
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. $ : language ~(!is.na(corr) ~ sprintf("(Corr = %s)", corr))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. $ : language ~(!is.na(cv) & cv != 0 ~ sprintf("(CV = %s%%)", cv))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. $ : language ~(!is.na(sd) ~ sprintf("(SD = %s)", sd))
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. $ : language ~(TRUE ~ NA_character_)
-#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x13924e908> 
+#>  .. ..  ..- attr(*, ".Environment")=<environment: 0x1219dab78> 
 #>  .. .. - attr(*, "class")= chr [1:2] "quosures" "list"
 #>  .. @ ci                : <hyperion.tables::CIOptions>
 #>  .. .. @ level       : num 0.95
@@ -419,20 +419,20 @@ raw_data <- hyperion_table@data
 gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
 ```
 
-<div id="rjwnlqvkxo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rjwnlqvkxo table {
+<div id="eehwdbtwqs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eehwdbtwqs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#rjwnlqvkxo thead, #rjwnlqvkxo tbody, #rjwnlqvkxo tfoot, #rjwnlqvkxo tr, #rjwnlqvkxo td, #rjwnlqvkxo th {
+&#10;#eehwdbtwqs thead, #eehwdbtwqs tbody, #eehwdbtwqs tfoot, #eehwdbtwqs tr, #eehwdbtwqs td, #eehwdbtwqs th {
   border-style: none;
 }
-&#10;#rjwnlqvkxo p {
+&#10;#eehwdbtwqs p {
   margin: 0;
   padding: 0;
 }
-&#10;#rjwnlqvkxo .gt_table {
+&#10;#eehwdbtwqs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -457,11 +457,11 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_caption {
+&#10;#eehwdbtwqs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#rjwnlqvkxo .gt_title {
+&#10;#eehwdbtwqs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -472,7 +472,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#rjwnlqvkxo .gt_subtitle {
+&#10;#eehwdbtwqs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -483,7 +483,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#rjwnlqvkxo .gt_heading {
+&#10;#eehwdbtwqs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -494,12 +494,12 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_bottom_border {
+&#10;#eehwdbtwqs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_col_headings {
+&#10;#eehwdbtwqs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -513,7 +513,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_col_heading {
+&#10;#eehwdbtwqs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -532,7 +532,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#rjwnlqvkxo .gt_column_spanner_outer {
+&#10;#eehwdbtwqs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -543,13 +543,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#rjwnlqvkxo .gt_column_spanner_outer:first-child {
+&#10;#eehwdbtwqs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#rjwnlqvkxo .gt_column_spanner_outer:last-child {
+&#10;#eehwdbtwqs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#rjwnlqvkxo .gt_column_spanner {
+&#10;#eehwdbtwqs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -560,10 +560,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   display: inline-block;
   width: 100%;
 }
-&#10;#rjwnlqvkxo .gt_spanner_row {
+&#10;#eehwdbtwqs .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#rjwnlqvkxo .gt_group_heading {
+&#10;#eehwdbtwqs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -588,7 +588,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#rjwnlqvkxo .gt_empty_group_heading {
+&#10;#eehwdbtwqs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -602,13 +602,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#rjwnlqvkxo .gt_from_md > :first-child {
+&#10;#eehwdbtwqs .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#rjwnlqvkxo .gt_from_md > :last-child {
+&#10;#eehwdbtwqs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#rjwnlqvkxo .gt_row {
+&#10;#eehwdbtwqs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -626,7 +626,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#rjwnlqvkxo .gt_stub {
+&#10;#eehwdbtwqs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -638,7 +638,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#rjwnlqvkxo .gt_stub_row_group {
+&#10;#eehwdbtwqs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -651,13 +651,13 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#rjwnlqvkxo .gt_row_group_first td {
+&#10;#eehwdbtwqs .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#rjwnlqvkxo .gt_row_group_first th {
+&#10;#eehwdbtwqs .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#rjwnlqvkxo .gt_summary_row {
+&#10;#eehwdbtwqs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -666,14 +666,14 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#rjwnlqvkxo .gt_first_summary_row {
+&#10;#eehwdbtwqs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_first_summary_row.thick {
+&#10;#eehwdbtwqs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#rjwnlqvkxo .gt_last_summary_row {
+&#10;#eehwdbtwqs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -682,7 +682,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_grand_summary_row {
+&#10;#eehwdbtwqs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -691,7 +691,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#rjwnlqvkxo .gt_first_grand_summary_row {
+&#10;#eehwdbtwqs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -700,7 +700,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_last_grand_summary_row_top {
+&#10;#eehwdbtwqs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -709,10 +709,10 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_striped {
+&#10;#eehwdbtwqs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#rjwnlqvkxo .gt_table_body {
+&#10;#eehwdbtwqs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -720,7 +720,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_footnotes {
+&#10;#eehwdbtwqs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -733,7 +733,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_footnote {
+&#10;#eehwdbtwqs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -741,7 +741,7 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#rjwnlqvkxo .gt_sourcenotes {
+&#10;#eehwdbtwqs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -754,64 +754,64 @@ gt::gt(raw_data, groupname_col = hyperion_table@groupname_col)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#rjwnlqvkxo .gt_sourcenote {
+&#10;#eehwdbtwqs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#rjwnlqvkxo .gt_left {
+&#10;#eehwdbtwqs .gt_left {
   text-align: left;
 }
-&#10;#rjwnlqvkxo .gt_center {
+&#10;#eehwdbtwqs .gt_center {
   text-align: center;
 }
-&#10;#rjwnlqvkxo .gt_right {
+&#10;#eehwdbtwqs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#rjwnlqvkxo .gt_font_normal {
+&#10;#eehwdbtwqs .gt_font_normal {
   font-weight: normal;
 }
-&#10;#rjwnlqvkxo .gt_font_bold {
+&#10;#eehwdbtwqs .gt_font_bold {
   font-weight: bold;
 }
-&#10;#rjwnlqvkxo .gt_font_italic {
+&#10;#eehwdbtwqs .gt_font_italic {
   font-style: italic;
 }
-&#10;#rjwnlqvkxo .gt_super {
+&#10;#eehwdbtwqs .gt_super {
   font-size: 65%;
 }
-&#10;#rjwnlqvkxo .gt_footnote_marks {
+&#10;#eehwdbtwqs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#rjwnlqvkxo .gt_asterisk {
+&#10;#eehwdbtwqs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#rjwnlqvkxo .gt_indent_1 {
+&#10;#eehwdbtwqs .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#rjwnlqvkxo .gt_indent_2 {
+&#10;#eehwdbtwqs .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#rjwnlqvkxo .gt_indent_3 {
+&#10;#eehwdbtwqs .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#rjwnlqvkxo .gt_indent_4 {
+&#10;#eehwdbtwqs .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#rjwnlqvkxo .gt_indent_5 {
+&#10;#eehwdbtwqs .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#rjwnlqvkxo .katex-display {
+&#10;#eehwdbtwqs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#rjwnlqvkxo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#eehwdbtwqs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
