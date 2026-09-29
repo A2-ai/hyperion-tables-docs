@@ -1,6 +1,6 @@
 ---
-title: "Set section filter for a spec"
-description: "[![[Deprecated]](/figures/lifecycle-deprecated. svg)](https://lifecycle. r-lib. org/articles/stages. html#deprecated) `set_spec_section_filter()` was deprecated"
+title: "Defunct section filter setter"
+description: "[![[Defunct]](/figures/lifecycle-defunct. svg)](https://lifecycle. r-lib. org/articles/stages. html#defunct) `set_spec_section_filter()` was deprecated in 0. 5."
 sidebar:
   label: "set_spec_section_filter"
 pagefind: true
@@ -8,12 +8,14 @@ pagefind: true
 
 ## Description
 
-[![[Deprecated]](/figures/lifecycle-deprecated.svg)](https://lifecycle.r-lib.org/articles/stages.html#deprecated)
+[![[Defunct]](/figures/lifecycle-defunct.svg)](https://lifecycle.r-lib.org/articles/stages.html#defunct)
 
-`set_spec_section_filter()` was deprecated in hyperion.tables 0.5.0 and
-will be removed in 0.6.0. Use [`set_spec_sections()`](../set_spec_sections/) with `keep` or
-`exclude` instead. Calling with no filter arguments still clears the
-existing filter for backward compatibility.
+`set_spec_section_filter()` was deprecated in 0.5.0 and is defunct as of
+0.6.0. It always errors with migration guidance.
+
+Use [`set_spec_sections()`](../set_spec_sections/) with `keep` or `exclude` instead. To clear a
+filter, use `set_spec_sections(spec, keep = character(0))`; `NULL` leaves
+the existing filter unchanged.
 
 
 
@@ -40,11 +42,11 @@ set_spec_section_filter(spec, exclude = NULL, keep = NULL)
 </tr>
 <tr>
 <td><code>exclude</code></td>
-<td>Character vector of section labels to drop, optionally including `NA` to also drop unmatched rows.</td>
+<td>Character vector of section labels to drop.</td>
 </tr>
 <tr>
 <td><code>keep</code></td>
-<td>Character vector of section labels to keep (everything else is dropped), optionally including `NA` to also keep unmatched rows.</td>
+<td>Character vector of section labels to keep.</td>
 </tr>
 </tbody>
 </table>
@@ -53,18 +55,12 @@ set_spec_section_filter(spec, exclude = NULL, keep = NULL)
 
 ## Value
 
-Modified spec.
+No value; always raises a defunct-function error.
 
 
 
-## Examples
+## See Also
 
-```r
-spec <- SummarySpec() |>
-  set_spec_sections(
-    "base" %in% tags ~ "Base Models",
-    TRUE ~ "Other"
-  ) |>
-  set_spec_section_filter(exclude = "Other")
-```
+[`set_spec_sections()`](../set_spec_sections/).
+
 

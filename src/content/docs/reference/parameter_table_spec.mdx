@@ -1,0 +1,95 @@
+---
+title: "Pre-configured TableSpec for a standard parameter table"
+description: "`parameter_table_spec()` returns a configured for the common parameter table layout: omegas are shown as CV, parameter names use their display names, and parame"
+sidebar:
+  label: "parameter_table_spec"
+pagefind: true
+---
+
+## Description
+
+`parameter_table_spec()` returns a [TableSpec](../tablespec/) configured for the common
+parameter table layout: omegas are shown as CV, parameter names use their
+display names, and parameters are grouped into sections by kind
+(THETA/OMEGA/SIGMA). The returned spec can be customized further with the
+`set_spec_*()` modifiers.
+
+## Details
+
+Section rules are matched in order and the preset ends with a catch-all
+rule, so rules appended with [`set_spec_sections()`](../set_spec_sections/) never apply. To change
+the sections, pass `overwrite = TRUE` to replace the preset's rules, or
+assign specific parameters with `parameters =`.
+
+
+
+
+
+
+## Usage
+
+```r
+parameter_table_spec(
+  theta_section_label = "Structural model parameters",
+  omega_section_label = "Interindividual variability",
+  sigma_section_label = "Residual error",
+  other_section_label = "Other",
+  title = NULL
+)
+```
+
+## Arguments
+
+<div class="arg-table">
+<table>
+<thead>
+<tr><th>Argument</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>theta_section_label</code></td>
+<td>Section label for THETA parameters.</td>
+</tr>
+<tr>
+<td><code>omega_section_label</code></td>
+<td>Section label for OMEGA parameters.</td>
+</tr>
+<tr>
+<td><code>sigma_section_label</code></td>
+<td>Section label for SIGMA parameters.</td>
+</tr>
+<tr>
+<td><code>other_section_label</code></td>
+<td>Section label for parameters matching no other rule.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>Table title. `NULL` (the default) gives a table with no title; pass a string to set one.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+## Value
+
+A [TableSpec](../tablespec/) object.
+
+
+
+
+## Examples
+
+```r
+spec <- parameter_table_spec(title = "Parameter Estimates")
+
+# Customize further with modifiers
+spec <- parameter_table_spec() |>
+  set_spec_sigfig(4)
+```
+
+## See Also
+
+[TableSpec](../tablespec/), [`make_parameter_table()`](../make_parameter_table/).
+
+

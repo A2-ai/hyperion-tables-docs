@@ -50,6 +50,13 @@ export default defineConfig({
           ]
         },
         {
+          label: "Spec Presets",
+          collapsed: true,
+          items: [
+            { label: "parameter_table_spec", slug: "reference/parameter_table_spec" }
+          ]
+        },
+        {
           label: "Table Creation",
           collapsed: true,
           items: [
