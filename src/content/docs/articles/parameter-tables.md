@@ -358,20 +358,20 @@ get_parameters(mod) |>
 The following table shows how CV, RSE, and CI are computed for each
 transform and parameter type combination.
 
-<div id="hrrfrntzjg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hrrfrntzjg table {
+<div id="twztbknvah" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#twztbknvah table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#hrrfrntzjg thead, #hrrfrntzjg tbody, #hrrfrntzjg tfoot, #hrrfrntzjg tr, #hrrfrntzjg td, #hrrfrntzjg th {
+&#10;#twztbknvah thead, #twztbknvah tbody, #twztbknvah tfoot, #twztbknvah tr, #twztbknvah td, #twztbknvah th {
   border-style: none;
 }
-&#10;#hrrfrntzjg p {
+&#10;#twztbknvah p {
   margin: 0;
   padding: 0;
 }
-&#10;#hrrfrntzjg .gt_table {
+&#10;#twztbknvah .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -396,11 +396,11 @@ transform and parameter type combination.
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_caption {
+&#10;#twztbknvah .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#hrrfrntzjg .gt_title {
+&#10;#twztbknvah .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -411,7 +411,7 @@ transform and parameter type combination.
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#hrrfrntzjg .gt_subtitle {
+&#10;#twztbknvah .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -422,7 +422,7 @@ transform and parameter type combination.
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#hrrfrntzjg .gt_heading {
+&#10;#twztbknvah .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -433,12 +433,12 @@ transform and parameter type combination.
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_bottom_border {
+&#10;#twztbknvah .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_col_headings {
+&#10;#twztbknvah .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -452,7 +452,7 @@ transform and parameter type combination.
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_col_heading {
+&#10;#twztbknvah .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -471,7 +471,7 @@ transform and parameter type combination.
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#hrrfrntzjg .gt_column_spanner_outer {
+&#10;#twztbknvah .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -482,13 +482,13 @@ transform and parameter type combination.
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#hrrfrntzjg .gt_column_spanner_outer:first-child {
+&#10;#twztbknvah .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#hrrfrntzjg .gt_column_spanner_outer:last-child {
+&#10;#twztbknvah .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#hrrfrntzjg .gt_column_spanner {
+&#10;#twztbknvah .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -499,10 +499,10 @@ transform and parameter type combination.
   display: inline-block;
   width: 100%;
 }
-&#10;#hrrfrntzjg .gt_spanner_row {
+&#10;#twztbknvah .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#hrrfrntzjg .gt_group_heading {
+&#10;#twztbknvah .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -527,7 +527,7 @@ transform and parameter type combination.
   vertical-align: middle;
   text-align: left;
 }
-&#10;#hrrfrntzjg .gt_empty_group_heading {
+&#10;#twztbknvah .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -541,13 +541,13 @@ transform and parameter type combination.
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#hrrfrntzjg .gt_from_md > :first-child {
+&#10;#twztbknvah .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#hrrfrntzjg .gt_from_md > :last-child {
+&#10;#twztbknvah .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#hrrfrntzjg .gt_row {
+&#10;#twztbknvah .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -565,7 +565,7 @@ transform and parameter type combination.
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#hrrfrntzjg .gt_stub {
+&#10;#twztbknvah .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -577,7 +577,7 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hrrfrntzjg .gt_stub_row_group {
+&#10;#twztbknvah .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -590,13 +590,13 @@ transform and parameter type combination.
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#hrrfrntzjg .gt_row_group_first td {
+&#10;#twztbknvah .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#hrrfrntzjg .gt_row_group_first th {
+&#10;#twztbknvah .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#hrrfrntzjg .gt_summary_row {
+&#10;#twztbknvah .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -605,14 +605,14 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hrrfrntzjg .gt_first_summary_row {
+&#10;#twztbknvah .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_first_summary_row.thick {
+&#10;#twztbknvah .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#hrrfrntzjg .gt_last_summary_row {
+&#10;#twztbknvah .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -621,7 +621,7 @@ transform and parameter type combination.
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_grand_summary_row {
+&#10;#twztbknvah .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -630,7 +630,7 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hrrfrntzjg .gt_first_grand_summary_row {
+&#10;#twztbknvah .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -639,7 +639,7 @@ transform and parameter type combination.
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_last_grand_summary_row_top {
+&#10;#twztbknvah .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -648,10 +648,10 @@ transform and parameter type combination.
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_striped {
+&#10;#twztbknvah .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#hrrfrntzjg .gt_table_body {
+&#10;#twztbknvah .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -659,7 +659,7 @@ transform and parameter type combination.
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_footnotes {
+&#10;#twztbknvah .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -672,7 +672,7 @@ transform and parameter type combination.
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_footnote {
+&#10;#twztbknvah .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -680,7 +680,7 @@ transform and parameter type combination.
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hrrfrntzjg .gt_sourcenotes {
+&#10;#twztbknvah .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -693,64 +693,64 @@ transform and parameter type combination.
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hrrfrntzjg .gt_sourcenote {
+&#10;#twztbknvah .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hrrfrntzjg .gt_left {
+&#10;#twztbknvah .gt_left {
   text-align: left;
 }
-&#10;#hrrfrntzjg .gt_center {
+&#10;#twztbknvah .gt_center {
   text-align: center;
 }
-&#10;#hrrfrntzjg .gt_right {
+&#10;#twztbknvah .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#hrrfrntzjg .gt_font_normal {
+&#10;#twztbknvah .gt_font_normal {
   font-weight: normal;
 }
-&#10;#hrrfrntzjg .gt_font_bold {
+&#10;#twztbknvah .gt_font_bold {
   font-weight: bold;
 }
-&#10;#hrrfrntzjg .gt_font_italic {
+&#10;#twztbknvah .gt_font_italic {
   font-style: italic;
 }
-&#10;#hrrfrntzjg .gt_super {
+&#10;#twztbknvah .gt_super {
   font-size: 65%;
 }
-&#10;#hrrfrntzjg .gt_footnote_marks {
+&#10;#twztbknvah .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#hrrfrntzjg .gt_asterisk {
+&#10;#twztbknvah .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#hrrfrntzjg .gt_indent_1 {
+&#10;#twztbknvah .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#hrrfrntzjg .gt_indent_2 {
+&#10;#twztbknvah .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#hrrfrntzjg .gt_indent_3 {
+&#10;#twztbknvah .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#hrrfrntzjg .gt_indent_4 {
+&#10;#twztbknvah .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#hrrfrntzjg .gt_indent_5 {
+&#10;#twztbknvah .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#hrrfrntzjg .katex-display {
+&#10;#twztbknvah .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#hrrfrntzjg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#twztbknvah div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
